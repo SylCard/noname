@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title> Team Spike </title>
-    <!-- Google fonts --->
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
@@ -19,10 +21,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body id="myPage">
+  <body id="myPage" ng-app="spikeApp">
     <!-- navigation bar -->
     <nav class="navbar">
-      <div class="container">
+      <div class="container" ng-controller="navController">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
@@ -38,13 +40,15 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a  class="navbar-custom"c href="#">Current Alerts (0)</a>
+              <a  class="navbar-custom"c href="#">Current Alerts ({{ numAlerts }})</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <div class="container-fluid" id="main">
+
+    <!-- page content -->
+    <div class="container-fluid" id="main" ng-controller="mainController">
       <div class="row">
         <div class="col-sm-4">
 
@@ -61,7 +65,11 @@
 
 
     </div>
-
+    
+    <!-- Modules -->
+    <script src="js/spikeApp.js"></script>
+    <!-- Controllers -->
+    <script src="js/navController.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Chart JS Library -->
