@@ -51,7 +51,7 @@
         </div>
         <div class="col-sm-4">
           <h1>Spikes is exploratory data analysis at its finest</h1>
-          <h2>* Insert cool looking graph receiving live data here *</h2>
+          <canvas id="myChart" width="400" height="400"></canvas>
         </div>
         <div class="col-sm-4">
 
@@ -64,7 +64,35 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Chart JS Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <!-- Chart JS data -->
+    <script>
+      var ctx = document.getElementById('myChart').getContext('2d');
+          var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+
+          labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July'],
+          datasets: [{
+            label: 'Apple',
+            fill:false,
+            data: [12, 19, 3, 17, 6, 3, 7],
+            backgroundColor: "#08469C",
+            borderColor:"#08469C"
+
+          }, {
+            label: 'Google',
+            fill:false,
+            data: [2, 29, 5, 5, 2, 3, 10],
+            backgroundColor: "#469c08",
+            borderColor:"#469c08"
+          }]
+          }
+          });
+
+    </script>
   </body>
 </html>
