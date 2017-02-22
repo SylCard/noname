@@ -11,7 +11,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <!-- CSS -->
-    <link href="css/theme.css" rel="stylesheet" type="text/css" />
+    <link href="css/theme.css" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -44,7 +44,7 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid" id="main">
+    <div class="container" id="main">
       <div class="row">
         <div class="col-sm-4">
 
@@ -57,7 +57,38 @@
 
         </div>
       </div>
+      <div class="row">
+        <div class="col-sm-2">
 
+        </div>
+        <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
+            <div class="fatfinger" >
+              <h1>Fat finger Error: {{Symbol}}</h1>
+                    <div style="padding:10px; margin: 5px;">
+                        <h2>Transaction</h2>
+                        <ul>
+                          <li>Buyer:</li>
+                          <li>Price:</li>
+                          <li>Currency:</li>
+                          <li>Time:</li>
+                          <li>Date:</li>
+                        </ul>
+                        <button type="button" class="btn btn-danger btn-lg" style="float:right; margin:5px;">
+                                <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                        <div class="buttons">
+                          <button type="button" class="btn btn-success btn-lg" style="float:right; margin:5px;">
+                             <span class="glyphicon glyphicon-ok"></span>
+                        </button>
+                     </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+
+        </div>
+
+      </div>
 
 
     </div>

@@ -1,0 +1,14 @@
+anomaly = {
+              "anomalyID" : "some unique generated value in the backend database" ,
+              "type" : "fat finger | Pump and Dump | VolumeSpike" ,
+
+              // for drill down data e.g.
+
+              "y-axis" : [array of values corresponding to the y-axis e.g price of stocks] ,
+              "x-axis" : [array of timestamps corresponding to when the anomaly occur, should automatically scale],
+
+              // for the alert
+
+              "stock" : [{time},{buyer},{seller},{price},{size},{currency},{symbol},{sector},{bid},{ask}]
+
+}
