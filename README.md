@@ -12,3 +12,5 @@ The webserver can be accessed at http://pumpanddump.me (temp. domain). Any chang
 The frontend and the backend will eventually connect via the webserver.
 
 ##Test
+
+## read this bish
