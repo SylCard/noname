@@ -19,7 +19,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body id="myPage">
+  <body id="myPage" ng-app="spikeApp" ng-controller="mainController as c">
     <!-- navigation bar -->
     <nav class="navbar">
       <div class="container">
@@ -38,12 +38,14 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a  class="navbar-custom"c href="#">Current Alerts (0)</a>
+              <a  class="navbar-custom"c href="#">Current Alerts ({{ c.anomalies.length }})</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+
+    <!-- main page content -->
     <div class="container" id="main">
       <div class="row">
         <div class="col-sm-4">
