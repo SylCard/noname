@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title> Team Spike </title>
-    <!-- Angular -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <!-- Google fonts -->
+    <!-- Google fonts --->
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
@@ -21,10 +19,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body id="myPage" ng-app="spikeApp">
+  <body id="myPage">
     <!-- navigation bar -->
     <nav class="navbar">
-      <div class="container" ng-controller="navController">
+      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
@@ -40,22 +38,20 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a  class="navbar-custom"c href="#">Current Alerts ({{ numAlerts }})</a>
+              <a  class="navbar-custom"c href="#">Current Alerts (0)</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-
-    <!-- page content -->
-    <div class="container-fluid" id="main" ng-controller="mainController">
+    <div class="container-fluid" id="main">
       <div class="row">
         <div class="col-sm-4">
 
         </div>
         <div class="col-sm-4">
           <h1>Spikes is exploratory data analysis at its finest</h1>
-          <div id="test" style="width:600px;height:400px;" style =" margin: auto;" ></div>
+          <canvas id="myChart" width="400" height="400"></canvas>
         </div>
         <div class="col-sm-4">
 
@@ -66,24 +62,36 @@
 
     </div>
 
-    <!-- Modules -->
-    <script src="js/spikeApp.js"></script>
-    <!-- Controllers -->
-    <script src="js/navController.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Plotly JS Library -->
-    <script src="js/plotly-latest.min.js"></script>
+    <!-- Chart JS Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <!-- Plotly JS data -->
+    <!-- Chart JS data -->
     <script>
-    graph1 = document.getElementById('test');
-            Plotly.plot( graph1, [{
-            x: [1, 2, 3, 4, 5],
-            y: [1, 2, 4, 8, 16] }], {
-            margin: { t: 0 } } );
+      var ctx = document.getElementById('myChart').getContext('2d');
+          var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
 
+          labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July'],
+          datasets: [{
+            label: 'Apple',
+            fill:false,
+            data: [12, 19, 3, 17, 6, 3, 7],
+            backgroundColor: "#08469C",
+            borderColor:"#08469C"
+
+          }, {
+            label: 'Google',
+            fill:false,
+            data: [2, 29, 5, 5, 2, 3, 10],
+            backgroundColor: "#469c08",
+            borderColor:"#469c08"
+          }]
+          }
+          });
 
     </script>
   </body>
