@@ -3,7 +3,7 @@ body {
 }
 
 
-.navbar {
+.navbar-custom {
     background-color: #08469c;
     margin-bottom: 0;
     border: 0;
@@ -20,14 +20,20 @@ body {
 
 }
 
-.navbar-custom {
-  color:white;
-}
-
 .fatfinger, .pumpdump, .vol-spike {
   margin-bottom: 10px;
 }
 
 .custom-button {
-  float:right; margin:5px;
+
+}
+
+
+.icon-bar-custom {
+    background-color: white;
+}
+
+.buttons{
+  float:right;
+
 }
