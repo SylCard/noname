@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 /*TODO add data checks to flag corrupted stock values*/
 
 
-//needs to be modularised 
 //need to add proper exception handling
 public class DataExtractor {
 
@@ -24,11 +23,13 @@ public class DataExtractor {
             return;
         } else if (args[0].equals("-h") && (args.length == 2)) {
             System.out.println("This is the historical data option.");
-            historicalData(args[1]);
+            LinkedList<Stock> queue = new LinkedList<Stock>();
+            historicalData(args[1], queue);
             return;
         } else if (args[0].equals("-l")) {
             System.out.println("This is the live data option.");
-            liveData();
+            LinkedList<Stock> queue = new LinkedList<Stock>();
+            liveData(queue);
             return;
         } else {
             System.out.println("Invalid options. Give no arguments to see useage instructions.");
@@ -42,12 +43,16 @@ public class DataExtractor {
             instructions();
             return null;
         } else if (args[0].equals("-h") && (args.length == 2)) {
+            LinkedList<Stock> queue = new LinkedList<Stock>();
             System.out.println("This is the historical data option.");
-            return historicalData(args[1]);
+            StockBuilderThread historical = new StockBuilderThread("h", queue, args[1]);
+            // return historicalData(args[1]);
+            return queue;
         } else if (args[0].equals("-l")) {
+            LinkedList<Stock> queue = new LinkedList<Stock>();
             System.out.println("This is the live data option.");
-            liveData();
-            return null;
+            StockBuilderThread live = new StockBuilderThread("l", queue);
+            return queue;
         } else {
             System.out.println("Invalid options. Give no arguments to see useage instructions.");
             return null;
@@ -68,41 +73,30 @@ public class DataExtractor {
         System.out.println("DataExtractor -h file       Will process the stock data in file.");
     }
 
-    private static void liveData() throws Exception{
+    public static void liveData(LinkedList<Stock> queue) throws Exception{
         String value;
-        LinkedList<String> queue = new LinkedList<String>();
 
         Socket s = new Socket("cs261.dcs.warwick.ac.uk", 80);   //establishes a server socket
 
         InputStream is = s.getInputStream();
         BufferedReader dis = new BufferedReader(new InputStreamReader(is));
 
-        /*appears to pick up all data, but may miss some if the market speeds up*/
         /*reads values from server feed and places them in a queue*/
-        /*TODO implement asynchronus usage*/
-        for (int i = 0; i < 3;i++) {
+        value = dis.readLine();
+        while (true) {
             value = dis.readLine();
 
-            System.out.println(value);
-            queue.add(value);
+            synchronized (queue) {
+                queue.add(stockBuilder(value));
+            }
         }
-
-        s.close();
-
-        Stock[] stocks = new Stock[2];
-        String[] str;
-        int i = 0;
-        queue.removeFirst();    //skips first line (reference line contains no data)
-        while (queue.size() != 0) {
-            stocks[i] = stockBuilder(queue.removeFirst());
-            i++;
-        }
-        System.out.println(stocks[0].getTime());
+        //TODO find a way to close in the case of shutdown
+        // s.close();
     }
 
-    private static LinkedList<Stock> historicalData(String fileName) throws Exception{
+    //TODO implement threading for historical data to prevent overflow
+    public static void historicalData(String fileName, LinkedList<Stock> queue) throws Exception{
         String str;
-        LinkedList<Stock> queue = new LinkedList<Stock>();
         if ((fileName == null) || (fileName.equals(""))) {
             System.out.println("Error: No file name entered");
         }
@@ -110,14 +104,15 @@ public class DataExtractor {
             BufferedReader in = new BufferedReader(new FileReader(fileName));
             in.readLine();
             while ((str = in.readLine()) != null)  {
-                queue.add(stockBuilder(str));
+                synchronized (queue) {
+                    queue.add(stockBuilder(str));
+                }
             }
             in.close();
         } catch (FileNotFoundException e) {
             System.out.println("Error: Cannot find file: " + fileName);
-            return null;
+            return;
         }
-        return queue;
         //System.out.println(queue.getFirst().getTime());
     }
 
