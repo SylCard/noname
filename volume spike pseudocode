@@ -1,0 +1,52 @@
+/*
+*   time period volumes could be stored in a list with access to head and tail (to add newest and remove oldest)
+*   time period could be two variables, with a set difference between them, both inclreased by the same amount on each time period change
+*
+*   k = however many data points to the left and right of the current alert we want to display to the user on drilldown
+*
+*   n = number of time periods/bars of data being considered when calculating the average
+*   read that low n leads to more irrelevant alerts, but high n leads to alert being shifted to later time (i.e. lag in detection)
+*/
+
+
+VolumeSpike (Trade trade) {
+
+    //if the latest received trade is within the set time period that was being considered
+
+    if (trade.time within current_time_period) {
+        trade.sym.time_period_volume += trade.volume;  //time_period_volume for specific trade_symbol
+
+        //actual Volume Spike test:
+        if ( (no alert for trade.sym in current_time_period) && (trade.sym.time_period_volume - trade.sym.last_vma > limit) ) {
+            flag alert, mark past k sym.vma values as relevant; somehow keep marking k future sym.vma values as relevant;   //for when we would display data all around a spike on drilldown?
+            mark past k sym.time_period_volume values as relevant; somehow mark k future time period volumes as relevant;   //for when we would display data all around a spike on drilldown?
+            mark that alert was raised in current_time_period for trade.sym;  //to avoid spamming client
+        }
+    } else {
+        //the do...while loop will help keep track of periods with no trades. where average volume should decrease
+        //would expect most times will only pass through once
+        do {
+            //time period has been passed for sure if a trade outside the period has been received => calculate VMAs for all symbols
+            for each symbol sym {
+                sym.vma = sum(volumes of n periods before and including current_time_period) / n;
+
+                store sym.vma;                  //stored for next VMA comparisson and for displaying on drilldown (if relevant)
+                store sym.time_period_volume;   //stored for displaying on drilldown
+                discard oldest sym.vma if irrelevant;               //marked relevant on Volume Spike test
+                discard oldest sym.time_period_volume if irrelevant;//idem
+                sym.time_period_volume = 0;         //reset volume counter because changing time period
+            }
+
+            current_time_period++;
+        } while (trade.time not within current_time_period);
+
+        trade.sym.time_period_volume += trade.volume;
+
+        //actual Volume Spike test:
+        if ( (no alert for trade.sym in current_time_period) && (trade.sym.time_period_volume - trade.sym.last_vma > limit) ) {
+            flag alert, mark past k sym.vma values as relevant; somehow keep marking k future sym.vma values as relevant;   //for when we would display data all around a spike on drilldown?
+            mark past k sym.time_period_volume values as relevant; somehow mark k future time period volumes as relevant;   //for when we would display data all around a spike on drilldown?
+            mark that alert was raised in current_time_period for trade.sym;  //to avoid spamming client
+        }
+    }
+}
