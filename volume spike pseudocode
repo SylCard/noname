@@ -43,10 +43,13 @@ VolumeSpike (Trade trade) {
         trade.sym.time_period_volume += trade.volume;
 
         //actual Volume Spike test:
+        
         if ( (no alert for trade.sym in current_time_period) && (trade.sym.time_period_volume - trade.sym.last_vma > limit) ) {
+
             flag alert, mark past k sym.vma values as relevant; somehow keep marking k future sym.vma values as relevant;   //for when we would display data all around a spike on drilldown?
             mark past k sym.time_period_volume values as relevant; somehow mark k future time period volumes as relevant;   //for when we would display data all around a spike on drilldown?
             mark that alert was raised in current_time_period for trade.sym;  //to avoid spamming client
+
         }
     }
 }
