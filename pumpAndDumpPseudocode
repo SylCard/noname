@@ -1,0 +1,25 @@
+
+
+
+
+
+PumpandDump(Stock stock){
+
+    //detecting a dumping state
+
+        when there is a drop in the price of a symbol, in a short amount of time
+
+
+    //if dumping state is detected
+
+        if(dumpingState){
+
+            //check for increase in price just before price drop
+
+
+
+        }
+
+
+
+}
