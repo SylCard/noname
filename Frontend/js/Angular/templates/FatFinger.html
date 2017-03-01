@@ -3,15 +3,15 @@
 
     </div>
     <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
-        <h1>Fat finger Error: {{Symbol}}</h1>
+        <h1>Fat finger Error: {{ info.stock.symbol }}</h1>
         <div style="padding:10px; margin: 5px; border-top:2px solid black;">
             <h2>Transaction</h2>
             <ul>
-                <li>Buyer: {{buyer}}</li>
-                <li>Price: {{price}}</li>
-                <li>Currency: {{currency}}</li>
-                <li>Time: {{time}}</li>
-                <li>Date: {{date}}</li>
+                <li>Buyer: {{ info.stock.buyer }}</li>
+                <li>Price: {{ info.stock.price | currency::2}}</li>
+                <li>Currency: {{ info.stock.currency }}</li>
+                <li>Time: {{ info.stock.time | date:'HH:mm:ss' }}</li>
+                <li>Date: {{ info.stock.date | date: 'MMM d, yyyy' }}</li>
             </ul>
             <div class="buttons">
                 <button type="button" class="btn btn-success btn-lg custom-button">
