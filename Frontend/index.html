@@ -10,7 +10,7 @@
   <!-- Angular -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
   <!-- Socket.io -->
-  <script src="/socket.io/socket.io.js"></script>
+  <!-- <script src="/socket.io/socket.io.js"></script> -->
   <!-- Google fonts -->
   <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
   <!-- Bootstrap -->
@@ -151,6 +151,11 @@
 
 
         </div>
+        <script>
+            var d = new Date(1488402991*1000);
+
+            document.write(d);
+        </script>
       </div>
       <div class="col-sm-2">
 
@@ -166,36 +171,62 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- Chart JS data -->
     <script>
-      var ct = document.getElementById('myChart').getContext('2d');
-      var data1 = [12, 1, 3, 17, 6, 3, 7] ;
+      var ct = document.getElementById('myChart').getContext('2d'); // this will select the html canvas which will display the graph
 
-          var myChart = new Chart(ct, {
-          type: 'line',
-          data: {
-          labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [{
-            label: 'Apple',
-            fill:false,
-            data:data1 ,
-            backgroundColor: "#08469C",
-            borderColor:"#08469C"
+      //  var priceData = {{prices}} ; //this array will hold the y-axis values of average price
 
-        labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-          label: 'Apple',
-          fill: false,
-          data: [12, 19, 3, 17, 6, 3, 7],
-          backgroundColor: "#08469C",
-          borderColor: "#08469C"
+      var data1 = [12, 1, 3, 17, 6, 3, 7] ; // this variable will be replaced by priceData
 
-        }, {
-          label: 'Google',
-          fill: false,
-          data: [2, 29, 5, 5, 2, 3, 10],
-          backgroundColor: "#469c08",
-          borderColor: "#469c08"
-        }]
+      //  var period = {{periodLength}} ; //this will store the length of each period, which is currently hard coded as one minute
+
+
+      var dates = [] ; // this will hold the x-axis values
+
+      dates[0] = new Date(1488408776*1000) ; //{{startTime*1000}} ;  //this will hold the first x-axis value
+
+      for (i = 1; i < 7 ; i++) {
+
+        dates[i] = new Date( dates[i-1].getTime() + (30*1000)) ; // generate all the needed epoch intervals
+
       }
+
+      var times = [];
+
+      //this for loop will convert the epoch times into a HH:MM:SS format
+      for (i = 0; i < 7 ; i++) {
+        //if the alert was less than ten minutes then concantenate a 0
+        if (dates[i].getMinutes() < 10) {
+            times[i] = dates[i].getHours() + ":0" + dates[i].getMinutes() + ":" + dates[i].getSeconds()  ;
+        }
+        else {
+            times[i] = dates[i].getHours() + ":" + dates[i].getMinutes() + ":" + dates[i].getSeconds()  ;
+        }
+
+
+      }
+
+      var PumpAndDumpGraph = new Chart(ct, {
+        type: 'line',
+
+        data: {
+          labels: times,
+                datasets: [{
+                  label: 'Apple',
+                    fill:false,
+                    data: [12, 19, 3, 17, 6, 3, 7],
+                    backgroundColor: "#08469C",
+                    tension:0,
+                    borderColor:"#08469C"
+
+                  }, {
+                    label: 'Google',
+                     fill:false,
+                     data: [2, 29, 5, 5, 2, 3, 10],
+                     backgroundColor: "#469c08",
+                     tension:0,
+                     borderColor:"#469c08"
+                   }]
+                  }
     });
   </script>
 </body>
