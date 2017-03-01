@@ -8,7 +8,7 @@
             <h2>Transaction</h2>
             <ul>
                 <li>Buyer: {{ info.stock.buyer }}</li>
-                <li>Price: {{ info.stock.price | currency }}</li>
+                <li>Price: {{ info.stock.price | currency:{{ info.stock.currency }}:2 }}</li>
                 <li>Currency: {{ info.stock.currency }}</li>
                 <li>Time: {{ info.stock.time | date:'HH:mm:ss' }}</li>
                 <li>Date: {{ info.stock.date | date: 'MMM d, y' }}</li>
