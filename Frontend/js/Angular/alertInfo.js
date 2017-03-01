@@ -4,6 +4,6 @@ app.directive("alertInfo", function() {
         scope: {
             info: '='
         },
-        templateUrl: 'js/templates/{{ info.type }}.html'
+        template: '<div ng-include src="\'js/Angular/templates/\'+info.type+\'.html\'"></div>'
     }
 });
