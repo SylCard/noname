@@ -1,0 +1,26 @@
+
+//this function will act like a validation check almost because a fat finger error should not be included within a symbols moving average because
+//it will probably massively skew the average
+
+fatFinger(Stock stock){
+
+    //check that the transaction is not buying a stupid amount of stock value
+
+    int value = stock.getPrice()*stock.getSize() ;
+
+    constant = 10000 // some large number
+
+		if  ( value >= constant ) {
+
+        			 2//output error
+
+    }
+
+    //check
+
+
+
+
+
+
+}

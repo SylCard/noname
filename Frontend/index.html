@@ -163,16 +163,17 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- Chart JS data -->
     <script>
-      var ctx = document.getElementById('myChart').getContext('2d');
-          var myChart = new Chart(ctx, {
+      var ct = document.getElementById('myChart').getContext('2d');
+      var data1 = [12, 1, 3, 17, 6, 3, 7] ;
+
+          var myChart = new Chart(ct, {
           type: 'line',
           data: {
-
           labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July'],
           datasets: [{
             label: 'Apple',
             fill:false,
-            data: [12, 19, 3, 17, 6, 3, 7],
+            data:data1 ,
             backgroundColor: "#08469C",
             borderColor:"#08469C"
 
