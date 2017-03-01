@@ -1,157 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title> Team Spike </title>
-    <!-- Google fonts --->
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
-    <!-- CSS -->
-    <link href="css/theme.css" rel="stylesheet" />
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title> Team Spike </title>
+  <!-- Angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <!-- Socket.io -->
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <!-- CSS -->
+  <link href="css/theme.css" rel="stylesheet" />
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body id="myPage" ng-app="spikeApp" ng-controller="mainController as c">
-    <!-- navigation bar -->
-    <nav class="navbar navbar-custom">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+</head>
+
+<body id="myPage" ng-app="spikeApp">
+  <!-- navigation bar -->
+  <nav class="navbar navbar-custom">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar icon-bar-custom"></span>
             <span class="icon-bar icon-bar-custom"></span>
             <span class="icon-bar icon-bar-custom"></span>
           </button>
-          <a class="navbar-brand navbar-custom" href="#myPage">Spikes</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-left">
-            <li><a  class="navbar-custom" href="#">Home</a></li>
-            <li><a class="navbar-custom" href="#">History</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a  class="navbar-custom"c href="#">Current Alerts ({{ c.anomalies.length }})</a>
-            </li>
-          </ul>
-        </div>
+        <a class="navbar-brand navbar-custom" href="#myPage">Spikes</a>
       </div>
-    </nav>
-
-    <!-- main page content -->
-    <div class="container" id="main">
-      <div class="row">
-        <div class="col-sm-4">
-
-        </div>
-        <div class="col-sm-4">
-          <h1>Spikes is exploratory data analysis at its finest</h1>
-          <canvas id="myChart" width="400" height="400"></canvas>
-        </div>
-        <div class="col-sm-4">
-
-        </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a class="navbar-custom" href="#">Home</a></li>
+          <li><a class="navbar-custom" href="#">History</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a class="navbar-custom" href="#">Current Alerts ({{ anomalies.length | number }})</a>
+          </li>
+        </ul>
       </div>
-      <div class="row fatfinger">
-        <div class="col-sm-2">
+    </div>
+  </nav>
 
-        </div>
-        <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
-              <h1>Fat finger Error: {{Symbol}}</h1>
-                    <div style="padding:10px; margin: 5px; border-top:2px solid black;">
-                          <h2>Transaction</h2>
-                          <ul>
-                            <li>Buyer: {{buyer}}</li>
-                            <li>Price: {{price}}</li>
-                            <li>Currency: {{currency}}</li>
-                            <li>Time: {{time}}</li>
-                            <li>Date: {{date}}</li>
-                          </ul>
-                          <div class="buttons">
-                          <button type="button" class="btn btn-success btn-lg custom-button" >
+  <!-- main page content -->
+  <div class="container" id="main" ng-controller="mainController">
+    <div class="row">
+      <div class="col-sm-4">
+
+      </div>
+      <div class="col-sm-4">
+        <h1>Spikes is exploratory data analysis at its finest</h1>
+        <canvas id="myChart" width="400" height="400"></canvas>
+      </div>
+      <div class="col-sm-4">
+
+      </div>
+    </div>
+    <div class="row fatfinger">
+      <div class="col-sm-2">
+
+      </div>
+      <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
+        <h1>Fat finger Error: {{Symbol}}</h1>
+        <div style="padding:10px; margin: 5px; border-top:2px solid black;">
+          <h2>Transaction</h2>
+          <ul>
+            <li>Buyer: {{buyer}}</li>
+            <li>Price: {{price}}</li>
+            <li>Currency: {{currency}}</li>
+            <li>Time: {{time}}</li>
+            <li>Date: {{date}}</li>
+          </ul>
+          <div class="buttons">
+            <button type="button" class="btn btn-success btn-lg custom-button">
                           <span class="glyphicon glyphicon-ok"></span>
                           </button>
-                          <button type="button" class="btn btn-danger btn-lg custom-button" >
+            <button type="button" class="btn btn-danger btn-lg custom-button">
                           <span class="glyphicon glyphicon-remove"></span>
                           </button>
-                          </div>
-                    </div>
+          </div>
         </div>
-        <div class="col-sm-2">
-
-        </div>
+      </div>
+      <div class="col-sm-2">
 
       </div>
-      <div class="row pumpdump">
-        <div class="col-sm-2">
 
-        </div>
-        <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
-              <h1>Pump & Dump: {{Symbol}}</h1>
-                  <div style="padding:10px; margin: 5px; border-top:2px solid black;">
-                        <h2>Perpetrator:{{seller}} </h2>
-                        <ul>
-                          <li>Time: {{time}}</li>
-                          <li>Date: {{date}}</li>
-                        </ul>
-                        <button type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down
+    </div>
+    <div class="row pumpdump">
+      <div class="col-sm-2">
+
+      </div>
+      <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
+        <h1>Pump & Dump: {{Symbol}}</h1>
+        <div style="padding:10px; margin: 5px; border-top:2px solid black;">
+          <h2>Perpetrator:{{seller}} </h2>
+          <ul>
+            <li>Time: {{time}}</li>
+            <li>Date: {{date}}</li>
+          </ul>
+          <button type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down
                         </button>
-                        <div class="buttons">
-                        <button type="button" name="true" class="btn btn-success btn-lg custom-button" >
+          <div class="buttons">
+            <button type="button" name="true" class="btn btn-success btn-lg custom-button">
                                 <span class="glyphicon glyphicon-ok"></span>
                         </button>
-                        <button type="button" name="false"class="btn btn-danger btn-lg custom-button">
+            <button type="button" name="false" class="btn btn-danger btn-lg custom-button">
                                 <span class="glyphicon glyphicon-remove"></span>
                         </button>
-                        </div>
-                  </div>
+          </div>
         </div>
-        <div class="col-sm-2">
-
-        </div>
+      </div>
+      <div class="col-sm-2">
 
       </div>
 
-      <div class="row vol-spike">
-        <div class="col-sm-2">
+    </div>
 
-        </div>
-        <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
-              <h1>Volume Spike: {{Symbol}}</h1>
-                    <div style="padding:10px; margin: 5px; border-top:2px solid black;">
-                        <h2>Perpetrator(s):{{seller}} </h2>
-                        <ul>
-                          <li>Time: {{time}}</li>
-                          <li>Date: {{date}}</li>
-                          <li>Sector: {{sector}}</li>
-                          <li>Suspected technique(s): {{techniques}}</li>
-                        </ul>
-                        <button type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down</button>
-                        <div class="buttons">
-                          <button type="button" name="true" class="btn btn-success btn-lg custom-button" >
+    <div class="row vol-spike">
+      <div class="col-sm-2">
+
+      </div>
+      <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
+        <h1>Volume Spike: {{Symbol}}</h1>
+        <div style="padding:10px; margin: 5px; border-top:2px solid black;">
+          <h2>Perpetrator(s):{{seller}} </h2>
+          <ul>
+            <li>Time: {{time}}</li>
+            <li>Date: {{date}}</li>
+            <li>Sector: {{sector}}</li>
+            <li>Suspected technique(s): {{techniques}}</li>
+          </ul>
+          <button type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down</button>
+          <div class="buttons">
+            <button type="button" name="true" class="btn btn-success btn-lg custom-button">
                                   <span class="glyphicon glyphicon-ok"></span>
                          </button>
-                          <button type="button" name="false"class="btn btn-danger btn-lg custom-button">
+            <button type="button" name="false" class="btn btn-danger btn-lg custom-button">
                                   <span class="glyphicon glyphicon-remove"></span>
                           </button>
-                        </div>
+          </div>
 
-
-                   </div>
-        </div>
-        <div class="col-sm-2">
 
         </div>
+      </div>
+      <div class="col-sm-2">
 
       </div>
-
 
     </div>
 
@@ -177,16 +180,24 @@
             backgroundColor: "#08469C",
             borderColor:"#08469C"
 
-          }, {
-            label: 'Google',
-            fill:false,
-            data: [2, 29, 5, 5, 2, 3, 10],
-            backgroundColor: "#469c08",
-            borderColor:"#469c08"
-          }]
-          }
-          });
+        labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+          label: 'Apple',
+          fill: false,
+          data: [12, 19, 3, 17, 6, 3, 7],
+          backgroundColor: "#08469C",
+          borderColor: "#08469C"
 
-    </script>
-  </body>
+        }, {
+          label: 'Google',
+          fill: false,
+          data: [2, 29, 5, 5, 2, 3, 10],
+          backgroundColor: "#469c08",
+          borderColor: "#469c08"
+        }]
+      }
+    });
+  </script>
+</body>
+
 </html>
