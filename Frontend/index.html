@@ -21,13 +21,13 @@
   </head>
   <body id="myPage" ng-app="spikeApp" ng-controller="mainController as c">
     <!-- navigation bar -->
-    <nav class="navbar">
+    <nav class="navbar navbar-custom">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span class="icon-bar icon-bar-custom"></span>
+            <span class="icon-bar icon-bar-custom"></span>
+            <span class="icon-bar icon-bar-custom"></span>
           </button>
           <a class="navbar-brand navbar-custom" href="#myPage">Spikes</a>
         </div>
@@ -59,32 +59,92 @@
 
         </div>
       </div>
-      <div class="row">
+      <div class="row fatfinger">
         <div class="col-sm-2">
 
         </div>
         <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
-            <div class="fatfinger" >
               <h1>Fat finger Error: {{Symbol}}</h1>
-                    <div style="padding:10px; margin: 5px;">
-                        <h2>Transaction</h2>
+                    <div style="padding:10px; margin: 5px; border-top:2px solid black;">
+                          <h2>Transaction</h2>
+                          <ul>
+                            <li>Buyer: {{buyer}}</li>
+                            <li>Price: {{price}}</li>
+                            <li>Currency: {{currency}}</li>
+                            <li>Time: {{time}}</li>
+                            <li>Date: {{date}}</li>
+                          </ul>
+                          <div class="buttons">
+                          <button type="button" class="btn btn-success btn-lg custom-button" >
+                          <span class="glyphicon glyphicon-ok"></span>
+                          </button>
+                          <button type="button" class="btn btn-danger btn-lg custom-button" >
+                          <span class="glyphicon glyphicon-remove"></span>
+                          </button>
+                          </div>
+                    </div>
+        </div>
+        <div class="col-sm-2">
+
+        </div>
+
+      </div>
+      <div class="row pumpdump">
+        <div class="col-sm-2">
+
+        </div>
+        <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
+              <h1>Pump & Dump: {{Symbol}}</h1>
+                  <div style="padding:10px; margin: 5px; border-top:2px solid black;">
+                        <h2>Perpetrator:{{seller}} </h2>
                         <ul>
-                          <li>Buyer:</li>
-                          <li>Price:</li>
-                          <li>Currency:</li>
-                          <li>Time:</li>
-                          <li>Date:</li>
+                          <li>Time: {{time}}</li>
+                          <li>Date: {{date}}</li>
                         </ul>
-                        <button type="button" class="btn btn-danger btn-lg" style="float:right; margin:5px;">
-                                <span class="glyphicon glyphicon-remove"></span>
+                        <button type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down
                         </button>
                         <div class="buttons">
-                          <button type="button" class="btn btn-success btn-lg" style="float:right; margin:5px;">
-                             <span class="glyphicon glyphicon-ok"></span>
+                        <button type="button" name="true" class="btn btn-success btn-lg custom-button" >
+                                <span class="glyphicon glyphicon-ok"></span>
                         </button>
-                     </div>
-              </div>
-            </div>
+                        <button type="button" name="false"class="btn btn-danger btn-lg custom-button">
+                                <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                        </div>
+                  </div>
+        </div>
+        <div class="col-sm-2">
+
+        </div>
+
+      </div>
+
+      <div class="row vol-spike">
+        <div class="col-sm-2">
+
+        </div>
+        <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
+              <h1>Volume Spike: {{Symbol}}</h1>
+                    <div style="padding:10px; margin: 5px; border-top:2px solid black;">
+                        <h2>Perpetrator(s):{{seller}} </h2>
+                        <ul>
+                          <li>Time: {{time}}</li>
+                          <li>Date: {{date}}</li>
+                          <li>Sector: {{sector}}</li>
+                          <li>Suspected technique(s): {{techniques}}</li>
+                        </ul>
+                        <button type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down</button>
+                        <div class="buttons">
+                          <button type="button" name="true" class="btn btn-success btn-lg custom-button" >
+                                  <span class="glyphicon glyphicon-ok"></span>
+                         </button>
+                          <button type="button" name="false"class="btn btn-danger btn-lg custom-button">
+                                  <span class="glyphicon glyphicon-remove"></span>
+                          </button>
+                        </div>
+
+
+                   </div>
         </div>
         <div class="col-sm-2">
 
