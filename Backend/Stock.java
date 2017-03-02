@@ -1,5 +1,5 @@
 public class Stock {
-    private String time;
+    private long time;
     private String buyer;
     private String seller;
     private double price;
@@ -10,7 +10,7 @@ public class Stock {
     private double bid;
     private double ask;
 
-    public Stock(String time, String buyer, String seller, double price, int size, String currency, String symbol, String sector, double bid, double ask) {
+    public Stock(long time, String buyer, String seller, double price, int size, String currency, String symbol, String sector, double bid, double ask) {
         this.time = time;
         this.buyer = buyer;
         this.seller = seller;
@@ -23,7 +23,7 @@ public class Stock {
         this.ask = ask;
     }
 
-    public String getTime() {
+    public long getTime() {
         return time;
     }
 
