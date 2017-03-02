@@ -12,7 +12,7 @@
                 <li>Price: {{ info.stock.price | currency:"":2 }}</li>
                 <li>Currency: {{ info.stock.currency }}</li>
                 <li>Time: {{ info.stock.time | date:'HH:mm:ss' }}</li>
-                <li>Date: {{ info.stock.date | date: 'MMM dd, y' }}</li>
+                <li>Date: {{ info.stock.date | date: 'MMM dd' }}</li>
             </ul>
             <div class="buttons">
                 <button type="button" class="btn btn-success btn-lg custom-button">

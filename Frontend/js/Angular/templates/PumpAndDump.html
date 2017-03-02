@@ -3,12 +3,12 @@
 
     </div>
     <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
-        <h1>Pump & Dump: {{Symbol}}</h1>
+        <h1>Pump & Dump: {{ info.stock.symbol }}</h1>
         <div style="padding:10px; margin: 5px; border-top:2px solid black;">
             <h2>Perpetrator:{{seller}} </h2>
             <ul>
-                <li>Time: {{time}}</li>
-                <li>Date: {{date}}</li>
+                <li>Time: {{ info.stock.time | date:'HH:mm:ss' }}</li>
+                <li>Date: {{ info.stock.date | date:'MM dd'}}</li>
             </ul>
             <button type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down
                         </button>

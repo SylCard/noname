@@ -11,7 +11,8 @@ app.run(function($rootScope) {
                 buyer: 'silver@pumpanddump.me',
                 price: 450,
                 currency: 'GBP',
-                time: 1488404319
+                time: 1488404319,
+                sector: 'Services'
             },
             severity: 50,
             RMA: 1000

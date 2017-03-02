@@ -3,14 +3,14 @@
 
     </div>
     <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
-        <h1>Volume Spike: {{Symbol}}</h1>
+        <h1>Volume Spike: {{ info.stock.symbol }}</h1>
         <div style="padding:10px; margin: 5px; border-top:2px solid black;">
             <h2>Perpetrator(s):{{seller}} </h2>
             <ul>
-                <li>Time: {{time}}</li>
-                <li>Date: {{date}}</li>
-                <li>Sector: {{sector}}</li>
-                <li>Suspected technique(s): {{techniques}}</li>
+                <li>Time: {{ info.stock.time | date:'HH:mm:ss' }}</li>
+                <li>Date: {{ info.stock.time | date:'MMM dd' }}</li>
+                <li>Sector: {{ info.stock.sector }}</li>
+                <li>Suspected technique(s): {{ info.stock.techniques }}</li>
             </ul>
             <button type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down</button>
             <div class="buttons">
