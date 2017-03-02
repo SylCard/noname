@@ -55,14 +55,14 @@
   <!-- main page content -->
   <div class="container" id="main" ng-controller="mainController">
     <div class="row">
-      <div class="col-sm-4">
+      <div class="col-sm-2">
 
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-8">
         <h1>Spikes is exploratory data analysis at its finest</h1>
-        <canvas id="myChart" width="400" height="400"></canvas>
+        <canvas id="myChart" width="300" height="200"></canvas>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-2">
 
       </div>
     </div>
@@ -222,11 +222,10 @@
 
       var PumpAndDumpGraph = new Chart(ct, {
         type: 'line',
-
         data: {
           labels: times,
                 datasets: [{
-                  label: 'Apple',
+                  label: 'Actual Price',
                     fill:false,
                     data: [12, 19, 3, 17, 6, 3, 7],
                     backgroundColor: "#08469C",
@@ -234,7 +233,7 @@
                     borderColor:"#08469C"
 
                   }, {
-                    label: 'Google',
+                    label: 'Average',
                      fill:false,
                      data: [2, 29, 5, 5, 2, 3, 10],
                      backgroundColor: "#469c08",
