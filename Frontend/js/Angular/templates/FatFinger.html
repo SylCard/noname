@@ -1,4 +1,5 @@
 <div class="row fatfinger">
+    <!-- still need to add the remaining relevant data -->
     <div class="col-sm-2">
 
     </div>
@@ -11,7 +12,7 @@
                 <li>Price: {{ info.stock.price | currency:"":2 }}</li>
                 <li>Currency: {{ info.stock.currency }}</li>
                 <li>Time: {{ info.stock.time | date:'HH:mm:ss' }}</li>
-                <li>Date: {{ info.stock.date | date: 'MMM d' }}</li>
+                <li>Date: {{ info.stock.date | date: 'MMM dd, y' }}</li>
             </ul>
             <div class="buttons">
                 <button type="button" class="btn btn-success btn-lg custom-button">
