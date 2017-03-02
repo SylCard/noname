@@ -17,4 +17,12 @@ app.run(function($rootScope) {
             RMA: 1000
         }
     ];
+
+    //possible functions to call when alerts come in/need to be deleted aafter sending response
+    $rootScope.addAnomaly = function(data) {
+        $rootScope.anomalies.push(data);
+    };
+    $rootScope.removeAnomaly = function(index) {
+        $rootScope.anomalies.splice(index, 1);
+    };
 });
