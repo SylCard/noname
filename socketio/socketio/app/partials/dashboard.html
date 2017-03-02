@@ -1,0 +1,10 @@
+<a ng-href="#/new">New Anomaly</a>
+<div class="list-group">
+    <div class="list-group-item" ng-repeat="anomaly in anomalies | reverse">
+        <p class="list-group-item-text">{{anomaly.anomalyID}}</p>
+        <p class="list-group-item-text">{{anomaly.type}}</p>
+        <p class="list-group-item-text">{{anomaly.yaxis}}</p>
+        <p class="list-group-item-text">{{anomaly.xaxis}}</p>
+        <p class="list-group-item-text">{{anomaly.stock}}</p>
+    </div>
+</div>
