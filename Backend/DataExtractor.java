@@ -6,6 +6,12 @@ import java.net.Socket;
 import java.util.LinkedList;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
+import java.text.DateFormat;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+import java.text.ParseException;
 
 /*TODO add data checks to flag corrupted stock values*/
 
@@ -16,22 +22,21 @@ public class DataExtractor {
     public static void main(String args[]) throws Exception {
 
         /*uses args[0] to determine type of program usage*/
-        /*TODO alow live and historical data to be controled via inline options*/
         //
-        if (args.length == 0) {
+        if (args.length == 0) {                 //if no arguments are passed print the results and exit
             instructions();
             return;
-        } else if (args[0].equals("-h") && (args.length == 2)) {
+        } else if (args[0].equals("-h") && (args.length >= 2)) {        //if historical is chosen and given a filename start extraction on historical data
             System.out.println("This is the historical data option.");
             LinkedList<Stock> queue = new LinkedList<Stock>();
             historicalData(args[1], queue);
             return;
-        } else if (args[0].equals("-l")) {
+        } else if (args[0].equals("-l") && (args.length >= 2)) {                              //if live is chosen start extraction on live data TODO allow optional stream address specification
             System.out.println("This is the live data option.");
             LinkedList<Stock> queue = new LinkedList<Stock>();
-            liveData(queue);
+            liveData(queue, args[1]);
             return;
-        } else {
+        } else {                                                        //if none of the above occur inform user that the arguments were invalid
             System.out.println("Invalid options. Give no arguments to see useage instructions.");
             return;
         }
@@ -39,21 +44,21 @@ public class DataExtractor {
     }
 
     public static LinkedList<Stock> extract(String args[]) throws Exception {
-        if (args.length == 0) {
+        if (args.length == 0) {                 //if no arguments are passed print the results and exit
             instructions();
             return null;
-        } else if (args[0].equals("-h") && (args.length == 2)) {
+        } else if (args[0].equals("-h") && (args.length >= 2)) {        //if historical is chosen and given a filename start extraction on historical data
             LinkedList<Stock> queue = new LinkedList<Stock>();
             System.out.println("This is the historical data option.");
-            StockBuilderThread historical = new StockBuilderThread("h", queue, args[1]);
+            StockBuilderThread historical = new StockBuilderThread("h", queue, args[1]);    //start extraction thread
             // return historicalData(args[1]);
             return queue;
-        } else if (args[0].equals("-l")) {
+        } else if (args[0].equals("-l") && (args.length >= 2)) {                              //if live is chosen start extraction on live data TODO allow optional stream address specification
             LinkedList<Stock> queue = new LinkedList<Stock>();
             System.out.println("This is the live data option.");
-            StockBuilderThread live = new StockBuilderThread("l", queue);
+            StockBuilderThread live = new StockBuilderThread("l", queue, args[1]);                   //start extraction thread
             return queue;
-        } else {
+        } else {                                                        //if none of the above occur inform user that the arguments were invalid
             System.out.println("Invalid options. Give no arguments to see useage instructions.");
             return null;
         }
@@ -68,25 +73,25 @@ public class DataExtractor {
         System.out.println("-h      Takes a single argument, [FileName]");
         System.out.println("        Processes stock data from file(assumes first line is context line, does not process first line)");
         System.out.println("-l      Currently takes no arguments.");
-        System.out.println("        Connects to the FTSE100 stream at \"cs261.dcs.warwick.ac.uk\" on port 80 and processes the first 2 values");    //TODO later change this to all values to message queue once asynchronus finished
+        System.out.println("        Connects to the FTSE100 stream at \"cs261.dcs.warwick.ac.uk\" on port 80 and processes the live data stream");
         System.out.println("\nExample usage:");
         System.out.println("DataExtractor -h file       Will process the stock data in file.");
     }
 
-    public static void liveData(LinkedList<Stock> queue) throws Exception{
+    public static void liveData(LinkedList<Stock> queue, String server) throws Exception{
         String value;
 
-        Socket s = new Socket("cs261.dcs.warwick.ac.uk", 80);   //establishes a server socket
+        Socket s = new Socket(server, 80);   //establishes a server socket
 
         InputStream is = s.getInputStream();
-        BufferedReader dis = new BufferedReader(new InputStreamReader(is));
+        BufferedReader dis = new BufferedReader(new InputStreamReader(is));         //connects to stream
 
         /*reads values from server feed and places them in a queue*/
         value = dis.readLine();
         while (true) {
             value = dis.readLine();
 
-            synchronized (queue) {
+            synchronized (queue) {          //synchronised ensures thread saftey
                 queue.add(stockBuilder(value));
             }
         }
@@ -97,14 +102,14 @@ public class DataExtractor {
     //TODO implement threading for historical data to prevent overflow
     public static void historicalData(String fileName, LinkedList<Stock> queue) throws Exception{
         String str;
-        if ((fileName == null) || (fileName.equals(""))) {
+        if ((fileName == null) || (fileName.equals(""))) {              //checks for possible empty name insertion
             System.out.println("Error: No file name entered");
         }
         try {
-            BufferedReader in = new BufferedReader(new FileReader(fileName));
+            BufferedReader in = new BufferedReader(new FileReader(fileName));       //reads lines and adds them to the queue
             in.readLine();
             while ((str = in.readLine()) != null)  {
-                synchronized (queue) {
+                synchronized (queue) {      //synchronised ensures thread saftey
                     queue.add(stockBuilder(str));
                 }
             }
@@ -117,9 +122,14 @@ public class DataExtractor {
     }
 
     /*splits the string by commas, then builds and returns a Stock object using the stock values*/
-    private static Stock stockBuilder(String stock){
+    private static Stock stockBuilder(String stock) throws ParseException{
         String[] str = stock.split(",");
-        return new Stock(str[0], str[1], str[2], Double.parseDouble(str[3]), Integer.parseInt(str[4]), str[5], str[6], str[7], Double.parseDouble(str[8]), Double.parseDouble(str[9]));
+        return new Stock(parseDate(str[0]), str[1], str[2], Double.parseDouble(str[3]), Integer.parseInt(str[4]), str[5], str[6], str[7], Double.parseDouble(str[8]), Double.parseDouble(str[9]));
+    }
+
+    private static long parseDate(String date) throws ParseException{             //TODO move initialisation outside of method
+        DateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss.SSSSSS", Locale.ENGLISH);
+        return format.parse(date).getTime();
     }
 
 }

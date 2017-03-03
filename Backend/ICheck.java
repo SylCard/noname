@@ -6,6 +6,6 @@ interface ICheck{
 
 	/*this method performs the actual check passing an Anomaly object back if
 	an anomaly has occured, and null if not*/
-	public Anomaly check(Stock stock);
+	public Anomaly check(Stock stock, Client client);
 
 }

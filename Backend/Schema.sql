@@ -1,7 +1,7 @@
 DROP TABLE stocks;
 
 CREATE TABLE stocks (
-	Time		varchar(26)		NOT NULL,
+	Time		bigint			NOT NULL,
 	Buyer		varchar(50)		NOT NULL,
 	Seller		varchar(50)		NOT NULL,
 	Price		float(10, 2)	NOT NULL,

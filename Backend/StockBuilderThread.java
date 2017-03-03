@@ -35,10 +35,10 @@ class StockBuilderThread implements Runnable {
 	}
 
 	public void run() {
-		//Display info about this particular thread
+		//starts one of the extraction threads, pushing data onto queues
 		try {
 			if (type.equals("l")) {
-				DataExtractor.liveData(queue);
+				DataExtractor.liveData(queue, file);
 			} else if (type.equals("h")) {
 				DataExtractor.historicalData(file, queue);
 			}

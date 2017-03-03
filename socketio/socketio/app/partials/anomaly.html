@@ -1,0 +1,51 @@
+<div>
+    <form class="form-horizontal" role="form" ng-submit="save()">
+
+        <div class="form-group">
+            <label for="inputAnomalyID" class="col-sm-2 control-label">AnomalyID</label>
+
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputID" placeholder="ID"  ng-model="newAnomaly.anomalyID"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputType" class="col-sm-2 control-label">type</label>
+
+            <div class="col-sm-10">
+                <textarea type="text" class="form-control" id="inputType" placeholder="Type" ng-model="newAnomaly.type"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputY-Axis" class="col-sm-2 control-label">Y-Axis</label>
+
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputY-Axis" placeholder="y-axis"  ng-model="newAnomaly.yaxis"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputX-Axis" class="col-sm-2 control-label">X-Axis</label>
+
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputX-Axis" placeholder="x-axis"  ng-model="newAnomaly.xaxis"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputStock" class="col-sm-2 control-label">Stock</label>
+
+            <div class="col-sm-10">
+                <textarea type="text" class="form-control" id="inputStock" placeholder="Stock" ng-model="newAnomaly.stock"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" ng-click="save(newAnomaly)" class="btn btn-default btn-primary">Submit</button>
+                <button type="button" ng-click="cancel()" class="btn btn-default">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
