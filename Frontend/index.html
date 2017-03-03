@@ -60,7 +60,7 @@
       </div>
       <div class="col-sm-8">
         <h1>Spikes is exploratory data analysis at its finest</h1>
-        <canvas id="myChart" width="300" height="200"></canvas>
+        <div id="test" style="height:400px; margin:auto;"></div>
       </div>
       <div class="col-sm-2">
 
@@ -87,7 +87,7 @@
             <li>Time: {{time}}</li>
             <li>Date: {{date}}</li>
           </ul>
-          <div class="buttons">
+          <div class="buttons" style="margin-bottom:20px;">
             <button type="button" class="btn btn-success btn-lg custom-button">
                           <span class="glyphicon glyphicon-ok"></span>
                           </button>
@@ -137,12 +137,11 @@
 
       </div>
       <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
-        <h1>Volume Spike: {{Symbol}}</h1>
-        <div style="padding:10px; margin: 5px; border-top:2px solid black;">
+        <h1>Volume Spike: {{Symbol}}           , Date:{{date}}  <a id="dropdown" href="#"><span class="glyphicon glyphicon-menu-down"></span></a></h1>
+        <div class="dropdownwrap" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
           <h2>Perpetrator(s):{{seller}} </h2>
           <ul>
             <li>Time: {{time}}</li>
-            <li>Date: {{date}}</li>
             <li>Sector: {{sector}}</li>
             <li>Suspected technique(s): {{techniques}}</li>
           </ul>
@@ -155,14 +154,7 @@
                                   <span class="glyphicon glyphicon-remove"></span>
                           </button>
           </div>
-
-
         </div>
-        <script>
-            var d = new Date(1488402991*1000);
-
-            document.write(d);
-        </script>
       </div>
       <div class="col-sm-2">
 
@@ -176,8 +168,8 @@
     <script src="js/Angular/alertInfo.js"></script>
     <!-- Controllers -->
     <script src="js/Angular/mainController.js"></script>
-
-
+    <!-- Plotly JS Library -->
+    <script src="js/plotly-latest.min.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Chart JS Library -->
@@ -186,12 +178,22 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- Chart JS data -->
     <script>
-      var ct = document.getElementById('myChart').getContext('2d'); // this will select the html canvas which will display the graph
+          $(document).ready(function(e){
+
+               $('#dropdown').on('click',function(){
+
+                  $('.dropdownwrap').slideToggle();
+
+               });
+
+          })
+      //----- graph data
 
       //  var priceData = {{prices}} ; //this array will hold the y-axis values of average price
+      //  var ActualpriceData = {{Actualprices}} ; //this array will hold the y-axis values of average price
 
       var data1 = [12, 1, 3, 17, 6, 3, 7] ; // this variable will be replaced by priceData
-
+      var data2 = [13, 3, 5, 19, 4, 2, 9] ; // this variable will be replaced by priceData
       //  var period = {{periodLength}} ; //this will store the length of each period, which is currently hard coded as one minute
 
 
@@ -219,29 +221,56 @@
 
 
       }
+      var Average = {
+          x: times,
+          y: data1,
+          type: 'scatter',
+          name: 'Average Price',
+          line: {
+             dash: 'dot',
+             width: 4
+           }
+        };
 
-      var PumpAndDumpGraph = new Chart(ct, {
-        type: 'line',
-        data: {
-          labels: times,
-                datasets: [{
-                  label: 'Actual Price',
-                    fill:false,
-                    data: [12, 19, 3, 17, 6, 3, 7],
-                    backgroundColor: "#08469C",
-                    tension:0,
-                    borderColor:"#08469C"
+      var Actual = {
+          x: times,
+          y: data2,
+          type: 'line',
+          name: 'Actual Price'
+        };
 
-                  }, {
-                    label: 'Average',
-                     fill:false,
-                     data: [2, 29, 5, 5, 2, 3, 10],
-                     backgroundColor: "#469c08",
-                     tension:0,
-                     borderColor:"#469c08"
-                   }]
-                  }
-    });
+        var layout = {
+            title: 'Pump and Dump',
+            xaxis: {
+              title: 'Time',
+              titlefont: {
+                family: 'Courier New, monospace',
+                size: 18,
+                color: '#7f7f7f'
+              }
+            },
+            yaxis: {
+              title: 'Price',
+              titlefont: {
+                family: 'Courier New, monospace',
+                size: 18,
+                color: '#7f7f7f'
+              }
+            },
+            margin: {
+              l: 40,
+              r: 40,
+              b: 40,
+              t: 40
+            }
+        };
+      var data = [Average,Actual] ;
+
+
+      Plotly.newPlot('test',data,layout) ;
+
+
+
   </script>
 </body>
 
