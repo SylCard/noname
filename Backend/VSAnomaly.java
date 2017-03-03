@@ -18,6 +18,6 @@ class VSAnomaly extends Anomaly {
 		this.tStart = tStart;
 		this.periodLength = periodLength;
 		this.severity = severity;
-		this.type = "Volume Spike";
+		this.type = "VolumeSpike";
 	}
 }
