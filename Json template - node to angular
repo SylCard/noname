@@ -1,14 +1,42 @@
-anomaly = {
-              "anomalyID" : "some unique generated value in the backend database" ,
-              "type" : "fat finger | Pump and Dump | VolumeSpike" ,
+{
+	'anomalyID':	000001,
+	'mode':			0,
+	'type':			'FatFinger',
+	'stock':		[
+						'2017-02-27 20:54:29.933994',
+						'locke@rochdaleassets.com',
+						'n.ainsworth@vinvest.com',
+						'6582.38',
+						'25716',
+						'GBX',
+						'RB.L',
+						'Consumer Goods',
+						'6582.38',
+						'6582.38'
+					],
+	'severity':		80,
+	'RMA':			500
+    'error':        0
+}
 
-              // for drill down data e.g.
+{
+	'anomalyID':	000001,
+	'mode':			0,
+	'type':			'VolumeSpike',
+	'symbol':		'XXX.X',
+	'yaxis1':		[0,0,0,0,0],
+	'yaxis2':		[0,0,0,0,0],
+	'time_begin':	10.20,
+	'period_len':	50.
+	'severity':		60
+}
 
-              "y-axis" : [array of values corresponding to the y-axis e.g price of stocks] ,
-              "x-axis" : [array of timestamps corresponding to when the anomaly occur, should automatically scale],
-
-              // for the alert
-
-              "stock" : [{time},{buyer},{seller},{price},{size},{currency},{symbol},{sector},{bid},{ask}]
-
+{
+	'anomalyID':		000001,
+	'mode':				0,
+	'type':				'PumpAndDump',
+	'symbol':			'XXX.X',
+	'yaxis_price':		[0,0,0,0,0],
+	'time_begin':		10.20,
+	'period_len':		50
 }
