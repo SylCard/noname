@@ -8,7 +8,7 @@ class ExtractionTester {
 
 	public static void main(String[] args) throws Exception {
 		LinkedList<Stock> queue;
-		Hashtable<String,ICheck> table = new Hashtable<String,ICheck>();			//TODO in future change ICheck to either LinkedList<ICheck> or ICheck[]
+		Hashtable<String,ICheck[]> table = new Hashtable<String,ICheck[]>();			//TODO in future change ICheck to either LinkedList<ICheck> or ICheck[]
 		String symbol;
 
 		Connection conn = establishDatabase();		//get database connection
@@ -36,10 +36,15 @@ class ExtractionTester {
 					insertStock(stock, conn);						//inserts the stock into the sql table
 					symbol = stock.getSymbol();
 					if (table.containsKey(symbol)) {				//if symbol already has check object use it
-						table.get(symbol).update(stock);			//TODO fetch object so this is only called once
-						objectParser(table.get(symbol).check(stock, sender), sender);
+						Array(table.get(symbol), 0).update(stock);			//TODO fetch object so this is only called once
+						Array(table.get(symbol), 1).update(stock);
+						Array(table.get(symbol), 2).update(stock);
+
+						objectParser(Array.get(table.get(symbol), 0).check(stock, sender), sender);
+						objectParser(Array.get(table.get(symbol), 1).check(stock, sender), sender);
+						objectParser(Array.get(table.get(symbol), 2).check(stock, sender), sender);						
 					} else {										//if symbol has no check object create one
-						table.put(symbol, new VolumeSpike(stock, channel));								
+						table.put(symbol, { new VolumeSpike(stock, channel), new VFatFinger(channel), new PFatFinger(channel)) });								
 					}
 					//TODO make system work for sectors as well as symbols
 

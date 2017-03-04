@@ -1,0 +1,26 @@
+//update AFTER chack
+update(Stock stock) {
+    pma = ( a*stock.getPrice() ) + ( (1-a)*pma );
+    vma = ( b*stock.getSize() ) + ( (1-b)*vma );
+}
+
+fatFingerVolume(Stock stock) {
+    float n = 2;    //sensitivity of check
+    if( (stock.getSize() > vma*(10^n)) || ( (stock.getSize() < vma+(10^-n)) ) ) {
+        //then there has been a volume ff error
+        //calculate severity
+        severity = (stock.getSize() * 100) / vma;
+        //send anomaly
+        FFAnomaly anomaly = new FFAnomaly(client.getCounter(), channel, stock, severity, vma, 0);
+    }
+}
+fatFingerPrice(Stock stock) {
+    float n = 2;    //sensitivity of check
+    if( (stock.getPrice() > pma*(10^n)) ) {
+        //there has been a price ff error
+        //calculate severity
+        severity = (stockPrice() * 100) / pma;
+        //send anomaly
+        FFAnomaly anomaly = new FFAnomaly(client.getCounter(), channel, stock, severity, pma, 1);
+    }
+}

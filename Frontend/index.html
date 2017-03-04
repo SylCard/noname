@@ -30,54 +30,54 @@
 </head>
 
 <body id="myPage" ng-app="spikeApp">
-  <!-- navigation bar -->
-  <nav class="navbar navbar-custom">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+    <!-- navigation bar -->
+    <nav class="navbar navbar-custom">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar icon-bar-custom"></span>
             <span class="icon-bar icon-bar-custom"></span>
             <span class="icon-bar icon-bar-custom"></span>
           </button>
-        <a class="navbar-brand navbar-custom" href="#myPage">Spikes</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-left">
-          <li><a class="navbar-custom" href="#">Home</a></li>
-          <li><a class="navbar-custom" href="#">History</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <!-- anomalies array in root (spikeApp.js) -->
-            <a class="navbar-custom" href="#">Current Alerts ({{ anomalies.length | number }})</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+                <a class="navbar-brand navbar-custom" href="#myPage">Spikes</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a class="navbar-custom" href="#">Home</a></li>
+                    <li><a class="navbar-custom" href="#">History</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <!-- anomalies array in root (spikeApp.js) -->
+                        <a class="navbar-custom" href="#">Current Alerts ({{ anomalies.length | number }})</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <!-- main page content -->
-  <div class="container" id="main" ng-controller="mainController">
-    <div class="row">
-      <div class="col-sm-2">
+    <!-- main page content -->
+    <div class="container" id="main" ng-controller="mainController">
+        <div class="row">
+            <div class="col-sm-2">
 
-      </div>
-      <div class="col-sm-8">
-        <h1>Spikes is exploratory data analysis at its finest</h1>
-        <div id="test" style="height:400px; margin:auto;"></div>
-      </div>
-      <div class="col-sm-2">
+            </div>
+            <div class="col-sm-8">
+                <h1>Spikes is exploratory data analysis at its finest</h1>
+                <div id="test" style="height:400px; margin:auto;"></div>
+            </div>
+            <div class="col-sm-2">
 
-      </div>
-    </div>
-    <!-- Generated alerts: -->
-    <div ng-repeat="anomaly in anomalies">
-      <alert-info info="anomaly"></alert-info>
-    </div>
+            </div>
+        </div>
+        <!-- Generated alerts: -->
+        <div ng-repeat="anomaly in anomalies">
+            <alert-info info="anomaly"></alert-info>
+        </div>
 
-    <!-- Hard coded alerts: -->
-    <div class="row fatfinger">
-      <div class="col-sm-2">
+        <!-- Hard coded alerts: -->
+        <div class="row fatfinger">
+            <div class="col-sm-2">
 
       </div>
       <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
@@ -115,11 +115,11 @@
       </div>
       <div class="col-sm-2">
 
-      </div>
+            </div>
 
-    </div>
-    <div class="row pumpdump">
-      <div class="col-sm-2">
+        </div>
+        <div class="row pumpdump">
+            <div class="col-sm-2">
 
       </div>
       <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
@@ -233,20 +233,20 @@
             <button type="button" name="true" class="btn btn-success btn-lg custom-button">
                                 <span class="glyphicon glyphicon-ok"></span>
                         </button>
-            <button type="button" name="false" class="btn btn-danger btn-lg custom-button">
+                        <button type="button" name="false" class="btn btn-danger btn-lg custom-button">
                                 <span class="glyphicon glyphicon-remove"></span>
                         </button>
-          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+
         </div>
-      </div>
-      <div class="col-sm-2">
 
-      </div>
-
-    </div>
-
-    <div class="row vol-spike">
-      <div class="col-sm-2">
+        <div class="row vol-spike">
+            <div class="col-sm-2">
 
       </div>
       <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
@@ -373,17 +373,17 @@
             <button type="button" name="true" class="btn btn-success btn-lg custom-button">
                                   <span class="glyphicon glyphicon-ok"></span>
                          </button>
-            <button type="button" name="false" class="btn btn-danger btn-lg custom-button">
+                        <button type="button" name="false" class="btn btn-danger btn-lg custom-button">
                                   <span class="glyphicon glyphicon-remove"></span>
                           </button>
-          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+
         </div>
-      </div>
-      <div class="col-sm-2">
-
-      </div>
-
-    </div>
 
     <!-- Modules -->
     <script src="js/Angular/spikeApp.js"></script>

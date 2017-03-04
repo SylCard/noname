@@ -1,10 +1,9 @@
-<div class="row fatfinger">
-    <!-- still need to add the remaining relevant data -->
+<div class="row fatfinger" id="{{ info.AnomalyID }}">
     <div class="col-sm-2">
 
     </div>
     <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
-        <h1>Fat finger Error: {{ info.stock.symbol }}</h1>
+        <h1>Fat finger Error: {{ info.stock.symbol }} Date: {{ info.stock.date | date: 'MMM/dd' }}</h1>
         <div style="padding:10px; margin: 5px; border-top:2px solid black;">
             <h2>Transaction</h2>
             <ul>
@@ -12,9 +11,10 @@
                 <li>Price: {{ info.stock.price | currency:"":2 }}</li>
                 <li>Currency: {{ info.stock.currency }}</li>
                 <li>Time: {{ info.stock.time | date:'HH:mm:ss' }}</li>
-                <li>Date: {{ info.stock.date | date: 'MMM dd' }}</li>
+                <li>Date: {{ info.stock.date | date: 'MMM/dd' }}</li>
+                <li>
             </ul>
-            <div class="buttons">
+            <div class="buttons" style="margin-bottom:20px;">
                 <button type="button" class="btn btn-success btn-lg custom-button">
                           <span class="glyphicon glyphicon-ok"></span>
                           </button>
