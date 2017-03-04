@@ -1,3 +1,6 @@
+//need actual date/time of the VOlumeSpike or PumpAndDump if we want to display this data
+//also would be way easier to create the arrays for X-axis in backend instead of generating them in js in each template
+
 {
 	'anomalyID':	000001,
 	'mode':			0,

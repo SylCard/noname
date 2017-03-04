@@ -1,15 +1,15 @@
-<div class="row vol-spike">
+<div class="row vol-spike" id="{{ info.AnomalyID }}">
     <div class="col-sm-2">
 
     </div>
     <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
-        <h1>Volume Spike: {{Symbol}} , Date:{{date}} <a id="dropdown" href="#"><span class="glyphicon glyphicon-menu-down"></span></a></h1>
-        <div class="dropdownwrap" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
+        <h1>Volume Spike: {{ info.symbol }} , Date:{{ info.time_begin | dat:'MMM/dd' }} <a id="dropdown{{ info.AnomalyID }}" href="#"><span class="glyphicon glyphicon-menu-down"></span></a></h1>
+        <div class="dropdownwrap{{ info.AnomalyID }}" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
             <h2>Perpetrator(s):{{seller}} </h2>
             <ul>
-                <li>Time: {{time}}</li>
-                <li>Sector: {{sector}}</li>
-                <li>Suspected technique(s): {{techniques}}</li>
+                <li>Time: {{ info.time_begin | date:'HH:MM:ss' }}</li>
+                <li>Sector: {{ sector }}</li>
+                <li>Suspected technique(s): {{ techniques }}</li>
             </ul>
             <button type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down</button>
             <div class="buttons">
