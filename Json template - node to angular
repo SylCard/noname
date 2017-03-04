@@ -29,8 +29,8 @@
 	'symbol':		'XXX.X',
 	'yaxis1':		[0,0,0,0,0],
 	'yaxis2':		[0,0,0,0,0],
-	'time_begin':	10.20,
-	'period_len':	50.
+	'timeBegin':	10.20,
+	'periodLen':	50.
 	'severity':		60
 }
 
@@ -39,7 +39,7 @@
 	'mode':				0,
 	'type':				'PumpAndDump',
 	'symbol':			'XXX.X',
-	'yaxis_price':		[0,0,0,0,0],
-	'time_begin':		10.20,
-	'period_len':		50
+	'yaxisPrice':		[0,0,0,0,0],
+	'timeBegin':		10.20,
+	'periodLen':		50
 }

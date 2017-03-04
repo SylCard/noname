@@ -8,8 +8,8 @@ app.run(function($rootScope) {
             symbol: 'SYM',
             yaxis1: [0, 0, 0, 0],
             yaxis2: [0, 0, 0, 0],
-            time_begin: 1488593766466,
-            period_len: 30000
+            timeBegin: 1488593766466,
+            periodLen: 30000
         },
         {
             AnomalyID: 1,
