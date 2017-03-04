@@ -1,6 +1,7 @@
-import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
+//class to test stocks for Volume related Fat Finger errors
+import java.lang.Math;
 
-public class FatFinger implements ICheck {
+public class VFatFinger implements ICheck {
     int vma;
     int lastVma;
     int a = 0.18;   //effect of past average on vma
@@ -14,16 +15,24 @@ public class FatFinger implements ICheck {
     }
 
     public void update(Stock stock) {
-        vma = ( b*stock.getSize() ) + ( (1-b)*vma );
+        try {
+            lastVma = vma;  //save for check on data before this trade was considered
+            vma = ( a*stock.getSize() ) + ( (1-a)*vma );    //calculate new average
+        } catch( Exception e) {
+            return;
+        }
     }
 
-    public void check(Stock stock) {
-        if( (stock.getSize() > vma*(10^n)) || ( (stock.getSize() < vma+(10^-n)) ) ) {
+    public Anomaly check(Stock stock, Client client) {
+        if( (stock.getSize() > lastVma*(pow(10, n))) || ( (stock.getSize() < lastVma+(pow(10, 0-n))) ) ) {
             //then there has been a price ff error
             //calculate severity
-            severity = (stock.getSize() * 100) / vma;
+            severity = (stock.getSize() * 100) / lastVma;
             //send anomaly
-            FFAnomaly anomaly = new FFAnomaly(client.getCounter(), channel, stock, severity, 0);
+            FFAnomaly anomaly = new FFAnomaly(client.getCounter(), channel, stock, severity, lastVma, 0);
+            return anomaly;
+        } else {
+            return null;
         }
     }
 }

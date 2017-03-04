@@ -2,6 +2,5 @@
 abstract public class Anomaly {
 	int anomalyID;
 	int channel;
-	String symbol;
 	String type;
 }

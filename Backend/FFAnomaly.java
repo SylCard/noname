@@ -1,4 +1,3 @@
-import java.nio.channels.InterruptedByTimeoutException;
 
 class FFAnomaly extends Anomaly {
     int anomalyID;
