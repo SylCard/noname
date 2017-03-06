@@ -6,17 +6,9 @@
         <script>
             $(document).ready(function(e) {
 
-                $('#dropdown' + {
-                    {
-                        info.AnomalyID
-                    }
-                }).on('click', function() { // !!! replace number with {{alertId}} etc.
+                $('#dropdown' + $(this).parent().parent().attr('id')).on('click', function() { // !!! replace number with {{alertId}} etc.
 
-                    $('.dropdownwrap' + {
-                        {
-                            info.AnomalyID
-                        }
-                    }).slideToggle();
+                    $('.dropdownwrap' + $(this).parent().parent().attr('id')).slideToggle();
 
                 });
 
