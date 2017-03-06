@@ -4,7 +4,7 @@
     </div>
     <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
         <h1>Fat finger Error: {{ info.stock.symbol }} Date: {{ info.stock.date | date: 'MMM/dd' }}
-            <a id="dropdown{{ info.AnomalyID }}" href="#" ng-click="c.drop({{info.AnomalyID}})"><span class="glyphicon glyphicon-menu-down"></span></a> </h1>
+            <a id="dropdown{{ info.AnomalyID }}" href="#" ng-click="drop(info.AnomalyID)"><span class="glyphicon glyphicon-menu-down"></span></a> </h1>
         <div class="dropdownwrap{{ info.AnomalyID }}" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
             <h2>Transaction</h2>
             <ul>
