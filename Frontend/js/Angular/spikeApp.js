@@ -35,8 +35,9 @@ app.run(function($rootScope) {
         $rootScope.anomalies.splice(index, 1);
     };
 
+    /*
     $rootScope.drop = function(id) {
         alert(id);
         $('.dropdownwrap' + id).slideToggle();
-    };
+    };*/
 });
