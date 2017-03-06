@@ -2,28 +2,28 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title> Team Spike </title>
-  <!-- Angular -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-  <!-- Socket.io -->
-  <!-- <script src="/socket.io/socket.io.js"></script> -->
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <!-- Google fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
-  <!-- Bootstrap -->
-  <link href="css/bootstrap.min.css" rel="stylesheet" />
-  <!-- CSS -->
-  <link href="css/theme.css" rel="stylesheet" />
-  <!-- Plotly JS Library -->
-  <script src="js/plotly-latest.min.js"></script>
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title> Team Spike </title>
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <!-- Socket.io -->
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <!-- CSS -->
+    <link href="css/theme.css" rel="stylesheet" />
+    <!-- Plotly JS Library -->
+    <script src="js/plotly-latest.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -79,41 +79,41 @@
         <div class="row fatfinger">
             <div class="col-sm-2">
 
-      </div>
-      <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
-        <script>
-            $(document).ready(function(e){
+            </div>
+            <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
+                <script>
+                    $(document).ready(function(e) {
 
-                 $('#dropdown3').on('click',function(){  // !!! replace number with {{alertId}} etc.
+                        $('#dropdown3').on('click', function() { // !!! replace number with {{alertId}} etc.
 
-                    $('.dropdownwrap3').slideToggle();
+                            $('.dropdownwrap3').slideToggle();
 
-                 });
+                        });
 
-            })
-        </script>
-        <h1>Fat finger Error: {{Symbol}}, Date: {{date}}
-        <!-- !!!! replace numbers after dropdown here with {{alertId}} too!!!! -->
-        <a id="dropdown3" href="#"><span class="glyphicon glyphicon-menu-down"></span></a> </h1>
-        <div class="dropdownwrap3" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
-          <h2>Transaction</h2>
-          <ul>
-            <li>Buyer: {{buyer}}</li>
-            <li>Price: {{price}}</li>
-            <li>Currency: {{currency}}</li>
-            <li>Time: {{time}}</li>
-          </ul>
+                    })
+                </script>
+                <h1>Fat finger Error: {{Symbol}}, Date: {{date}}
+                    <!-- !!!! replace numbers after dropdown here with {{alertId}} too!!!! -->
+                    <a id="dropdown3" href="#"><span class="glyphicon glyphicon-menu-down"></span></a> </h1>
+                <div class="dropdownwrap3" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
+                    <h2>Transaction</h2>
+                    <ul>
+                        <li>Buyer: {{buyer}}</li>
+                        <li>Price: {{price}}</li>
+                        <li>Currency: {{currency}}</li>
+                        <li>Time: {{time}}</li>
+                    </ul>
 
-            <button type="button" class="btn btn-success btn-lg custom-button">
+                    <button type="button" class="btn btn-success btn-lg custom-button">
                           <span class="glyphicon glyphicon-ok"></span>
             </button>
-            <button type="button" class="btn btn-danger btn-lg custom-button">
+                    <button type="button" class="btn btn-danger btn-lg custom-button">
                           <span class="glyphicon glyphicon-remove"></span>
             </button>
 
-        </div>
-      </div>
-      <div class="col-sm-2">
+                </div>
+            </div>
+            <div class="col-sm-2">
 
             </div>
 
@@ -121,116 +121,112 @@
         <div class="row pumpdump">
             <div class="col-sm-2">
 
-      </div>
-      <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
-        <script>
-            $(document).ready(function(e){
+            </div>
+            <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
+                <script>
+                    $(document).ready(function(e) {
 
-                 $('#dropdown2').on('click',function(){  // !!! replace number with {{alertId}} etc.
+                        $('#dropdown2').on('click', function() { // !!! replace number with {{alertId}} etc.
 
-                    $('.dropdownwrap2').slideToggle();
+                            $('.dropdownwrap2').slideToggle();
 
-                 });
+                        });
 
-                 $('#drilldown2').on('click',function(){  // !!! replace number with {{alertId}} concatenation etc.
+                        $('#drilldown2').on('click', function() { // !!! replace number with {{alertId}} concatenation etc.
 
-                          $('.drilldownwrap2').slideToggle();
+                            $('.drilldownwrap2').slideToggle();
 
-                 });
+                        });
 
-            })
-        </script>
-        <h1>Pump & Dump: {{Symbol}}, Date: {{date}}
-        <!-- !!!! replace numbers after dropdown here with {{alertId}} too!!!! -->
-        <a id="dropdown2" href="#"><span class="glyphicon glyphicon-menu-down"></span></a> </h1>
-        <div class="dropdownwrap2" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
-          <ul>
-            <li>Time: {{time}}</li>
-          </ul>
-          <div class="drilldownwrap2" style="display:none;" >
-            <!-- graph div -->
-            <div id="pumpdump" style="height:400px; width:600px;"></div> <!-- the id must be unique when being generated, along with inside the js above -->
-            <!-- javascript to generate graph -->
-            <script>
+                    })
+                </script>
+                <h1>Pump & Dump: {{Symbol}}, Date: {{date}}
+                    <!-- !!!! replace numbers after dropdown here with {{alertId}} too!!!! -->
+                    <a id="dropdown2" href="#"><span class="glyphicon glyphicon-menu-down"></span></a> </h1>
+                <div class="dropdownwrap2" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
+                    <ul>
+                        <li>Time: {{time}}</li>
+                    </ul>
+                    <div class="drilldownwrap2" style="display:none;">
+                        <!-- graph div -->
+                        <div id="pumpdump" style="height:400px; width:600px;"></div>
+                        <!-- the id must be unique when being generated, along with inside the js above -->
+                        <!-- javascript to generate graph -->
+                        <script>
+                            //  var priceData = {{prices}} ; //this array will hold the y-axis values of average price
+                            //  var ActualpriceData = {{Actualprices}} ; //this array will hold the y-axis values of average price
 
-              //  var priceData = {{prices}} ; //this array will hold the y-axis values of average price
-              //  var ActualpriceData = {{Actualprices}} ; //this array will hold the y-axis values of average price
+                            var data1 = [12, 1, 3, 17, 6, 3, 7]; // this variable will be replaced by priceData
+                            var data2 = [13, 3, 5, 19, 4, 2, 9]; // this variable will be replaced by priceData
+                            //  var period = {{periodLength}} ; //this will store the length of each period, which is currently hard coded as one minute
 
-              var data1 = [12, 1, 3, 17, 6, 3, 7] ; // this variable will be replaced by priceData
-              var data2 = [13, 3, 5, 19, 4, 2, 9] ; // this variable will be replaced by priceData
-              //  var period = {{periodLength}} ; //this will store the length of each period, which is currently hard coded as one minute
+                            var dates = []; // this will hold the x-axis values
 
-              var dates = [] ; // this will hold the x-axis values
+                            dates[0] = new Date(1488412195 * 1000); //{{startTime*1000}} ;  //this will hold the first x-axis value
 
-              dates[0] = new Date(1488412195*1000) ; //{{startTime*1000}} ;  //this will hold the first x-axis value
+                            for (i = 1; i < 7; i++) {
 
-              for (i = 1; i < 7 ; i++) {
+                                dates[i] = new Date(dates[i - 1].getTime() + (30 * 1000)); // generate all the needed epoch intervals
 
-                dates[i] = new Date( dates[i-1].getTime() + (30*1000)) ; // generate all the needed epoch intervals
+                            }
 
-              }
+                            var times = [];
 
-              var times = [];
-
-              //this for loop will convert the epoch times into a HH:MM:SS format
-              for (i = 0; i < 7 ; i++) {
-                //if the alert was less than ten minutes then concantenate a 0
-                if (dates[i].getMinutes() < 10) {
-                    times[i] = dates[i].getHours() + ":0" + dates[i].getMinutes() + ":" + dates[i].getSeconds()  ;
-                }
-                else {
-                    times[i] = dates[i].getHours() + ":" + dates[i].getMinutes() + ":" + dates[i].getSeconds()  ;
-                }
-
-
-              }
-              var Average = {
-                  x: times,
-                  y: data1,
-                  type: 'scatter',
-                  name: 'Price Average',
-                };
-              var layout = {
-                    xaxis: {
-                      title: 'Time',
-                      titlefont: {
-                        family: 'Courier New, monospace',
-                        size: 18,
-                        color: '#7f7f7f'
-                      }
-                    },
-                    yaxis: {
-                      title: 'Price',
-                      titlefont: {
-                        family: 'Courier New, monospace',
-                        size: 18,
-                        color: '#7f7f7f'
-                      }
-                    },
-                    margin: {
-                      l: 40,
-                      r: 40,
-                      b: 40,
-                      t: 40
-                    },
-                    legend:{
-                       xanchor:"center",
-                       yanchor:"top",
-                       y:-0.3, // play with it
-                       x:0.5   // play with it
-                     }
-                };
-
-              var data = [Average] ;
-              Plotly.newPlot(pumpdump,data,layout) ;
+                            //this for loop will convert the epoch times into a HH:MM:SS format
+                            for (i = 0; i < 7; i++) {
+                                //if the alert was less than ten minutes then concantenate a 0
+                                if (dates[i].getMinutes() < 10) {
+                                    times[i] = dates[i].getHours() + ":0" + dates[i].getMinutes() + ":" + dates[i].getSeconds();
+                                } else {
+                                    times[i] = dates[i].getHours() + ":" + dates[i].getMinutes() + ":" + dates[i].getSeconds();
+                                }
 
 
+                            }
+                            var Average = {
+                                x: times,
+                                y: data1,
+                                type: 'scatter',
+                                name: 'Price Average',
+                            };
+                            var layout = {
+                                xaxis: {
+                                    title: 'Time',
+                                    titlefont: {
+                                        family: 'Courier New, monospace',
+                                        size: 18,
+                                        color: '#7f7f7f'
+                                    }
+                                },
+                                yaxis: {
+                                    title: 'Price',
+                                    titlefont: {
+                                        family: 'Courier New, monospace',
+                                        size: 18,
+                                        color: '#7f7f7f'
+                                    }
+                                },
+                                margin: {
+                                    l: 40,
+                                    r: 40,
+                                    b: 40,
+                                    t: 40
+                                },
+                                legend: {
+                                    xanchor: "center",
+                                    yanchor: "top",
+                                    y: -0.3, // play with it
+                                    x: 0.5 // play with it
+                                }
+                            };
 
-            </script>
-          </div>
-          <button  id="drilldown2" type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down</button>
-          <div class="buttons">
-            <button type="button" name="true" class="btn btn-success btn-lg custom-button">
+                            var data = [Average];
+                            Plotly.newPlot(pumpdump, data, layout);
+                        </script>
+                    </div>
+                    <button id="drilldown2" type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down</button>
+                    <div class="buttons">
+                        <button type="button" name="true" class="btn btn-success btn-lg custom-button">
                                 <span class="glyphicon glyphicon-ok"></span>
                         </button>
                         <button type="button" name="false" class="btn btn-danger btn-lg custom-button">
@@ -248,129 +244,126 @@
         <div class="row vol-spike">
             <div class="col-sm-2">
 
-      </div>
-      <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
-        <script>
-            $(document).ready(function(e){
+            </div>
+            <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
+                <script>
+                    $(document).ready(function(e) {
 
-                 $('#dropdown1').on('click',function(){  // !!! replace number with {{alertId}} concatenation etc.
+                        $('#dropdown1').on('click', function() { // !!! replace number with {{alertId}} concatenation etc.
 
-                    $('.dropdownwrap1').slideToggle();
+                            $('.dropdownwrap1').slideToggle();
 
-                 });
+                        });
 
-                 $('#drilldown1').on('click',function(){  // !!! replace number with {{alertId}} concatenation etc.
+                        $('#drilldown1').on('click', function() { // !!! replace number with {{alertId}} concatenation etc.
 
-                    $('.drilldownwrap1').slideToggle();
+                            $('.drilldownwrap1').slideToggle();
 
-                 });
-
-
-            })
-        </script>
-        <h1>Volume Spike: {{Symbol}}, Date:{{date}}
-          <!-- !!!! replace number after dropdown here with {{alertId}} too!!!! -->
-        <a id="dropdown1" href="#"> <span class="glyphicon glyphicon-menu-down"></span></a></h1>
-        <div class="dropdownwrap1" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
-          <ul>
-            <li>Time: {{time}}</li>
-            <li>Sector: {{sector}}</li>
-            <li>Suspected technique(s): {{techniques}}</li>
-          </ul>
-          <div class="drilldownwrap1" style="display:none;" >
-            <!-- graph div -->
-            <div id="volumespike" style="height:400px; width:600px;"></div> <!-- the id must be unique when being generated, along with inside the js above -->
-            <!-- javascript to generate graph -->
-            <script>
-
-              //  var priceData = {{prices}} ; //this array will hold the y-axis values of average price
-              //  var ActualpriceData = {{Actualprices}} ; //this array will hold the y-axis values of average price
-
-              var data1 = [12, 1, 3, 17, 6, 3, 7] ; // this variable will be replaced by priceData
-              var data2 = [13, 3, 5, 19, 4, 2, 9] ; // this variable will be replaced by priceData
-              //  var period = {{periodLength}} ; //this will store the length of each period, which is currently hard coded as one minute
-
-              var dates = [] ; // this will hold the x-axis values
-
-              dates[0] = new Date(1488412195*1000) ; //{{startTime*1000}} ;  //this will hold the first x-axis value
-
-              for (i = 1; i < 7 ; i++) {
-
-                dates[i] = new Date( dates[i-1].getTime() + (30*1000)) ; // generate all the needed epoch intervals
-
-              }
-
-              var times = [];
-
-              //this for loop will convert the epoch times into a HH:MM:SS format
-              for (i = 0; i < 7 ; i++) {
-                //if the alert was less than ten minutes then concantenate a 0
-                if (dates[i].getMinutes() < 10) {
-                    times[i] = dates[i].getHours() + ":0" + dates[i].getMinutes() + ":" + dates[i].getSeconds()  ;
-                }
-                else {
-                    times[i] = dates[i].getHours() + ":" + dates[i].getMinutes() + ":" + dates[i].getSeconds()  ;
-                }
+                        });
 
 
-              }
-              var Average = {
-                  x: times,
-                  y: data1,
-                  type: 'scatter',
-                  name: 'Volumes Average',
-                  line: {
-                     dash: 'dot',
-                     width: 4
-                   }
-                };
-              var Actual = {
-                  x: times,
-                  y: data2,
-                  type: 'line',
-                  name: 'Actual Volumes'
-                };
-              var layout = {
-                    xaxis: {
-                      title: 'Time',
-                      titlefont: {
-                        family: 'Courier New, monospace',
-                        size: 18,
-                        color: '#7f7f7f'
-                      }
-                    },
-                    yaxis: {
-                      title: 'Volume',
-                      titlefont: {
-                        family: 'Courier New, monospace',
-                        size: 18,
-                        color: '#7f7f7f'
-                      }
-                    },
-                    margin: {
-                      l: 40,
-                      r: 40,
-                      b: 40,
-                      t: 40
-                    },
-                    legend:{
-                       xanchor:"center",
-                       yanchor:"top",
-                       y:-0.3, // play with it
-                       x:0.5   // play with it
-                     }
-                };
-              var data = [Average,Actual] ;
+                    })
+                </script>
+                <h1>Volume Spike: {{Symbol}}, Date:{{date}}
+                    <!-- !!!! replace number after dropdown here with {{alertId}} too!!!! -->
+                    <a id="dropdown1" href="#"> <span class="glyphicon glyphicon-menu-down"></span></a>
+                </h1>
+                <div class="dropdownwrap1" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
+                    <ul>
+                        <li>Time: {{time}}</li>
+                        <li>Sector: {{sector}}</li>
+                        <li>Suspected technique(s): {{techniques}}</li>
+                    </ul>
+                    <div class="drilldownwrap1" style="display:none;">
+                        <!-- graph div -->
+                        <div id="volumespike" style="height:400px; width:600px;"></div>
+                        <!-- the id must be unique when being generated, along with inside the js above -->
+                        <!-- javascript to generate graph -->
+                        <script>
+                            //  var priceData = {{prices}} ; //this array will hold the y-axis values of average price
+                            //  var ActualpriceData = {{Actualprices}} ; //this array will hold the y-axis values of average price
 
-              Plotly.newPlot(volumespike,data,layout) ;
+                            var data1 = [12, 1, 3, 17, 6, 3, 7]; // this variable will be replaced by priceData
+                            var data2 = [13, 3, 5, 19, 4, 2, 9]; // this variable will be replaced by priceData
+                            //  var period = {{periodLength}} ; //this will store the length of each period, which is currently hard coded as one minute
+
+                            var dates = []; // this will hold the x-axis values
+
+                            dates[0] = new Date(1488412195 * 1000); //{{startTime*1000}} ;  //this will hold the first x-axis value
+
+                            for (i = 1; i < 7; i++) {
+
+                                dates[i] = new Date(dates[i - 1].getTime() + (30 * 1000)); // generate all the needed epoch intervals
+
+                            }
+
+                            var times = [];
+
+                            //this for loop will convert the epoch times into a HH:MM:SS format
+                            for (i = 0; i < 7; i++) {
+                                //if the alert was less than ten minutes then concantenate a 0
+                                if (dates[i].getMinutes() < 10) {
+                                    times[i] = dates[i].getHours() + ":0" + dates[i].getMinutes() + ":" + dates[i].getSeconds();
+                                } else {
+                                    times[i] = dates[i].getHours() + ":" + dates[i].getMinutes() + ":" + dates[i].getSeconds();
+                                }
 
 
+                            }
+                            var Average = {
+                                x: times,
+                                y: data1,
+                                type: 'scatter',
+                                name: 'Volumes Average',
+                                line: {
+                                    dash: 'dot',
+                                    width: 4
+                                }
+                            };
+                            var Actual = {
+                                x: times,
+                                y: data2,
+                                type: 'line',
+                                name: 'Actual Volumes'
+                            };
+                            var layout = {
+                                xaxis: {
+                                    title: 'Time',
+                                    titlefont: {
+                                        family: 'Courier New, monospace',
+                                        size: 18,
+                                        color: '#7f7f7f'
+                                    }
+                                },
+                                yaxis: {
+                                    title: 'Volume',
+                                    titlefont: {
+                                        family: 'Courier New, monospace',
+                                        size: 18,
+                                        color: '#7f7f7f'
+                                    }
+                                },
+                                margin: {
+                                    l: 40,
+                                    r: 40,
+                                    b: 40,
+                                    t: 40
+                                },
+                                legend: {
+                                    xanchor: "center",
+                                    yanchor: "top",
+                                    y: -0.3, // play with it
+                                    x: 0.5 // play with it
+                                }
+                            };
+                            var data = [Average, Actual];
 
-            </script>
-          </div>
-          <button  id="drilldown1" type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down</button>
-          <div class="buttons">
-            <button type="button" name="true" class="btn btn-success btn-lg custom-button">
+                            Plotly.newPlot(volumespike, data, layout);
+                        </script>
+                    </div>
+                    <button id="drilldown1" type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down</button>
+                    <div class="buttons">
+                        <button type="button" name="true" class="btn btn-success btn-lg custom-button">
                                   <span class="glyphicon glyphicon-ok"></span>
                          </button>
                         <button type="button" name="false" class="btn btn-danger btn-lg custom-button">
@@ -385,16 +378,16 @@
 
         </div>
 
-    <!-- Modules -->
-    <script src="js/Angular/spikeApp.js"></script>
-    <!-- Directives -->
-    <script src="js/Angular/alertInfo.js"></script>
-    <!-- Controllers -->
-    <script src="js/Angular/mainController.js"></script>
-    <!-- Chart JS Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+        <!-- Modules -->
+        <script src="js/Angular/spikeApp.js"></script>
+        <!-- Directives -->
+        <script src="js/Angular/alertInfo.js"></script>
+        <!-- Controllers -->
+        <script src="js/Angular/mainController.js"></script>
+        <!-- Chart JS Library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
 
 
 </body>
