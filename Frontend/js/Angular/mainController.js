@@ -66,6 +66,6 @@ app.controller('mainController', ['$scope', function($scope) {
         };
 
         var data = [Average];
-        Plotly.newPlot('pumpanddump' + id, data, layout);
+        Plotly.newPlot('pumpdump' + id, data, layout);
     }
 }]);
