@@ -18,15 +18,17 @@ app.controller('mainController', ['$scope', function ($scope, $window) {
             dates[0] = new Date(1488412195 * 1000); //should have startTime*1000 here
 
             for (i = 1; i < 7; i++) {
-                dates[i] = new Date(dates[i - 1].getTime + (30 * 1000));
+                dates[i] = new Date(dates[i - 1].getTime + 30000);
+                alert("element " + i + " is: " + dates[i]);
             }
             var times = [];
             for (i = 0; i < 7; i++) {
                 if (dates[i].getMinutes() < 10) {
-                    times[i] = dates[i].getHours() + ":0" + dates[i].getMinutes() + dates[i].getSeconds();
+                    times[i] = dates[i].getHours() + ":0" + dates[i].getMinutes() + ":" + dates[i].getSeconds();
                 } else {
-                    times[i] = dates[i].getHours() + ":" + dates[i].getMinutes() + dates[i].getSeconds();
+                    times[i] = dates[i].getHours() + ":" + dates[i].getMinutes() + ":" + dates[i].getSeconds();
                 }
+                alert("time formatted for " + i + " is: " + times[i]);
             }
 
             var Average = {
