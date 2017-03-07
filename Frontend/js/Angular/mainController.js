@@ -11,7 +11,7 @@ app.controller('mainController', ['$scope', function($scope) {
 
     $scope.plot = function(info, element) {
         //data1 is priceData
-        alert(info.AnomalyID);
+        alert(1);
         var data1 = [12, 1, 3, 17, 6, 3, 7]
         var dates = [];
         dates[0] = new Date(1488412195 * 1000); //should have startTime*1000 here
