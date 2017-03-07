@@ -10,17 +10,21 @@ app.controller('mainController', ['$scope', function ($scope, $window) {
     }
 
     $scope.plot = function (info) {
+        if (info.type == 'PumpAndDump') {
+            plotPump(info);
+        } else if (info.type == 'VolumeSpike') {
+            plotVolume(info);
+        } else return;
+    }
+
+    $scope.plotPump = function (info) {
         //data1 is priceData
         if (!info.plotted) {
-            alert(info.AnomalyID);
-            var data1 = [12, 1, 3, 17, 6, 3, 7]
             var dates = [];
-            dates[0] = new Date(1488412195 * 1000); //should have startTime*1000 here
-            alert("date 0 is: " + dates[0].getTime());
+            dates[0] = new Date(info.timeBegin * 1000);
 
-            for (i = 1; i < 7; i++) {
-                dates[i] = new Date(dates[i - 1].getTime() + 30000);
-                alert("element " + i + " is: " + dates[i].getTime());
+            for (i = 1; i < info.yaxisPrice.length; i++) {
+                dates[i] = new Date(dates[i - 1].getTime() + info.periodLen);
             }
             var times = [];
             for (i = 0; i < 7; i++) {
@@ -73,11 +77,12 @@ app.controller('mainController', ['$scope', function ($scope, $window) {
             Plotly.newPlot('pumpdump' + info.AnomalyID, data, layout);
             info.plotted = true;
         } else {
-            alert("already plotted: " + info.AnomalyID);
+            //alert("already plotted: " + info.AnomalyID);
+            return;
         }
     };
 
-    //    $.ready(function() {
-
-    //  });
+    $scope.plotVolume = function(info) {
+        alert("still no function. cant plot for: " + info.AnomalyID);
+    }
 }]);
