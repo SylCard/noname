@@ -11,9 +11,9 @@ app.controller('mainController', ['$scope', function ($scope, $window) {
 
     $scope.plot = function (info) {
         if (info.type == 'PumpAndDump') {
-            plotPump(info);
+           $scope.plotPump(info);
         } else if (info.type == 'VolumeSpike') {
-            plotVolume(info);
+            $scope.plotVolume(info);
         } else return;
     }
 
