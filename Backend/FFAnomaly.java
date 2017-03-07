@@ -4,8 +4,8 @@ class FFAnomaly extends Anomaly {
     int channel;
     String type;
     Stock stock;
-    int severity;
-    int rma;
+    double severity;
+    double rma;
     int error;
 
     public FFAnomaly(int anomalyID, int channel, Stock stock, double severity, double rma, int error) {
