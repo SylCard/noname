@@ -1,4 +1,4 @@
-app.controller('mainController', ['$scope', function($scope) {
+app.controller('mainController', ['$scope', function($scope, $window) {
     //main page content controller properties or functions
     $scope.drop = function(id) {
         //alert(id);
@@ -67,5 +67,9 @@ app.controller('mainController', ['$scope', function($scope) {
 
         var data = [Average];
         Plotly.newPlot('pumpdump' + id, data, layout);
-    }
+    };
+
+    //    $.ready(function() {
+
+    //  });
 }]);
