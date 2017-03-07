@@ -67,7 +67,7 @@ app.controller('mainController', ['$scope', function ($scope, $window) {
             };
 
             var data = [Average];
-            Plotly.newPlot('pumpdump' + id, data, layout);
+            Plotly.newPlot('pumpdump' + info.AnomalyID, data, layout);
             info.plotted = true;
         } else {
             alert("already plotted: " + info.AnomalyID);
