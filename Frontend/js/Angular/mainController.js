@@ -33,7 +33,6 @@ app.controller('mainController', ['$scope', function ($scope, $window) {
                 } else {
                     times[i] = dates[i].getHours() + ":" + dates[i].getMinutes() + ":" + dates[i].getSeconds();
                 }
-                alert("time formatted for " + i + " is: " + times[i]);
             }
 
             var Average = {
