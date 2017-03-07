@@ -1,9 +1,9 @@
 import java.lang.Math;
 
 public class PFatFinger implements ICheck {
-    int pma;
-    int lastPma;
-    float a = 0.18;   //effect of past average on vma
+    double pma;
+    double lastPma;
+    double a = 0.18;   //effect of past average on vma
     int n = 2;      //sensitivity of error detection
     int channel;    //historical/live data - whichever the check is for
 
@@ -26,7 +26,7 @@ public class PFatFinger implements ICheck {
         if( (stock.getPrice() > lastPma*(Math.pow(10, n))) ) {
             //there has been a price ff error
             //calculate severity
-            int severity = (stock.getPrice() * 100) / lastPma;
+            double severity = (stock.getPrice() * 100) / lastPma;
             //send anomaly
             FFAnomaly anomaly = new FFAnomaly(client.getCounter(), channel, stock, severity, lastPma, 1);
             return anomaly;
