@@ -84,7 +84,7 @@ app.controller('mainController', ['$scope', function ($scope, $window) {
             var dates = [];
             dates[0] = new Date(info.timeBegin * 1000);
 
-            for (i = 1; i < info.yaxisPrice.length; i++) {
+            for (i = 1; i < info.yaxis1.length; i++) {
                 dates[i] = new Date(dates[i - 1].getTime() + info.periodLen);
             }
             var times = [];
