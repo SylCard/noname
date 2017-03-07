@@ -3,12 +3,12 @@ class PDAnomaly extends Anomaly {
 	int channel;
 	String symbol;
 	String type;
-	int[] pmas;
+	double[] pmas;
 	long tStart;
 	long periodLength;
 
 
-	public PDAnomaly(int anomalyID, int channel, String symbol, int[] pmas, long tStart, long periodLength, int severity) {
+	public PDAnomaly(int anomalyID, int channel, String symbol, double[] pmas, long tStart, long periodLength) {
 		this.anomalyID = anomalyID;
 		this.channel = channel;
 		this.symbol = symbol;

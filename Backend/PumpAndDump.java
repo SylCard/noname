@@ -8,28 +8,28 @@ import java.util.Arrays;
 import java.lang.Math;
 
 
-class PumpDump implements ICheck{
+class PumpAndDump implements ICheck{
 
-	LinkedList<Integer> prices;			//TODO decide max length for this
-	LinkedList<Integer> pmas;
+	LinkedList<Double> prices;			//TODO decide max length for this
+	LinkedList<Double> pmas;
 	long period;			//determines current period for grouping, currently minutes
 	int k = 10;			//number of stocks to pass to anomaly
 	boolean flag; 	//has this time period already been flagged
 	int limit; //= 5;		//used to gauge the difference between periods for flagging		TODO make this dynamic to pma, but not overly sensitive at small numbers
-	int pma;
+	double pma;
 	boolean startFlag;
 	long periodLength = 3600000;
 	double a = 0.18;			//alpha equal to 2/(1+N) where N is the number of periods in this case 10	TODO choose dynamicaly based on k
 	int diff;					//used in the detection of time period gaps
 	int channel = 0 ; // default value
 
-	public pumpDump(Stock stock, int channel) throws ParseException{
+	public PumpAndDump(Stock stock, int channel) throws ParseException{
 		this.channel = channel;
 		long time = stock.getTime();
 		period = time - (time % periodLength) + periodLength;
 
-		prices = new LinkedList<Integer>();
-		prices.add(1);
+		prices = new LinkedList<Double>() ;
+		prices.add(1.0);
 
 		flag = true;
 		startFlag = true;
@@ -37,7 +37,7 @@ class PumpDump implements ICheck{
 	}
 
 
-	public void update(Stock stock
+	public void update(Stock stock){
 
 
 						try {
@@ -52,7 +52,7 @@ class PumpDump implements ICheck{
 											if (diff >= 1) {
 												for (int i = 0; i < diff ; i++) {
 													calculatePma();
-													prices.add(0);
+													prices.add(0.0);
 													period += periodLength;
 													if (prices.size() > k) {
 														prices.removeFirst();
@@ -63,7 +63,7 @@ class PumpDump implements ICheck{
 
 							       calculatePma();
 
-										 prices.add(1);
+										 prices.add(1.0);
 										 period += periodLength;
 										 flag = false;
 										 if (prices.size() > k) {
@@ -79,9 +79,10 @@ class PumpDump implements ICheck{
 	}
 
 	public Anomaly check(Stock stock, Client client) {
-			if(pmas.size() < 50) {
+			if(pmas.size() < 60) {
 					return null;
-			} else { // there is a sufficient amount of averages to analyse for a pump and dump
+			}
+			else { // there is a sufficient amount of averages to analyse for a pump and dump
 
 				  boolean	dumpingState = false ;
 					// check for dumpingState
@@ -89,60 +90,60 @@ class PumpDump implements ICheck{
 					//look at percentage increase/decrease, if there is a large enough decrease then dumping state is true
 
 					double difference = pmas.getLast() -  pmas.get(pmas.size()-2) ;
-					double percentage_decrease = (difference/PriceAverage.Get(PreviousPrice)) *100
+					double percentage_decrease = (difference/pmas.get(pmas.size()-2)) *100 ;
 					if (percentage_decrease < 0 ){ // it is negative
 							if(Math.abs(percentage_decrease) >= 30){// if there is a 30% or more percentage decrease flag a dumping state
 								dumpingState = true;
 							}
 					}
 
-					//check for Pumping
-					/* t = time of drop
-						a = predefined gradient of threshold lines
-						d = +- from drop point
-						*/
-					int t = pma.size()-1 ;
-					int a = 1 ; //gradient of line ---- Expiremental value
-					int d = (pmas.getLast()/100)*30 ;//this is the height of the threshold lines -- Expiremental value
-					int[] Yarray = new int[50]
-				  if (dumpingState) {
+								//check for Pumping before the Dumping
+								double[] Yarray = new double[50];
+								int t = pmas.size()-1 ;
+								int pumping = 0 ; // this variable will keep track of pumps that occured before the dump state if the
+				  			if (dumpingState) {
 
-										for (int i = t ; i >= t - 50 ; i--) {
+													for (int i = t ; i >= t - 50 ; i--) { // for the last 50 transactions
 
-											if ( (pmas.get(i)) <= pmas.getLast() + d - a * (t-i) ) {
-													// within threshold
-											} else {
-													// not within threshold
-													return null;
-											}
-										}
+															if(pmas.get(i)>pmas.get(i-1)){
+																	pumping++ ;
+															}
+
+													}
+
+										if (pumping >= 30) {
 										// if code reaches here, then pumping state is true
-										//return PumpAndDump Anomaly object
 
-										// build array so it contains last 50 recent prices
-										long tStart = period - (pmas.size() * periodLength);
-										int counter =  0 ;
-										for (int x = 0; x< pmas.size() ; ) {
-											if (x>=50) {
-													Yarray[counter] = pmas.get(x) ;
-													counter++;
-											}
 
-										}
-										// send dat shiz off
-										PDAnomaly anomaly = new PDAnomaly(client.getCounter(), channel, stock.getSymbol(), pmasArray, tStart, this.periodLength);
+													// build array so it contains last 50 recent prices
 
-										return anomaly ;
-						}
+													long tStart = period - (pmas.size() * periodLength) ;
+													int counter =  0 ;
+													for (int x = 0; x< pmas.size() ; ) {
+														if (x>=50) {
+																Yarray[counter] = pmas.get(x) ;
+																counter++;
+														}
+													}
+													// send dat shiz off
+													PDAnomaly anomaly = new PDAnomaly(client.getCounter(), channel, stock.getSymbol(), Yarray, tStart, this.periodLength);
+
+													return anomaly ;
+												  //return PumpAndDump Anomaly object
+									}
+
 			}
-	}
+	    }
+			return null ;
 
-	private void calculatepma() {
+}
+
+private void calculatePma() {
 
 		if (startFlag) {
 			pma = prices.getLast();
 			startFlag = false;
-			pmas = new LinkedList<Integer>();
+			pmas = new LinkedList<Double>();
 			pmas.add(pma);
 		}
 
