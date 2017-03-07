@@ -3,7 +3,8 @@ app.directive("alertInfo", function() {
         restrict: 'E',
         scope: {
             info: '=',
-            drop: '&'
+            drop: '&',
+            drill: '&'
         },
         template: '<div ng-include src="\'js/Angular/templates/\'+info.type+\'.html\'"></div>'
     }
