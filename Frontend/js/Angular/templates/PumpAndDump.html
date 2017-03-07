@@ -13,10 +13,10 @@
             </ul>
             <div class="drilldownwrap{{ info.AnomalyID }}" style="display:none;">
                 <!-- graph div -->
-                <div id="pumpdump{{ info.AnomalyID }}" style="height:400px; width:600px;" onload="plot({info: info, id: info.AnomalyID})"></div>
+                <div id="pumpdump{{ info.AnomalyID }}" style="height:400px; width:600px;"></div>
                 <!-- the id must be unique when being generated, along with inside the js above -->
             </div>
-            <button id="drilldown{{ info.AnomalyID }}" type="button" name="drillDown" class="btn btn-warning btn-lg" ng-click="drill({id: info.AnomalyID})"> Drill Down</button>
+            <button id="drilldown{{ info.AnomalyID }}" type="button" name="drillDown" class="btn btn-warning btn-lg" ng-click="drill({id: info.AnomalyID}); plot({info: info})"> Drill Down</button>
             <div class="buttons">
                 <button type="button" name="true" class="btn btn-success btn-lg custom-button">
                                 <span class="glyphicon glyphicon-ok"></span>
