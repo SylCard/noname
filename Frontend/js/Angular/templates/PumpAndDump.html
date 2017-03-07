@@ -11,7 +11,7 @@
             <ul>
                 <li>Time Begin: {{ info.time_begin | date:'HH:mm:ss'}}</li>
             </ul>
-            <div class="drilldownwrap2" style="display:none;">
+            <div class="drilldownwrap{{ info.AnomalyID }}" style="display:none;" ng-click="drill({id: info.AnomalyID})">
                 <!-- graph div -->
                 <div id="pumpdump" style="height:400px; width:600px;"></div>
                 <!-- the id must be unique when being generated, along with inside the js above -->
@@ -88,7 +88,7 @@
                     Plotly.newPlot(pumpdump, data, layout);
                 </script>
             </div>
-            <button id="drilldown2" type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down</button>
+            <button id="drilldown{{ info.AnomalyID }}" type="button" name="drillDown" class="btn btn-warning btn-lg"> Drill Down</button>
             <div class="buttons">
                 <button type="button" name="true" class="btn btn-success btn-lg custom-button">
                                 <span class="glyphicon glyphicon-ok"></span>

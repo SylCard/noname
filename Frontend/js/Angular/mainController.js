@@ -4,4 +4,8 @@ app.controller('mainController', ['$scope', function($scope) {
         //alert(id);
         $('.dropdownwrap' + id).slideToggle();
     };
+
+    $scope.drill = function(id) {
+        $('.drilldownwrap' + id).slideToggle();
+    }
 }]);
