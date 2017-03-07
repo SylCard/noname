@@ -3,7 +3,7 @@ var app = angular.module("spikeApp", []);
 app.run(function($rootScope) {
     //array used store alerts and generate alert boxes
     $rootScope.anomalies = [{
-            AnomalyID: 2,
+            AnomalyID: 11,
             type: 'VolumeSpike',
             symbol: 'SYM',
             yaxis1: [0, 0, 0, 0],
@@ -12,7 +12,7 @@ app.run(function($rootScope) {
             periodLen: 30000
         },
         {
-            AnomalyID: 1,
+            AnomalyID: 12,
             type: 'FatFinger', //needed to identify which alert template to use when generating html
             stock: {
                 symbol: 'SYM',
@@ -24,6 +24,14 @@ app.run(function($rootScope) {
             },
             severity: 50,
             RMA: 1000
+        },
+        {
+            AnomalyID: 13,
+            type: 'PumpAndDump',
+            symbol: 'SYM',
+            yaxisPrice: [12, 1, 3, 17, 6, 3, 7],
+            timeBegin: 1488593766466,
+            periodLen: 30000
         }
     ];
 
