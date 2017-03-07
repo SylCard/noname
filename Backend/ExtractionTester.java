@@ -44,7 +44,7 @@ class ExtractionTester {
 						objectParser(Array.get(table.get(symbol), 1).check(stock, sender), sender);
 						objectParser(Array.get(table.get(symbol), 2).check(stock, sender), sender);						
 					} else {										//if symbol has no check object create one
-						table.put(symbol, { new VolumeSpike(stock, channel), new VFatFinger(channel), new PFatFinger(channel)) });								
+						table.put(symbol, new ICheck[]{ new VolumeSpike(stock, channel), new VFatFinger(channel), new PFatFinger(channel)) });								
 					}
 					//TODO make system work for sectors as well as symbols
 
