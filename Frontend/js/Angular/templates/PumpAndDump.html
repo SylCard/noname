@@ -13,7 +13,7 @@
             </ul>
             <div class="drilldownwrap{{ info.AnomalyID }}" style="display:none;">
                 <!-- graph div -->
-                <div id="pumpdump" style="height:400px; width:600px;" ng-init="plot({info: info, element: pumpanddump})"></div>
+                <div id="pumpdump{{ info.AnomalyID }}" style="height:400px; width:600px;" ng-init="plot({info: info, id: info.AnomalyID})"></div>
                 <!-- the id must be unique when being generated, along with inside the js above -->
             </div>
             <button id="drilldown{{ info.AnomalyID }}" type="button" name="drillDown" class="btn btn-warning btn-lg" ng-click="drill({id: info.AnomalyID})"> Drill Down</button>

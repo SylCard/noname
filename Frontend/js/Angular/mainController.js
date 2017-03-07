@@ -9,9 +9,9 @@ app.controller('mainController', ['$scope', function($scope) {
         $('.drilldownwrap' + id).slideToggle();
     }
 
-    $scope.plot = function(info, element) {
+    $scope.plot = function(info, id) {
         //data1 is priceData
-        alert(1);
+        alert(id);
         var data1 = [12, 1, 3, 17, 6, 3, 7]
         var dates = [];
         dates[0] = new Date(1488412195 * 1000); //should have startTime*1000 here
@@ -66,6 +66,6 @@ app.controller('mainController', ['$scope', function($scope) {
         };
 
         var data = [Average];
-        Plotly.newPlot(element, data, layout);
+        Plotly.newPlot('pumpanddump' + id, data, layout);
     }
 }]);
