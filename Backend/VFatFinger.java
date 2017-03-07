@@ -24,7 +24,7 @@ public class VFatFinger implements ICheck {
     }
 
     public Anomaly check(Stock stock, Client client) {
-        if( (stock.getSize() > lastVma*(Math.pow(10, n))) || ( (stock.getSize() < lastVma+(pow(10, 0-n))) ) ) {
+        if( (stock.getSize() > lastVma*(Math.pow(10, n))) || ( (stock.getSize() < lastVma+(Math.pow(10, 0-n))) ) ) {
             //then there has been a price ff error
             //calculate severity
             double severity = (stock.getSize() * 100) / lastVma;
