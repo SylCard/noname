@@ -16,10 +16,11 @@ app.controller('mainController', ['$scope', function ($scope, $window) {
             var data1 = [12, 1, 3, 17, 6, 3, 7]
             var dates = [];
             dates[0] = new Date(1488412195 * 1000); //should have startTime*1000 here
+            alert("date 0 is: " + dates[0].getTime());
 
             for (i = 1; i < 7; i++) {
-                dates[i] = new Date(dates[i - 1].getTime + 30000);
-                alert("element " + i + " is: " + dates[i]);
+                dates[i] = new Date(dates[i - 1].getTime() + 30000);
+                alert("element " + i + " is: " + dates[i].getTime());
             }
             var times = [];
             for (i = 0; i < 7; i++) {
