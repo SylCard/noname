@@ -7,7 +7,7 @@ public class PFatFinger implements ICheck {
     int n = 2;      //sensitivity of error detection
     int channel;    //historical/live data - whichever the check is for
 
-    public FatFinger(int channel) {
+    public PFatFinger(int channel) {
         pma = 0;
         lastPma = 0;
         this.channel = channel;

@@ -8,7 +8,7 @@ public class VFatFinger implements ICheck {
     int n = 2;      //sensitivity of error detection
     int channel;    //historical/live data - whichever the check is for
 
-    public FatFinger(int channel) {
+    public VFatFinger(int channel) {
         vma = 0;
         lastVma = 0;
         this.channel = channel;
