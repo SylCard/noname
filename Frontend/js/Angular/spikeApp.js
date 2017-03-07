@@ -6,14 +6,14 @@ app.run(function($rootScope) {
             AnomalyID: 11,
             type: 'VolumeSpike',
             symbol: 'SYM',
-            yaxis1: [0, 0, 0, 0],
+            yaxis1: [12, 1, 3, 17, 6, 3, 7],
             yaxis2: [0, 0, 0, 0],
             timeBegin: 1488593766466,
             periodLen: 30000
         },
         {
             AnomalyID: 12,
-            type: 'FatFinger', //needed to identify which alert template to use when generating html
+            type: 'FatFinger',
             stock: {
                 symbol: 'SYM',
                 buyer: 'silver@pumpanddump.me',
