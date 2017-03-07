@@ -8,7 +8,7 @@ class FFAnomaly extends Anomaly {
     int rma;
     int error;
 
-    public FFAnomaly(int anomalyID, int channel, Stock stock, int severity, int rma, int error) {
+    public FFAnomaly(int anomalyID, int channel, Stock stock, double severity, double rma, int error) {
         this.anomalyID = anomalyID;
         this.channel = channel;
         this.type = "FatFinger";
