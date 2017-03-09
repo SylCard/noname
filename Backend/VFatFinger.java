@@ -2,13 +2,13 @@
 import java.lang.Math;
 
 public class VFatFinger implements ICheck {
-    int vma;
-    int lastVma;
-    int a = 0.18;   //effect of past average on vma
+    double vma;
+    double lastVma;
+    double a = 0.18;   //effect of past average on vma
     int n = 2;      //sensitivity of error detection
     int channel;    //historical/live data - whichever the check is for
 
-    public FatFinger(int channel) {
+    public VFatFinger(int channel) {
         vma = 0;
         lastVma = 0;
         this.channel = channel;
@@ -24,10 +24,10 @@ public class VFatFinger implements ICheck {
     }
 
     public Anomaly check(Stock stock, Client client) {
-        if( (stock.getSize() > lastVma*(pow(10, n))) || ( (stock.getSize() < lastVma+(pow(10, 0-n))) ) ) {
+        if( (stock.getSize() > lastVma*(Math.pow(10, n))) || ( (stock.getSize() < lastVma+(Math.pow(10, 0-n))) ) ) {
             //then there has been a price ff error
             //calculate severity
-            severity = (stock.getSize() * 100) / lastVma;
+            double severity = (stock.getSize() * 100) / lastVma;
             //send anomaly
             FFAnomaly anomaly = new FFAnomaly(client.getCounter(), channel, stock, severity, lastVma, 0);
             return anomaly;
