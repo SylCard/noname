@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.12.24)  9 MAR 2017 00:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.12.24)  9 MAR 2017 15:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -244,32 +244,37 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write3
 \openout3 = `final.toc'.
 
- [2] [3]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 92.
+ [2]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 60.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 92.
- <PDpseudo.png, id=21, 862.22125pt x 725.71124pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 60.
+ [3] [4] <PumpDumpGraph.png, id=25, 611.28375pt x 432.61626pt>
+File: PumpDumpGraph.png Graphic file (type png)
+ <use PumpDumpGraph.png>
+Package pdftex.def Info: PumpDumpGraph.png used on input line 108.
+(pdftex.def)             Requested size: 426.79134pt x 302.04378pt.
+ <PDpseudo.png, id=26, 862.22125pt x 725.71124pt>
 File: PDpseudo.png Graphic file (type png)
  <use PDpseudo.png>
-Package pdftex.def Info: PDpseudo.png used on input line 101.
+Package pdftex.def Info: PDpseudo.png used on input line 118.
 (pdftex.def)             Requested size: 426.79134pt x 359.21156pt.
- [4] [5 <./PDpseudo.png>] [6] (./final.aux) ) 
+ [5 <./PumpDumpGraph.png>] [6 <./PDpseudo.png>] [7] (./final.aux) ) 
 Here is how much of TeX's memory you used:
- 4145 strings out of 493089
- 62031 string characters out of 6134841
- 153454 words of memory out of 5000000
- 7590 multiletter control sequences out of 15000+600000
+ 4152 strings out of 493089
+ 62141 string characters out of 6134841
+ 153470 words of memory out of 5000000
+ 7596 multiletter control sequences out of 15000+600000
  8808 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  47i,6n,37p,238b,244s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on final.pdf (7 pages, 446033 bytes).
+Output written on final.pdf (8 pages, 515052 bytes).
 PDF statistics:
- 49 PDF objects out of 1000 (max. 8388607)
- 31 compressed objects within 1 object stream
+ 54 PDF objects out of 1000 (max. 8388607)
+ 33 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

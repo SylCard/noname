@@ -101,6 +101,9 @@ INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
 OUTPUT final.toc
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
+INPUT PumpDumpGraph.png
+INPUT ./PumpDumpGraph.png
+INPUT ./PumpDumpGraph.png
 INPUT PDpseudo.png
 INPUT ./PDpseudo.png
 INPUT ./PDpseudo.png
