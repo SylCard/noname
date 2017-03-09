@@ -21,25 +21,25 @@
 \contentsline {subsection}{\numberline {5.2}Pseudocode}{4}
 \contentsline {subsubsection}{\numberline {5.2.1}Pump \& Dump}{4}
 \contentsline {subsubsection}{\numberline {5.2.2}Volume Spike}{6}
-\contentsline {subsubsection}{\numberline {5.2.3}Fat Finger Errors}{6}
-\contentsline {section}{\numberline {6}Implementation}{7}
-\contentsline {subsection}{\numberline {6.1}Frontend}{7}
-\contentsline {subsection}{\numberline {6.2}Backend}{7}
-\contentsline {subsubsection}{\numberline {6.2.1}Parsing}{7}
-\contentsline {section}{\numberline {7}Iterations}{7}
-\contentsline {subsection}{\numberline {7.1}Iteration 1}{7}
-\contentsline {subsection}{\numberline {7.2}Iteration 2}{7}
-\contentsline {subsection}{\numberline {7.3}Iteration 3}{7}
-\contentsline {subsection}{\numberline {7.4}Iteration 4}{7}
-\contentsline {subsection}{\numberline {7.5}Iteration 5}{7}
-\contentsline {section}{\numberline {8}Testing}{7}
-\contentsline {subsection}{\numberline {8.1}Unit Testing}{7}
-\contentsline {subsubsection}{\numberline {8.1.1}Angular Dependency Injection}{7}
-\contentsline {subsection}{\numberline {8.2}Integration Testing}{7}
-\contentsline {subsection}{\numberline {8.3}System Testing}{7}
-\contentsline {subsection}{\numberline {8.4}User Acceptance Testing}{7}
-\contentsline {subsubsection}{\numberline {8.4.1}Email Correspondence}{7}
-\contentsline {section}{\numberline {9}Project Management}{7}
-\contentsline {subsection}{\numberline {9.1}Overview}{7}
-\contentsline {subsection}{\numberline {9.2}Roles}{7}
-\contentsline {section}{\numberline {10}Evaluation}{7}
+\contentsline {subsubsection}{\numberline {5.2.3}Fat Finger Errors}{8}
+\contentsline {section}{\numberline {6}Implementation}{9}
+\contentsline {subsection}{\numberline {6.1}Frontend}{9}
+\contentsline {subsection}{\numberline {6.2}Backend}{9}
+\contentsline {subsubsection}{\numberline {6.2.1}Parsing}{9}
+\contentsline {section}{\numberline {7}Iterations}{9}
+\contentsline {subsection}{\numberline {7.1}Iteration 1}{9}
+\contentsline {subsection}{\numberline {7.2}Iteration 2}{9}
+\contentsline {subsection}{\numberline {7.3}Iteration 3}{9}
+\contentsline {subsection}{\numberline {7.4}Iteration 4}{9}
+\contentsline {subsection}{\numberline {7.5}Iteration 5}{9}
+\contentsline {section}{\numberline {8}Testing}{9}
+\contentsline {subsection}{\numberline {8.1}Unit Testing}{9}
+\contentsline {subsubsection}{\numberline {8.1.1}Angular Dependency Injection}{9}
+\contentsline {subsection}{\numberline {8.2}Integration Testing}{9}
+\contentsline {subsection}{\numberline {8.3}System Testing}{9}
+\contentsline {subsection}{\numberline {8.4}User Acceptance Testing}{9}
+\contentsline {subsubsection}{\numberline {8.4.1}Email Correspondence}{9}
+\contentsline {section}{\numberline {9}Project Management}{9}
+\contentsline {subsection}{\numberline {9.1}Overview}{9}
+\contentsline {subsection}{\numberline {9.2}Roles}{9}
+\contentsline {section}{\numberline {10}Evaluation}{9}

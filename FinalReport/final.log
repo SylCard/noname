@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.12.24)  9 MAR 2017 15:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.12.24)  9 MAR 2017 17:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -255,26 +255,46 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 File: PumpDumpGraph.png Graphic file (type png)
  <use PumpDumpGraph.png>
 Package pdftex.def Info: PumpDumpGraph.png used on input line 108.
-(pdftex.def)             Requested size: 426.79134pt x 302.04378pt.
+(pdftex.def)             Requested size: 369.88582pt x 261.76994pt.
  <PDpseudo.png, id=26, 862.22125pt x 725.71124pt>
 File: PDpseudo.png Graphic file (type png)
  <use PDpseudo.png>
 Package pdftex.def Info: PDpseudo.png used on input line 118.
-(pdftex.def)             Requested size: 426.79134pt x 359.21156pt.
- [5 <./PumpDumpGraph.png>] [6 <./PDpseudo.png>] [7] (./final.aux) ) 
+(pdftex.def)             Requested size: 369.88582pt x 311.31891pt.
+ [5 <./PumpDumpGraph.png>] <VSGraph.png, id=31, 550.055pt x 489.83pt>
+File: VSGraph.png Graphic file (type png)
+ <use VSGraph.png>
+Package pdftex.def Info: VSGraph.png used on input line 127.
+(pdftex.def)             Requested size: 369.88582pt x 329.3952pt.
+ <VSpseudo.png, id=32, 855.195pt x 327.2225pt>
+File: VSpseudo.png Graphic file (type png)
+ <use VSpseudo.png>
+Package pdftex.def Info: VSpseudo.png used on input line 133.
+(pdftex.def)             Requested size: 426.79134pt x 163.30127pt.
+ [6 <./PDpseudo.png>] [7 <./VSGraph.png> <./VSpseudo.png>] <FFprice.png, id=43, 849.1725pt x 344.28625pt>
+File: FFprice.png Graphic file (type png)
+ <use FFprice.png>
+Package pdftex.def Info: FFprice.png used on input line 149.
+(pdftex.def)             Requested size: 396.76001pt x 160.8637pt.
+ <FFvolume.png, id=44, 831.105pt x 343.2825pt>
+File: FFvolume.png Graphic file (type png)
+ <use FFvolume.png>
+Package pdftex.def Info: FFvolume.png used on input line 153.
+(pdftex.def)             Requested size: 396.76001pt x 163.878pt.
+ [8 <./FFprice.png> <./FFvolume.png>] [9] (./final.aux) ) 
 Here is how much of TeX's memory you used:
- 4152 strings out of 493089
- 62141 string characters out of 6134841
- 153470 words of memory out of 5000000
- 7596 multiletter control sequences out of 15000+600000
+ 4174 strings out of 493089
+ 62453 string characters out of 6134841
+ 153486 words of memory out of 5000000
+ 7614 multiletter control sequences out of 15000+600000
  8808 words of font info for 31 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,6n,37p,238b,244s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 47i,8n,37p,280b,274s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on final.pdf (8 pages, 515052 bytes).
+Output written on final.pdf (10 pages, 786946 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
- 33 compressed objects within 1 object stream
+ 68 PDF objects out of 1000 (max. 8388607)
+ 37 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

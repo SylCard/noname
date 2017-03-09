@@ -105,24 +105,57 @@
     \end{itemize}
     \begin{figure}[H]
     \centering
-    \includegraphics[width=150mm]{PumpDumpGraph.png}
+    \includegraphics[width=130mm]{PumpDumpGraph.png}
     \caption{Pump \& Dump Example}
     \label{1}
     \end{figure}
     By identifying the traits of a Pump \& Dump, we were able to build the above model in fig:\ref{1}.
-    We found it more intuitive to design an algorithm that would first detect a \textbf{dumping state}, then look back
-    on historical data to detect whether a \textbf{pumping state} had occured before the drop in stock value. Below in fig:\ref{2} is the
+    We found it more intuitive to design an algorithm that would first detect a dumping state, then look back
+    on historical data to detect whether a pumping state had occured before the drop in stock value. Below in fig:\ref{2} is the
     pseudocode that would later be transformed into Java code.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=150mm]{PDpseudo.png}
+    \includegraphics[width=130mm]{PDpseudo.png}
     \caption{Pump \& Dump Pseudocode}
     \label{2}
     \end{figure}
     \subsubsection{Volume Spike}
-    To detect volume spikes, we had to keep track of the amount of stocks bought within a certain time interval and compare it to the consequent interval.
-    
+    To detect volume spikes, the algorithm keeps track of the amount of stocks bought within a certain time interval and calculates a volume moving average (VMA) that will be used as a comparison for the consequent interval. Therefore, if the total stock
+    volume in a period greatly surpasses that of the previous VMA by a user-controlled threshold. The program will flag a volume spike, as seen below in fig:\ref{4}. The threshold level would then adjust it's sensitivity to spikes depending on the user's feedback.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=130mm]{VSGraph.png}
+    \caption{Volume Spike Example}
+    \label{3}
+    \end{figure}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=150mm]{VSpseudo.png}
+    \caption{Volume Spike Pseudocode}
+    \label{4}
+    \end{figure}
+    \newpage
     \subsubsection{Fat Finger Errors}
+    When detecting fat finger errors we decided to separate the error into two types:
+    \begin{itemize}
+      \item Fat Finger \textbf{Price Error}, which will detect fat finger errors related to the price of a stock transaction
+      \item Fat Finger \textbf{Volume Error}, which will detect fat finger errors related to the size of a stock transaction
+    \end{itemize}
+    This is because it is possible for the Price or Size of a transaction to be extremely large compared to the average due to a typing fat finger error.
+    The algorithm we developed to detect fat finger errors, uses orders of magnitude to determine whether the price or volume is extremely larger or smaller than the average (in factors of ten).
+    \begin{figure}[H]
+      \centering
+      \begin{minipage}[H]{0.9\textwidth}
+        \includegraphics[width=\textwidth]{FFprice.png}
+        \caption{Fat Finger Price Pseudocode}
+      \end{minipage}
+      \begin{minipage}[H]{0.9\textwidth}
+        \includegraphics[width=\textwidth]{FFvolume.png}
+        \caption{Fat Finger Volume Pseudocode}
+      \end{minipage}
+    \end{figure}
+
+
 \newpage
 \section{Implementation}
   \subsection{Frontend}
