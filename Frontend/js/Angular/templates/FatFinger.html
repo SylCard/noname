@@ -1,8 +1,8 @@
 <div class="row fatfinger" id="{{ info.AnomalyID }}">
-    <div class="col-sm-2">
+    <div class="col-sm-1">
 
     </div>
-    <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
+    <div class="col-sm-10" style="border:2px solid black; border-radius:25px;">
         <h1><strong>{{ info.error }} Finger Error</strong>, Symbol: {{ info.stock.symbol }}, Date: {{ info.stock.time | date:'MMM/dd' }}
             <a id="dropdown{{ info.AnomalyID }}" href="#" ng-click="drop({id: info.AnomalyID})"><span class="glyphicon glyphicon-menu-down"></span></a> </h1>
         <div class="dropdownwrap{{ info.AnomalyID }}" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-1">
 
     </div>
 
