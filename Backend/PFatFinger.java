@@ -31,12 +31,12 @@ public class PFatFinger implements ICheck {
     }
 
     public Anomaly check(Stock stock, Client client) {
-        if( (stock.getPrice() > lastPma*(Math.pow(10, n))) && (lastPma != 0)) {
+        if( ((stock.getPrice() > lastPma*(Math.pow(10, n))) || (stock.getPrice() < lastPma*(Math.pow(10, 0-n))))&& (lastPma != 0)) {
             //there has been a price ff error
             //calculate severity
             severity = (int) ((stock.getPrice() * 100) / lastPma);
             //send anomaly
-            FFAnomaly anomaly = new FFAnomaly(client.getCounter(), channel, stock, severity, lastPma, 1);
+            FFAnomaly anomaly = new FFAnomaly(client.getCounter(), channel, stock, severity, lastPma, "Price");
             return anomaly;
         } else {
             return null;
