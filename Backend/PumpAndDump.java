@@ -29,17 +29,14 @@ class PumpAndDump implements ICheck{
 		period = time - (time % periodLength) + periodLength;
 
 		prices = new LinkedList<Double>() ;
-		prices.add(1.0);
+		prices.add(stock.getPrice());
 
 		flag = true;
 		startFlag = true;
-
 	}
 
 
 	public void update(Stock stock){
-
-
 		try {
 			/*if time within period add to current price list*/
 			if (stock.getTime() < period) {
@@ -65,6 +62,7 @@ class PumpAndDump implements ICheck{
 				prices.add(1.0);
 				period += periodLength;
 				flag = false;
+				System.out.println("flag set to false");
 				if (prices.size() > k) {
 					prices.removeFirst();
 					pmas.removeFirst();
@@ -79,6 +77,7 @@ class PumpAndDump implements ICheck{
 
 	public Anomaly check(Stock stock, Client client) {
 		if(flag || pmas.size() < 60) {
+			System.out.println("Pmas size is: " + pmas.size());
 			return null;
 		}
 		else { // there is a sufficient amount of averages to analyse for a pump and dump
