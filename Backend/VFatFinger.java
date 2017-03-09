@@ -24,12 +24,12 @@ public class VFatFinger implements ICheck {
     }
 
     public Anomaly check(Stock stock, Client client) {
-        if( (stock.getSize() > lastVma*(Math.pow(10, n))) || ( (stock.getSize() < lastVma+(Math.pow(10, 0-n))) ) ) {
+        if( (stock.getSize() > lastVma*(Math.pow(10, n))) ) {
             //then there has been a price ff error
             //calculate severity
             double severity = (stock.getSize() * 100) / lastVma;
             //send anomaly
-            FFAnomaly anomaly = new FFAnomaly(client.getCounter(), channel, stock, severity, lastVma, 0);
+            FFAnomaly anomaly = new FFAnomaly(client.getCounter(), channel, stock, severity, lastVma, "Volume");
             return anomaly;
         } else {
             return null;
