@@ -27,7 +27,7 @@ app.controller('mainController', ['$scope', function ($scope, $window) {
                 dates[i] = new Date(dates[i - 1].getTime() + info.periodLen);
             }
             var times = [];
-            for (i = 0; i < 7; i++) {
+            for (i = 0; i < info.yaxisPrice.length; i++) {
                 if (dates[i].getMinutes() < 10) {
                     times[i] = dates[i].getHours() + ":0" + dates[i].getMinutes() + ":" + dates[i].getSeconds();
                 } else {
@@ -90,7 +90,7 @@ app.controller('mainController', ['$scope', function ($scope, $window) {
                 alert("date " + i + " is: " + dates[i]);
             }
             var times = [];
-            for (i = 0; i < 7; i++) {
+            for (i = 0; i < info.yaxis1.length; i++) {
                 if (dates[i].getMinutes() < 10) {
                     times[i] = dates[i].getHours() + ":0" + dates[i].getMinutes() + ":" + dates[i].getSeconds();
                 } else {
