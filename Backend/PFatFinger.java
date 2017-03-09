@@ -3,32 +3,40 @@ import java.lang.Math;
 public class PFatFinger implements ICheck {
     double pma;
     double lastPma;
+    int severity;
     double a = 0.18;   //effect of past average on vma
-    int n = 2;      //sensitivity of error detection
+    double n = 1.0;      //sensitivity of error detection
     int channel;    //historical/live data - whichever the check is for
+    boolean flag;
 
     public PFatFinger(int channel) {
         pma = 0;
         lastPma = 0;
         this.channel = channel;
+	flag = true;
     }
 
     public void update(Stock stock) {
         try {
-            lastPma = pma;  //save for check on data before this trade was considered
-            pma = ( a*stock.getPrice() ) + ( (1-a)*pma );    //calculate new average
+	    if (flag) {
+		pma = stock.getPrice();
+		flag = false;
+	    } else {
+                lastPma = pma;  //save for check on data before this trade was considered
+                pma = (int) Math.ceil(( a*stock.getPrice() ) + ( (1-a)*pma ));    //calculate new average
+	    }
         } catch( Exception e) {
             return;
         }
     }
 
     public Anomaly check(Stock stock, Client client) {
-        if( (stock.getPrice() > lastPma*(Math.pow(10, n))) || (stock.getPrice() < lastPma*(Math.pow(10, 0-n))) ) {
+        if( (stock.getPrice() > lastPma*(Math.pow(10, n))) && (lastPma != 0)) {
             //there has been a price ff error
             //calculate severity
-            double severity = (stock.getPrice() * 100) / lastPma;
+            severity = (int) ((stock.getPrice() * 100) / lastPma);
             //send anomaly
-            FFAnomaly anomaly = new FFAnomaly(client.getCounter(), channel, stock, severity, lastPma, "Price");
+            FFAnomaly anomaly = new FFAnomaly(client.getCounter(), channel, stock, severity, lastPma, 1);
             return anomaly;
         } else {
             return null;

@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-//connects to socket. Sends anomaly packet to Node.JS
 public class Client {
 	private Socket socket = null;
 	private String ip;
@@ -51,12 +50,11 @@ public class Client {
 	public String echo(String message) {
 		try {
 			PrintWriter out = new PrintWriter(getSocket().getOutputStream(), true);
-			//BufferedReader in = new BufferedReader(new InputStreamReader(getSocket().getInputStream()));
+			BufferedReader in = new BufferedReader(new InputStreamReader(getSocket().getInputStream()));
 
 			out.println(message);
-			//String returnStr = in.readLine();
-			//return returnStr;
-			return message;
+			String returnStr = in.readLine();
+			return returnStr;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

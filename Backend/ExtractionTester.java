@@ -11,17 +11,17 @@ class ExtractionTester {
 		Hashtable<String,ICheck[]> table = new Hashtable<String,ICheck[]>();			//TODO in future change ICheck to either LinkedList<ICheck> or ICheck[]
 		String symbol;
 
-		Connection conn = establishDatabase();		//get database connection
+		// Connection conn = establishDatabase();		//get database connection
 		Client sender = new Client("46.101.34.184", 6969);
 
 		if (args.length >= 3) {
 			channel = Integer.parseInt(args[2]);
 		}
 
-		if (args[0].equals("-view")) {				//prints out table contents TODO remove
-			showTable(conn);						
-			return;
-		}
+		// if (args[0].equals("-view")) {				//prints out table contents TODO remove
+		// 	showTable(conn);						
+		// 	return;
+		// }
 
 		//either find a method of running the schema in program or run it in the setup script
 
@@ -33,18 +33,22 @@ class ExtractionTester {
 				while (queue.size() > 0) {			//when the queue contains transactions pass them to analysis
 					stock = queue.removeFirst();	
 
-					insertStock(stock, conn);						//inserts the stock into the sql table
+					// insertStock(stock, conn);						//inserts the stock into the sql table
 					symbol = stock.getSymbol();
 					if (table.containsKey(symbol)) {				//if symbol already has check object use it
-						Array(table.get(symbol), 0).update(stock);			//TODO fetch object so this is only called once
-						Array(table.get(symbol), 1).update(stock);
-						Array(table.get(symbol), 2).update(stock);
+						table.get(symbol)[0].update(stock);			//TODO fetch object so this is only called once
+						table.get(symbol)[1].update(stock);
+						table.get(symbol)[2].update(stock);
+						table.get(symbol)[3].update(stock);
 
-						objectParser(Array.get(table.get(symbol), 0).check(stock, sender), sender);
-						objectParser(Array.get(table.get(symbol), 1).check(stock, sender), sender);
-						objectParser(Array.get(table.get(symbol), 2).check(stock, sender), sender);						
+						objectParser(table.get(symbol)[0].check(stock, sender), sender);
+						objectParser(table.get(symbol)[1].check(stock, sender), sender);
+						objectParser(table.get(symbol)[2].check(stock, sender), sender);	
+						objectParser(table.get(symbol)[3].check(stock, sender), sender);					
 					} else {										//if symbol has no check object create one
-						table.put(symbol, new ICheck[]{ new VolumeSpike(stock, channel), new VFatFinger(channel), new PFatFinger(channel)) });								
+						table.put(symbol, new ICheck[] { new VolumeSpike(stock, channel), new VFatFinger(channel), new PFatFinger(channel), new PumpAndDump(stock, channel)});
+						table.get(symbol)[1].update(stock);
+						table.get(symbol)[2].update(stock);							
 					}
 					//TODO make system work for sectors as well as symbols
 
@@ -146,23 +150,76 @@ class ExtractionTester {
 			String out = vsParser((VSAnomaly)anomaly);
 			System.out.println(out);
 			sender.sendMessage(out);
+		} else if (anomaly instanceof FFAnomaly) {
+			String out = ffParser((FFAnomaly)anomaly);
+			System.out.println(out);
+			sender.sendMessage(out);
+		} else if (anomaly instanceof PDAnomaly) {
+			String out = pdParser((PDAnomaly)anomaly);
+			System.out.println(out);
+			sender.sendMessage(out);
 		}
 	}
 
 	private static String vsParser(VSAnomaly anomaly) {
 		String jsonString = "{";
-		jsonString += "\"AnomalyId\":" + anomaly.anomalyID + ",";
+		jsonString += "\"AnomalyID\":" + anomaly.anomalyID + ",";
 		jsonString += "\"mode\":" + anomaly.channel + ",";
 		jsonString += "\"type\":\"" + anomaly.type + "\",";
 		jsonString += "\"symbol\":\"" + anomaly.symbol + "\",";
-		jsonString += "\"y-axis1\":" + Arrays.toString(anomaly.vmas) + ",";
-		jsonString += "\"y-axis2\":" + Arrays.toString(anomaly.volumes) + ",";
-		jsonString += "\"time_begin\":" + anomaly.tStart + ",";
-		jsonString += "\"period_len\":" + anomaly.periodLength + ",";
+		jsonString += "\"yaxis1\":" + Arrays.toString(anomaly.vmas) + ",";
+		jsonString += "\"yaxis2\":" + Arrays.toString(anomaly.volumes) + ",";
+		jsonString += "\"timeBegin\":" + anomaly.tStart + ",";
+		jsonString += "\"periodLen\":" + anomaly.periodLength + ",";
 		jsonString += "\"severity\":" + anomaly.severity;
+		jsonString += "}";
+		return jsonString;
+	}
+
+	private static String ffParser(FFAnomaly anomaly) {
+		String jsonString = "{";
+		jsonString += "\"AnomalyID\":" + anomaly.anomalyID + ",";
+		jsonString += "\"mode\":" + anomaly.channel + ",";
+		jsonString += "\"type\":\"" + anomaly.type + "\",";
+		jsonString += "\"stock\":{";
+		jsonString += "\"time\":" + anomaly.stock.getTime() + ",";
+		jsonString += "\"buyer\":\"" + anomaly.stock.getBuyer() + "\",";
+		jsonString += "\"seller\":\"" + anomaly.stock.getSeller() + "\",";
+		jsonString += "\"price\":" + anomaly.stock.getPrice() + ",";
+		jsonString += "\"size\":" + anomaly.stock.getSize() + ",";
+		jsonString += "\"currency\":\"" + anomaly.stock.getCurrency() + "\",";
+		jsonString += "\"symbol\":\"" + anomaly.stock.getSymbol() + "\",";
+		jsonString += "\"sector\":\"" + anomaly.stock.getSector() + "\",";
+		jsonString += "\"bid\":" + anomaly.stock.getBid() + ",";
+		jsonString += "\"ask\":" + anomaly.stock.getAsk();
+		jsonString += "},";
+		jsonString += "\"error\":" + anomaly.error + ",";
+		jsonString += "\"rma\":" + anomaly.rma + ",";
+		jsonString += "\"severity\":" + anomaly.severity;
+		jsonString += "}";
+		return jsonString;
+	}
+
+	private static String pdParser(PDAnomaly anomaly) {
+		String jsonString = "{";
+		jsonString += "\"AnomalyID\":" + anomaly.anomalyID + ",";
+		jsonString += "\"mode\":" + anomaly.channel + ",";
+		jsonString += "\"type\":\"" + anomaly.type + "\",";
+		jsonString += "\"symbol\":\"" + anomaly.symbol + "\",";
+		jsonString += "\"pmas\":" + Arrays.toString(anomaly.pmas) + ",";
+		jsonString += "\"tStart\":" + anomaly.tStart + ",";
+		jsonString += "\"periodLength\":" + anomaly.periodLength;
 		jsonString += "}";
 		return jsonString;
 	}
 
 
 }
+
+// this.anomalyID = anomalyID;
+//         this.channel = channel;
+//         this.type = "FatFinger";
+//         this.stock = stock;
+//         this.severity = severity;
+//         this.rma = rma;
+//         this.error = error;
