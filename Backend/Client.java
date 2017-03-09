@@ -9,22 +9,9 @@ public class Client {
 	private Socket socket = null;
 	private String ip;
 	private int port;
-	private static int counter;
+	private static int counter;			//used to calculate AnomalyIDs for each channel
 
-	// public static void main(String[] args) throws UnknownHostException, IOException, ClassNotFoundException {
-	// 	Client client = new Client();
-
-	// 	String ip = "46.101.34.184";
-	// 	int port = 6969;
-	// 	client.socketConnect(ip, port);
-
-	// 	String message = "message123";
-
-	// 	System.out.println("Sending: " + message);
-	// 	String returnStr = client.echo(message);
-	// 	System.out.println("Receiving: " + returnStr);
-	// }
-
+	//set up connection service
 	public Client(String ip, int port) throws UnknownHostException, IOException, ClassNotFoundException {
 		this.ip = ip;
 		this.port = port;
@@ -32,36 +19,36 @@ public class Client {
 		counter = 0;
 	}
 
+	//used to retrieve AnomalyID
 	public static int getCounter() {
 		return counter;
 	}
 
 	public void sendMessage(String message) {
 		this.echo(message);
-		counter++;
+		counter++;			//ensures the ID is incremented each time an anomaly is sent
 	}
 
+	//establishes socket
 	private void socketConnect(String ip, int port) throws UnknownHostException, IOException {
-		System.out.println("[Connecting to socket...]");
 		this.socket = new Socket(ip, port);
-		System.out.println("-");
 	}
 
-	public String echo(String message) {
+	//sends message through socket
+	private void echo(String message) {
 		try {
-			PrintWriter out = new PrintWriter(getSocket().getOutputStream(), true);
-			BufferedReader in = new BufferedReader(new InputStreamReader(getSocket().getInputStream()));
+			PrintWriter out = new PrintWriter(getSocket().getOutputStream(), true); //sets of data stream on socket
 
-			out.println(message);
-			String returnStr = in.readLine();
-			return returnStr;
+			out.println(message);		//prints to socket data stream
+			return;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		return null;
+		return;
 	}
 
+	//used to retrive socket
 	private Socket getSocket() {
 		return socket;
 	}
