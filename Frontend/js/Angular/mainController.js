@@ -83,9 +83,11 @@ app.controller('mainController', ['$scope', function ($scope, $window) {
         if (!info.plotted) {
             var dates = [];
             dates[0] = new Date(info.timeBegin * 1000);
+            alert("date 0 is: " + dates[0]);
 
             for (i = 1; i < info.yaxis1.length; i++) {
                 dates[i] = new Date(dates[i - 1].getTime() + info.periodLen);
+                alert("date " + i + " is: " + dates[i]);
             }
             var times = [];
             for (i = 0; i < 7; i++) {
