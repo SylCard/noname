@@ -1,9 +1,9 @@
 <div class="row vol-spike" id="{{ info.AnomalyID }}">
-    <div class="col-sm-2">
+    <div class="col-sm-1">
 
     </div>
-    <div class="col-sm-8" style="border:2px solid black; border-radius:25px;">
-        <h1>Volume Spike: {{ info.symbol }}, Date: {{ info.timeBegin | date:'MMM/dd' }} <a ng-attr-id="dropdownwrap{{ info.AnomalyID }}"
+    <div class="col-sm-10" style="border:2px solid black; border-radius:25px;">
+        <h1><strong>Volume Spike</strong>, Symbol: {{ info.symbol }}, Date: {{ info.timeBegin | date:'MMM/dd' }} <a class="fa-arrow-down" onclick="if ( $(this).hasClass('fa-arrow-down') ) {$(this).removeClass('fa-arrow-down');$(this).addClass('fa-arrow-down-open');} else {$(this).removeClass('fa-arrow-down-open');$(this).addClass('fa-arrow-down');}" id="dropdown{{ info.AnomalyID }}" ng-attr-id="dropdownwrap{{ info.AnomalyID }}"
                 href="#" style="float: right" ng-click="drop({id: info.AnomalyID})"><span class="glyphicon glyphicon-menu-down"></span></a></h1>
         <div class="dropdownwrap{{ info.AnomalyID }}" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
             <ul>
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-1">
 
         </div>
     </div>
