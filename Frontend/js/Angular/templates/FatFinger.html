@@ -15,7 +15,7 @@
                 <li>Volume: {{ info.stock.size }}</li>
                 <li><strong>Expected {{ info.error }}:</strong> {{ info.rma }}
                 <li>Time: {{ info.stock.time | date:'HH:mm:ss' }}</li>
-                <li>Date: {{ info.stock.time | date: 'MMM/dd' }}</li>
+                <!--<li>Date: {{ info.stock.time | date: 'MMM/dd' }}</li>-->
             </ul>
             <div class="buttons" style="margin-bottom:20px;">
                 <button onclick="if (currentPage == 'live') {deleteLiveAnomaly($(this).closest('.row').attr('id'));} else if (currentPage == 'historical') {deleteHistoricalAnomaly($(this).closest('.row').attr('id'));}" type="button" class="btn btn-success btn-lg custom-button">
