@@ -18,10 +18,10 @@
                 <li>Date: {{ info.stock.time | date: 'MMM/dd' }}</li>
             </ul>
             <div class="buttons" style="margin-bottom:20px;">
-                <button type="button" class="btn btn-success btn-lg custom-button">
+                <button onclick="if (currentPage == 'live') {deleteLiveAnomaly($(this).closest('.row').attr('id'));} else if (currentPage == 'historical') {deleteHistoricalAnomaly($(this).closest('.row').attr('id'));}" type="button" class="btn btn-success btn-lg custom-button">
                     <span class="glyphicon glyphicon-ok"></span>
                 </button>
-                <button type="button" class="btn btn-danger btn-lg custom-button">
+                <button onclick="if (currentPage == 'live') {deleteLiveAnomaly($(this).closest('.row').attr('id'));} else if (currentPage == 'historical') {deleteHistoricalAnomaly($(this).closest('.row').attr('id'));}" type="button" class="btn btn-danger btn-lg custom-button">
                     <span class="glyphicon glyphicon-remove"></span>
                 </button>
             </div>

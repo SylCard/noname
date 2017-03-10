@@ -11,14 +11,17 @@
             </ul>
             <div class="drilldownwrap{{ info.AnomalyID }}" style="display:none;">
                 <!-- graph div -->
+                <p>The graph below shows trade volumes in periods around the detected Volume Spike.
+                    Each point represents the summed volume of trades in a {{ info.periodLen | date:'HH:mm:ss' }} time span, starting at the displayed time for each point.
+                    The sudden peak in the graph is the Volume Spike detected, which is a suddent increase in trade volume in a time span.</p>
                 <div id="volumespike{{ info.AnomalyID }}" style="height:400px; width:600px;"></div>
             </div>
                 <button id="drilldown{{ info.AnomalyID }}" type="button" name="drillDown" class="btn btn-warning btn-lg" ng-click="drill({id: info.AnomalyID}); plot({info: info})">Drill Down</button>
                 <div class="buttons">
-                    <button type="button" name="true" class="btn btn-success btn-lg custom-button">
+                    <button onclick="if (currentPage == 'live') {deleteLiveAnomaly($(this).closest('.row').attr('id'));} else if (currentPage == 'historical') {deleteHistoricalAnomaly($(this).closest('.row').attr('id'));}" type="button" name="true" class="btn btn-success btn-lg custom-button">
                                   <span class="glyphicon glyphicon-ok"></span>
                          </button>
-                    <button type="button" name="false" class="btn btn-danger btn-lg custom-button">
+                    <button onclick="if (currentPage == 'live') {deleteLiveAnomaly($(this).closest('.row').attr('id'));} else if (currentPage == 'historical') {deleteHistoricalAnomaly($(this).closest('.row').attr('id'));}" type="button" name="false" class="btn btn-danger btn-lg custom-button">
                                   <span class="glyphicon glyphicon-remove"></span>
                           </button>
                 </div>

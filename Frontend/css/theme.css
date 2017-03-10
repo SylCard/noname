@@ -2,21 +2,56 @@ body {
 
 }
 
+.fa-arrow-down{
+	transform: rotate(0deg);
+}
+
+.fa-arrow-down-open{
+	transform: rotate(180deg);
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 90%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: 0;
+    margin-right: auto;
+    padding-left: 0;
+}
+
+body canvas {
+    position: absolute;
+    z-index: -100;
+    background-color: #0f499a;
+}
 
 .navbar-custom {
     background-color: #08469c;
     margin-bottom: 0;
     border: 0;
-    font-size: 14px !important;
     border-radius: 0;
     font-family: 'Inconsolata', sans-serif;
     color: white;
 }
 
+.navbar-custom:not(.navbar-brand) {
+    font-size: 14px !important;
+}
 
-.navbar-nav li a:hover, .navbar-nav li.active a {
+
+.navbar-nav li a:hover, .navbar-nav li.active a, .navbar-brand:hover {
 
     background-color: white !important;
+    color: #08469c;
 
 }
 

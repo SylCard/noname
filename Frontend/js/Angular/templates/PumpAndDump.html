@@ -7,21 +7,23 @@
             <a class="fa-arrow-down" onclick="if ( $(this).hasClass('fa-arrow-down') ) {$(this).removeClass('fa-arrow-down');$(this).addClass('fa-arrow-down-open');} else {$(this).removeClass('fa-arrow-down-open');$(this).addClass('fa-arrow-down');}" id="dropdown{{ info.AnomalyID }}" href="#" style="float: right" style="float: right" ng-click="drop({id: info.AnomalyID})"><span class="glyphicon glyphicon-menu-down"></span></a>
         </h1>
         <div class="dropdownwrap{{ info.AnomalyID }}" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
-            <h2>Perpetrator:{{ info.seller }}</h2>
             <ul>
                 <li>Time Begin: {{ info.timeBegin | date:'HH:mm:ss'}}</li>
             </ul>
             <div class="drilldownwrap{{ info.AnomalyID }}" style="display:none;">
                 <!-- graph div -->
+                <p>The graph below shows data before a detected Pump and Dump error, as well as a dumping state.
+                    This state is represented as a sudden drop in price, as a result of frantic selling.
+                    Expect this dumping state to be graphed towards the right-hand side of the plot area.
                 <div id="pumpdump{{ info.AnomalyID }}" style="height:400px; width:600px;"></div>
                 <!-- the id must be unique when being generated, along with inside the js above -->
             </div>
             <button id="drilldown{{ info.AnomalyID }}" type="button" name="drillDown" class="btn btn-warning btn-lg" ng-click="drill({id: info.AnomalyID}); plot({info: info})"> Drill Down</button>
             <div class="buttons">
-                <button type="button" name="true" class="btn btn-success btn-lg custom-button">
+                <button onclick="if (currentPage == 'live') {deleteLiveAnomaly($(this).closest('.row').attr('id'));} else if (currentPage == 'historical') {deleteHistoricalAnomaly($(this).closest('.row').attr('id'));}" type="button" name="true" class="btn btn-success btn-lg custom-button">
                                 <span class="glyphicon glyphicon-ok"></span>
                         </button>
-                <button type="button" name="false" class="btn btn-danger btn-lg custom-button">
+                <button onclick="if (currentPage == 'live') {deleteLiveAnomaly($(this).closest('.row').attr('id'));} else if (currentPage == 'historical') {deleteHistoricalAnomaly($(this).closest('.row').attr('id'));}" type="button" name="false" class="btn btn-danger btn-lg custom-button">
                                 <span class="glyphicon glyphicon-remove"></span>
                         </button>
             </div>

@@ -95,6 +95,20 @@ public class DataExtractor {
             }
             in.close();
             //TODO find a method of exit when file end
+			
+			while (true) {
+				synchronized (queue) {
+					if (queue.size() == 0) {
+						System.exit(0);
+					}
+				}
+				try {
+					    Thread.sleep(200);
+				} catch(InterruptedException ex) {
+					    Thread.currentThread().interrupt();
+				}
+			}
+
         } catch (FileNotFoundException e) {
             System.out.println("Error: Cannot find file: " + fileName);
             return;

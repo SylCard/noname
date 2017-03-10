@@ -10,8 +10,7 @@ class ExtractionTester {
 		Hashtable<String,ICheck[]> table = new Hashtable<String,ICheck[]>();
 		String symbol;
 
-		// Connection conn = establishDatabase();		//get database connection
-		Client sender = new Client("46.101.34.184", 6969);
+		Client sender = new Client("127.0.0.1", 6969);
 
 		if (args.length >= 3) {			//if given a third argument sets channel to argument, otherwise channel = 0
 			channel = Integer.parseInt(args[2]);
@@ -97,7 +96,7 @@ class ExtractionTester {
 		jsonString += "\"bid\":" + anomaly.stock.getBid() + ",";
 		jsonString += "\"ask\":" + anomaly.stock.getAsk();
 		jsonString += "},";
-		jsonString += "\"error\":" + anomaly.error + ",";
+		jsonString += "\"error\":\"" + anomaly.error + "\",";
 		jsonString += "\"rma\":" + anomaly.rma + ",";
 		jsonString += "\"severity\":" + anomaly.severity;
 		jsonString += "}";
@@ -110,9 +109,9 @@ class ExtractionTester {
 		jsonString += "\"mode\":" + anomaly.channel + ",";
 		jsonString += "\"type\":\"" + anomaly.type + "\",";
 		jsonString += "\"symbol\":\"" + anomaly.symbol + "\",";
-		jsonString += "\"pmas\":" + Arrays.toString(anomaly.pmas) + ",";
-		jsonString += "\"tStart\":" + anomaly.tStart + ",";
-		jsonString += "\"periodLength\":" + anomaly.periodLength;
+		jsonString += "\"yaxisPrice\":" + Arrays.toString(anomaly.pmas) + ",";
+		jsonString += "\"timeBegin\":" + anomaly.tStart + ",";
+		jsonString += "\"periodLen\":" + anomaly.periodLength;
 		jsonString += "}";
 		return jsonString;
 	}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Spikes - Static File Anomalies</title>
+  <!-- Angular -->
+  <script src="js/angular.min.js"></script>
+  <!-- Socket.io -->
+  <script src="js/socket.io.min.js"></script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="js/jquery.min.js"></script>
+  <!-- Google fonts -->
+  <link href="css/Inconsolata.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <!-- CSS -->
+  <link href="css/theme.css" rel="stylesheet" />
+  <!-- Plotly JS Library -->
+  <script src="js/plotly-latest.min.js"></script>
+
+  <script src="js/init.js"></script>
+
+  <script src="js/socket.js"></script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="myPage" ng-app="spikeApp">
+
+    <!-- navigation bar -->
+    <nav class="navbar navbar-custom">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar icon-bar-custom"></span>
+            <span class="icon-bar icon-bar-custom"></span>
+            <span class="icon-bar icon-bar-custom"></span>
+          </button>
+                <a class="navbar-brand navbar-custom" href="/">Spikes</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a class="navbar-custom" href="analysis">Analysis</a></li>
+                    <li class="active"><a id="historicalTab" class="navbar-custom" href="static">Static Data File <span class="badge status">inactive</span></a></li>
+                    <li><a id="liveTab" class="navbar-custom" href="live">Live Stream <span class="badge status">inactive</span></a></li>
+                </ul>
+                <!--<ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="navbar-custom dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Past Anomalies <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Static File Anomalies</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Live Stream Anomalies</a></li>
+                      </ul>
+                    </li>
+                </ul>-->
+            </div>
+        </div>
+    </nav>
+
+    <!-- main page content -->
+    <div class="container" id="main" ng-controller="mainController">
+        <div class="row"><br></div>
+
+        <!-- Generated alerts: -->
+        <div ng-repeat="anomaly in anomalies | filter:{ mode: 0 }">
+            <alert-info drop='drop(id)' drill='drill(id)' plot='plot(info)' info="anomaly"></alert-info>
+        </div>
+
+    </div>
+
+    <script>
+      // this variable is need for syncing this page
+      var currentPage = 'historical';
+    </script>
+
+    <!-- Modules -->
+    <script src="js/Angular/spikeApp.js"></script>
+    <!-- Directives -->
+    <script src="js/Angular/alertInfo.js"></script>
+    <!-- Controllers -->
+    <script src="js/Angular/mainController.js"></script>
+    <!-- Chart JS Library -->
+    <script src="js/Chart.bundle.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
