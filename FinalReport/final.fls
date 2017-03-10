@@ -99,6 +99,8 @@ INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
 OUTPUT final.toc
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 INPUT node.png
 INPUT ./node.png
 INPUT ./node.png
@@ -111,8 +113,6 @@ INPUT ./home.png
 INPUT analysisTab.png
 INPUT ./analysisTab.png
 INPUT ./analysisTab.png
-INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
-INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 INPUT ui1.png
 INPUT ./ui1.png
 INPUT ./ui1.png

@@ -21,7 +21,7 @@
 \centering
 \vfill
 \vfill
-\includegraphics[width=7cm]{logo.png}
+\includegraphics[width=10cm]{logo.png}
 \vfill
 \vfill
 \thispagestyle{empty}
@@ -32,6 +32,12 @@
   Before using the application both NodeJS and Java JDK needs to be running on the server.
   These can be installed using the following terminal commands.
 	\subsection{Setup}
+    \subsubsection{Project Installation}
+    \begin{itemize}
+      \item cd /root
+      \item wget https://github.com/SylCard/noname/raw/master/Project.tgz
+      \item tar -xvzf Project.tgz
+    \end{itemize}
 		\subsubsection{Node}
     \begin{figure}[H]
     \centering
@@ -44,6 +50,12 @@
     \end{figure}
   \subsection{System Requirements}
   The only system requirement is that you must be logged in as root user on Debian 8.
+  \subsection{Running }
+  \begin{itemize}
+    \item cd /root
+    \item cd /root/Project/Webserver
+    \item node server.js
+  \end{itemize}
 \section{User Guide}
   \subsection{Home Page}
   After completing the installation phase, the application will be ready to use. The landing page will look like
@@ -70,7 +82,7 @@
   \subsection{Live Stream tab/Historical Data tab}
   When analysis is started, anomalies will start to be detected and generated in the respective tab, each anomaly that is detected will appear as an alert box on the page.
   Alerts contain only crucial data such as; Type of Anomaly, Symbol, Date and a drop down arrow that leads to more specific data.
-  Volume spikes and price manipulation alerts will have a drill down button that generates a graph surronding displaying the suspicous data.
+  Volume spikes and price manipulation alerts will have a drill down button that generates a graph displaying the suspicous data.
 \section{Research}
   After the analysis and design of the project, our software development team had developed a stronger idea
   of the technologies that would be used to design the system. This section further expands on the decisions and
@@ -78,7 +90,7 @@
   \subsection{Front-end}
   We decided as a whole group quite early that the whole application would be web-based rather than a desktop app. This would
   increase the accessibility of the application being cross-browser compatible and mobile friendly. If the client integrated a sufficient
-  security system, the system could be accessed from anywhere with a secure internet connection.\newline
+  level of security, the system could be accessed from anywhere with a secure internet connection.\newline
   The \textbf{AngularJS} framework was used to build the frontend as planned. We considered other JavaScript frameworks,
   such as \textbf{React}, however we felt that AngularJS was the better choice being a full-fledged MVC (Model-View-Controller) framework.
   As our system is a single page application (SPA) that will update dynamically, AngularJS became a natural choice for our developers.
@@ -94,14 +106,14 @@
     \item PlotlyJS is known for use in financial analytics and supports a variety of graphs e.g. candlestick, boxplots
     \item Uses WebGL technology for graph rendering with a speed that surpasses many competitors
     \item Provides the option to export the rendered graphs as PNG files for further inspection if needed
-    \item Allows the zooming into of graphs, allowing the user to further inspect specific areas of the graph
+    \item Allows zooming in on graphs, allowing the user to further inspect specific areas of the graph
   \end{itemize}
   \subsection{Back-end}
     \subsubsection{Server-Side}
     Node.js was used as our interface between the frontend and the Java backend using the Express framework.
     This decision was made by the Back-end developers built on their exisiting skills with JavaScript. Node is extremely fast,
-    compiling JavaScript code directly into machine code using Google's V8 engine, this means when facing large volumes of data
-    the system will stay responsive due to the way Node handles concurrency. The modules and templates written in node can be easily
+    compiling JavaScript code directly into machine code using Google's V8 engine. This means when facing large volumes of data
+    the system will stay responsive. The modules and templates written in node can be easily
     reused throughout the serverside, thus reducing the size of our application and chance of bugs occuring.
     \newline
     Other popular server-side-scripts were considered such as Django and Ruby on Rails but given the unfamiliarity and time
@@ -113,14 +125,14 @@
     \newline
     Despite this, if the system relied on the database too heavily, a performance bottleneck would occur. Thus, making our system slower and less responsive.
     Our developer's countermeasure to this was to cache the data within Java's abstract data structures and storing data for a certain amount
-    of time until the oldest data would be useful in further algorithmic calculations.
+    of time until the oldest data would be useless in further algorithmic calculations.
     \newline
     Once the Back-end developers had come to a decision. It was then agreed between the whole group to run the system without a database, thus avoiding
     any bottlenecks and creating a multi-threaded application with minimal lag.
 \section{Design}
   \subsection{User Interface}
          The main focus of the user interface was to provide a view so simplistic and natural that the client would not even consider using the provided manual. After sending the mock UI design
-         to the client and received positive feedback, the front-end team decided to use the mockups as a guidline.\newline
+         to the client, we received positive feedback. Therefore, the front-end team decided to use the mockups as a guidline.\newline
          The color scheme of the user interface primarily uses a familiar but refreshing blue because it provides a contrast that does not strain the eye and draws the visual attention of the user.
          The font size used throughout the interface follows the universal usability principles such that the more important the information is the larger the font. Therefore, the larger text is scanned
          and smaller text is read more carefully. Also, the separation of functions onto individual tabs, prevents the user from being overwhelmed with information.
@@ -156,7 +168,7 @@
     \end{figure}
     \subsubsection{Volume Spike}
     To detect volume spikes, the algorithm keeps track of the amount of stocks bought within a certain time interval and calculates a volume moving average (VMA) that will be used as a comparison for the consequent interval. Therefore, if the total stock
-    volume in a period greatly surpasses that of the previous VMA by a user-controlled threshold. The program will flag a volume spike, as seen below in fig:6. The threshold level would then adjust it's sensitivity to spikes depending on the user's feedback.
+    volume in a period greatly surpasses that of the previous VMA by a user-controlled threshold the program will flag a volume spike, as seen below in fig:6. The threshold level would then adjust it's sensitivity to spikes depending on the user's feedback.
     \begin{figure}[H]
     \centering
     \includegraphics[width=80mm]{VSGraph.png}
@@ -175,7 +187,7 @@
       \item Fat Finger \textbf{Volume Error}, which will detect fat finger errors related to the size of a stock transaction
     \end{itemize}
     This is because it is possible for the Price or Size of a transaction to be extremely large compared to the average due to a typing fat finger error.
-    The algorithm we developed to detect fat finger errors, uses orders of magnitude to determine whether the price or volume is extremely larger or smallerf than the average (in factors of ten).
+    The algorithm we developed to detect fat finger errors, uses orders of magnitude to determine whether the price or volume is extremely larger or smaller than the average (in factors of ten).
     \begin{figure}[H]
       \centering
       \begin{minipage}{0.4\textwidth}
@@ -190,14 +202,14 @@
 \section{Implementation}
   \subsection{Frontend}
   The front end parsing and displaying of anomaly data is predominantly performed using AngularJS, PlotlyJS and Socket.io.
-  The CSS framework Bootstrapa was used to design the UI and make it responsive on various platforms.
+  The CSS framework Bootstrap was used to design the UI and make it responsive on various platforms.
   All data sent by the back end server follows a strict interface to guarantee the proper generation of alerts on the user’s screen. An AngularJS module stores a buffer of anomaly data packages.
   Once these anomalies arrive, they are picked up from the module buffer by an AngularJS controller. This controller identifies anomaly types and uses a predefined HTML template to generate the website elements.
   The templates use AngularJS expressions as placeholders for specific anomaly data (e.g. stock symbols, time) as well as functions which call different front end components, such as graph charting functions.
-  Graphs are generated with plotly using an array of Y-axis Values and the JS will calculate the X-axis values by converting the initial epoch value, and using an interval length to calculate the rest.
+  Graphs are generated with PlotlyJS using an array of Y-axis Values and the JS will calculate the X-axis values by converting the initial epoch value, and using an interval length to calculate the rest.
   \subsection{Backend}
   The back end consists entirely of a java program, which is formed of several objects, for extraction, analysis and sending JSON to the front end.
-  The program is run through a central control object, which takes arguments to decide data source(file or stream) and then starts the relevant extraction thread. As the thread is running the controller checks the queue, and for each object in the queue the symbol is checked, then the relevant checks occur on that symbol via an array of check objects stored in a hash table(by symbol).
+  The program is run through a central control object, which takes arguments to decide data source(file or stream) and then starts the relevant extraction thread. As the thread is running the controller checks a queue of, and for each object in the queue the symbol is checked, then the relevant checks occur on that symbol via an array of check objects stored in a hash table(by symbol).
   Each array contains 4 check objects: one for volume spikes, two for fat fingers and one for pump \& dump. All check objects implement the ICheck interface, which ensures that other check objects can be made and used with the system in future.
   When a check object detects an anomaly, it returns an anomaly object specific to the anomaly (an abstract class allows for generic methods to be used on this, again allowing for future additions) these anomaly objects are then picked up by the controller parsed into JSON and sent through a socket to the front end. Unfortunately, due to several issues being encountered with multiple generic libraries for JSON conversion, the conversion has been hardcoded.
   However due to the modular approach taken, this issue is minor and should a library be made to work it could be easily implemented without altering the body of the program in any way.
@@ -227,7 +239,7 @@
   \caption{Development of alert boxes}
   \end{figure}
   In the second sprint cycle. We implemented the drop down arrow on the alert boxes so that design resembled the mockup more. We decided that the type of anomaly, symbol and date were the most important details regarding an anomaly, so these details were left outside of the drop down.
-  It was also decided in the sprint cycle review meeting that Chart.js was insufficient to show the necessary data, instead Plotly.JS was used in its place as it provides much more features and an extensive range of graph types.
+  It was also decided in the sprint cycle review meeting that Chart.js was insufficient to show the necessary data, instead PlotlyJS was used in its place as it provides much more features and an extensive range of graph types.
   The ‘Drill Down’ button was implemented for volume spike and pump \& dump, when clicked it would render a graph which would provide a better analysis of the anomaly.
   \subsection{Sprint Cycle 3}
   \begin{figure}[H]
@@ -332,7 +344,7 @@
   He often made sure to relay our progress to our mentor and make sure all our queries were answered. Throughout the development, Tudor was able to give a critical analysis on certain problems and
   the design of the interface. In addition to this, he took it upon himself to learn AngularJS as to provide support to the front-end team.
   \newline\newline\textbf{Joseph - Backend Developer/Architect:}\newline
-  Joseph's programming skills was essentially the driving force of the project, through his major contributions to the backend we were able to lift our program concept from the whiteboard to the terminal.
+  Joseph's programming skills were essentially the driving force of the project, through his major contributions to the backend we were able to lift our program concept from the whiteboard to the terminal.
   He frequently approached our mentor outside of 'official' meetings, to develop a much better grasp on how to build the best application for the client. Through Joseph's extensive testing we were able
   to progress our application further overcoming any obstacle.
   \newline\newline\textbf{Ollie - Backend Developer/Algorithms Developer:}\newline
@@ -350,16 +362,16 @@
 Overall the system is robust and user friendly and as a team we are happy with the product. However, given more time we know that the functionality of the application could be increased to cover stretch goals not mentioned in the specification.
 It is capable of handling large datasets in short periods of time, and due to it’s use of threading it can analyse data at the same time as it’s extracting it from it’s source.
 Thanks to the simplistic UI the data is presented in a way that any non-technical user should be able to understand.
-The system itself fulfills all the C-requirements set out in the specification. It learns the characteristics of stocks, in such a way as to allow detection of anomalies such as volume spikes, pump \& dumps and fat finger errors
+The system itself fulfills the majority C-requirements set out in the specification. It learns the characteristics of stocks, in such a way as to allow detection of anomalies such as volume spikes, pump \& dumps and fat finger errors
 It swiftly provides the user with alerts on unusual behaviour, including visualisation of the data and an option for further information.
 \subsection{User Interface}
 The user interface has continued along the lines of the planned version. It is simple and intuitive.
-Each anomaly is clearly marked and contains enough data to inform the user of the situation around the anomaly, without presenting huge amounts of unnecessary information.
+Each anomaly is clearly marked and contains enough data to inform the user of the situation around the anomaly, without presenting an overwhelming amounts of data.
 If the user interface was to be improved, this could be achieved by detailed user acceptance testing to create a truly bespoke application for the client
 \subsection{System efficiency in handling of data}
-Through various iterations the codes level of efficiency has been risen. To increase speed all data has been kept in memory for all checks.
+Through various iterations the code's level of efficiency has been risen. To increase speed all data has been kept in memory for all checks.
 Otherwise thanks to the simple design of the system it is capable of processing extraordinarily large amounts of data in short periods of time.
-For example, the system can currently can process an average day's worth of data in 26 seconds.
+For example, the system can currently process an average day's worth of data in 26 seconds.
 \subsection{C-Requirements}
 The development team set out to ensure that all requirements specified at the start of the project have been implemented according to the initial agreement.
 Because development was based on the D-Requirements established, tests were carried out to verify that all C-Requirements have been satisfied in the process.
@@ -370,8 +382,7 @@ Because development was based on the D-Requirements established, tests were carr
       \end{itemize}
       \item Accept and Decline alerts flagged by the system. The system will adapt future alerts based on user input
       \begin{itemize}
-            \item \textbf{PASS:} If the user deems an alert acceptable, the system will continue as normal.
-            However, if the user declines an alert then the system will modify the sensitivity of the anomaly detection algorithm.
+            \item \textbf{MARGINALLY PASSED:} If the user deems an alert acceptable or unacceptable, the system will continue as normal and remove the alert.
       \end{itemize}
       \item The program will be able to detect fat-finger errors in the data
       \begin{itemize}

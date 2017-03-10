@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.12.24)  10 MAR 2017 12:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.12.24)  10 MAR 2017 15:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -226,11 +226,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 20.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 20.
-<logo.png, id=1, 1284.8pt x 853.1875pt>
+<logo.png, id=1, 583.17876pt x 533.995pt>
 File: logo.png Graphic file (type png)
  <use logo.png>
 Package pdftex.def Info: logo.png used on input line 24.
-(pdftex.def)             Requested size: 199.16928pt x 132.2557pt.
+(pdftex.def)             Requested size: 284.52756pt x 260.5354pt.
  [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./logo.png>] (./final.toc
@@ -244,114 +244,115 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write3
 \openout3 = `final.toc'.
 
- [2] <node.png, id=18, 469.755pt x 99.37125pt>
-File: node.png Graphic file (type png)
- <use node.png>
-Package pdftex.def Info: node.png used on input line 38.
-(pdftex.def)             Requested size: 341.43306pt x 72.22653pt.
- <java.png, id=19, 501.875pt x 29.10875pt>
-File: java.png Graphic file (type png)
- <use java.png>
-Package pdftex.def Info: java.png used on input line 43.
-(pdftex.def)             Requested size: 341.43306pt x 19.8039pt.
- <home.png, id=20, 1442.38875pt x 786.94pt>
-File: home.png Graphic file (type png)
- <use home.png>
-Package pdftex.def Info: home.png used on input line 53.
-(pdftex.def)             Requested size: 341.43306pt x 186.27579pt.
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ˜ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ˜ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ˜ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ˜ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ˜ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ˜ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ˜ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
- [3 <./node.png> <./java.png> <./home.png>] <analysisTab.png, id=27, 1304.875pt x 706.64pt>
-File: analysisTab.png Graphic file (type png)
- <use analysisTab.png>
-Package pdftex.def Info: analysisTab.png used on input line 64.
-(pdftex.def)             Requested size: 341.43306pt x 184.89735pt.
- [4 <./analysisTab.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 93.
+ [2]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 37.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 93.
- [5] <ui1.png, id=36, 771.88374pt x 288.07625pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 37.
+ <node.png, id=18, 469.755pt x 99.37125pt>
+File: node.png Graphic file (type png)
+ <use node.png>
+Package pdftex.def Info: node.png used on input line 44.
+(pdftex.def)             Requested size: 341.43306pt x 72.22653pt.
+ <java.png, id=19, 501.875pt x 29.10875pt>
+File: java.png Graphic file (type png)
+ <use java.png>
+Package pdftex.def Info: java.png used on input line 49.
+(pdftex.def)             Requested size: 341.43306pt x 19.8039pt.
+ <home.png, id=20, 1442.38875pt x 786.94pt>
+File: home.png Graphic file (type png)
+ <use home.png>
+Package pdftex.def Info: home.png used on input line 65.
+(pdftex.def)             Requested size: 341.43306pt x 186.27579pt.
+ [3 <./node.png> <./java.png>]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ˜ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ˜ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ˜ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ˜ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ˜ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ˜ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ˜ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+ <analysisTab.png, id=27, 1304.875pt x 706.64pt>
+File: analysisTab.png Graphic file (type png)
+ <use analysisTab.png>
+Package pdftex.def Info: analysisTab.png used on input line 76.
+(pdftex.def)             Requested size: 341.43306pt x 184.89735pt.
+ [4 <./home.png> <./analysisTab.png>] [5] <ui1.png, id=36, 771.88374pt x 288.07625pt>
 File: ui1.png Graphic file (type png)
  <use ui1.png>
-Package pdftex.def Info: ui1.png used on input line 129.
+Package pdftex.def Info: ui1.png used on input line 141.
 (pdftex.def)             Requested size: 483.69684pt x 180.52193pt.
- [6 <./ui1.png>]
-Overfull \hbox (11.55368pt too wide) in paragraph at lines 140--141
+ [6]
+Overfull \hbox (11.55368pt too wide) in paragraph at lines 152--153
 []\OT1/cmr/m/n/12 A steady in-crease of stock value from the av-er-age, when the pump-ing state be-gins (\OT1/cmr/bx/n/12 Detectable\OT1/cmr/m/n/12 ) 
  []
 
-<PumpDumpGraph.png, id=42, 611.28375pt x 432.61626pt>
+<PumpDumpGraph.png, id=41, 611.28375pt x 432.61626pt>
 File: PumpDumpGraph.png Graphic file (type png)
  <use PumpDumpGraph.png>
-Package pdftex.def Info: PumpDumpGraph.png used on input line 145.
+Package pdftex.def Info: PumpDumpGraph.png used on input line 157.
 (pdftex.def)             Requested size: 284.52756pt x 201.36252pt.
- <PDpseudo.png, id=43, 862.22125pt x 725.71124pt>
+ <PDpseudo.png, id=42, 862.22125pt x 725.71124pt>
 File: PDpseudo.png Graphic file (type png)
  <use PDpseudo.png>
-Package pdftex.def Info: PDpseudo.png used on input line 154.
+Package pdftex.def Info: PDpseudo.png used on input line 166.
 (pdftex.def)             Requested size: 426.79134pt x 359.21156pt.
- [7 <./PumpDumpGraph.png>] <VSGraph.png, id=48, 550.055pt x 489.83pt>
+ [7 <./ui1.png> <./PumpDumpGraph.png>] <VSGraph.png, id=48, 550.055pt x 489.83pt>
 File: VSGraph.png Graphic file (type png)
  <use VSGraph.png>
-Package pdftex.def Info: VSGraph.png used on input line 162.
+Package pdftex.def Info: VSGraph.png used on input line 174.
 (pdftex.def)             Requested size: 227.62204pt x 202.70013pt.
  <VSpseudo.png, id=49, 855.195pt x 327.2225pt>
 File: VSpseudo.png Graphic file (type png)
  <use VSpseudo.png>
-Package pdftex.def Info: VSpseudo.png used on input line 167.
+Package pdftex.def Info: VSpseudo.png used on input line 179.
 (pdftex.def)             Requested size: 426.79134pt x 163.30127pt.
  [8 <./PDpseudo.png>] <FFprice.png, id=54, 849.1725pt x 344.28625pt>
 File: FFprice.png Graphic file (type png)
  <use FFprice.png>
-Package pdftex.def Info: FFprice.png used on input line 182.
+Package pdftex.def Info: FFprice.png used on input line 194.
 (pdftex.def)             Requested size: 199.46198pt x 80.8705pt.
  <FFvolume.png, id=55, 831.105pt x 343.2825pt>
 File: FFvolume.png Graphic file (type png)
  <use FFvolume.png>
-Package pdftex.def Info: FFvolume.png used on input line 186.
+Package pdftex.def Info: FFvolume.png used on input line 198.
 (pdftex.def)             Requested size: 199.46198pt x 82.38423pt.
  [9 <./VSGraph.png> <./VSpseudo.png>]
 Missing character: There is no â in font cmr12!
@@ -360,7 +361,7 @@ Missing character: There is no ™ in font cmr12!
  [10 <./FFprice.png> <./FFvolume.png>] <sprint1.png, id=66, 608.2725pt x 440.64626pt>
 File: sprint1.png Graphic file (type png)
  <use sprint1.png>
-Package pdftex.def Info: sprint1.png used on input line 215.
+Package pdftex.def Info: sprint1.png used on input line 227.
 (pdftex.def)             Requested size: 227.62204pt x 164.8923pt.
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
@@ -395,7 +396,7 @@ Missing character: There is no ™ in font cmr12!
  <sprint2.png, id=67, 591.20876pt x 243.91125pt>
 File: sprint2.png Graphic file (type png)
  <use sprint2.png>
-Package pdftex.def Info: sprint2.png used on input line 226.
+Package pdftex.def Info: sprint2.png used on input line 238.
 (pdftex.def)             Requested size: 284.52756pt x 117.38869pt.
  [11 <./sprint1.png>]
 Missing character: There is no â in font cmr12!
@@ -407,7 +408,7 @@ Missing character: There is no ™ in font cmr12!
  <sprint3.png, id=72, 742.775pt x 239.89626pt>
 File: sprint3.png Graphic file (type png)
  <use sprint3.png>
-Package pdftex.def Info: sprint3.png used on input line 235.
+Package pdftex.def Info: sprint3.png used on input line 247.
 (pdftex.def)             Requested size: 284.52756pt x 91.89728pt.
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
@@ -430,7 +431,7 @@ Missing character: There is no ™ in font cmr12!
  <sprint4.png, id=73, 1123.19624pt x 751.80875pt>
 File: sprint4.png Graphic file (type png)
  <use sprint4.png>
-Package pdftex.def Info: sprint4.png used on input line 246.
+Package pdftex.def Info: sprint4.png used on input line 258.
 (pdftex.def)             Requested size: 227.62204pt x 152.35515pt.
  [12 <./sprint2.png> <./sprint3.png>]
 Missing character: There is no â in font cmr12!
@@ -439,18 +440,18 @@ Missing character: There is no ™ in font cmr12!
  <sprint5.png, id=80, 1117.17375pt x 749.80125pt>
 File: sprint5.png Graphic file (type png)
  <use sprint5.png>
-Package pdftex.def Info: sprint5.png used on input line 256.
+Package pdftex.def Info: sprint5.png used on input line 268.
 (pdftex.def)             Requested size: 227.62204pt x 152.77208pt.
- [13 <./sprint4.png> <./sprint5.png>] <test1.png, id=86, 750.805pt x 335.2525pt>
+ [13 <./sprint4.png> <./sprint5.png>]
+<test1.png, id=86, 750.805pt x 335.2525pt>
 File: test1.png Graphic file (type png)
-
-<use test1.png>
-Package pdftex.def Info: test1.png used on input line 280.
+ <use test1.png>
+Package pdftex.def Info: test1.png used on input line 292.
 (pdftex.def)             Requested size: 369.88582pt x 165.16525pt.
  <backtest.png, id=87, 828.09375pt x 313.17pt>
 File: backtest.png Graphic file (type png)
  <use backtest.png>
-Package pdftex.def Info: backtest.png used on input line 289.
+Package pdftex.def Info: backtest.png used on input line 301.
 (pdftex.def)             Requested size: 369.88582pt x 139.88823pt.
  [14 <./test1.png>] [15 <./backtest.png>]
 Missing character: There is no â in font cmr12!
@@ -462,7 +463,7 @@ Missing character: There is no ™ in font cmr12!
  <git.png, id=96, 1030.85126pt x 726.715pt>
 File: git.png Graphic file (type png)
  <use git.png>
-Package pdftex.def Info: git.png used on input line 322.
+Package pdftex.def Info: git.png used on input line 334.
 (pdftex.def)             Requested size: 341.43306pt x 240.69269pt.
  [16]
 Missing character: There is no â in font cmr12!
@@ -472,32 +473,32 @@ Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--349
+Underfull \hbox (badness 10000) in paragraph at lines 338--361
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--349
+Underfull \hbox (badness 10000) in paragraph at lines 338--361
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--349
+Underfull \hbox (badness 10000) in paragraph at lines 338--361
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--349
+Underfull \hbox (badness 10000) in paragraph at lines 338--361
 
  []
 
 
-Overfull \hbox (6.95589pt too wide) in paragraph at lines 326--349
+Overfull \hbox (6.95589pt too wide) in paragraph at lines 338--361
 \OT1/cmr/m/n/12 With an in-depth knowl-edge of mul-ti-ple fron-tend tech-nolo-gies in-clud-ing HTML, CSS and JavaScript,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--349
+Underfull \hbox (badness 10000) in paragraph at lines 338--361
 
  []
 
@@ -521,7 +522,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  47i,8n,37p,527b,274s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on final.pdf (20 pages, 2656753 bytes).
+Output written on final.pdf (20 pages, 2436339 bytes).
 PDF statistics:
  126 PDF objects out of 1000 (max. 8388607)
  59 compressed objects within 1 object stream
