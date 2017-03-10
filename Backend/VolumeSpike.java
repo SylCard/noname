@@ -17,7 +17,7 @@ class VolumeSpike implements ICheck{
 	int vma;
 	boolean startFlag;
 	long periodLength = 900000;
-	double a = 0.18;			//alpha equal to 2/(1+N) where N is the number of periods in this case 10	TODO choose dynamicaly based on k
+	double a = 0.018;			//alpha equal to 2/(1+N) where N is the number of periods in this case 10	TODO choose dynamicaly based on k
 	int diff;					//used in the detection of time period gaps
 	int channel;
 
@@ -28,7 +28,7 @@ class VolumeSpike implements ICheck{
 		period = time - (time % periodLength) + periodLength;
 
 		volumes = new LinkedList<Integer>();
-		volumes.add(1);
+		volumes.add(stock.getSize());
 
 		flag = true;
 		startFlag = true;
