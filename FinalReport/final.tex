@@ -10,7 +10,7 @@
 \usepackage{scrextend}
 \usepackage{titlesec}
 \usepackage{float}
-\usepackage[margin=1.2in]{geometry}
+\usepackage[margin=0.8in]{geometry}
 %preamble ends
 
 
@@ -27,6 +27,7 @@
 \thispagestyle{empty}
 \end{titlepage}
 \tableofcontents
+\newpage
 \section{Installation Guide/ System Requirements}
 	\subsection{Setup}
 		\subsubsection{Node}
@@ -35,10 +36,32 @@
     \subsubsection{Npm Installation}
   \subsection{Running}
 \section{User Guide}
+  \subsection{Home Page}
+  After completing the installation phase, the application will be ready to use. The landing page will look like the
+  figure below.
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=120mm]{home.png}
+  \caption{Spikes Home Page}
+  \end{figure}
+  Welcome to SPIKES! From the homepage you can choose from three tabs at the top of the page; ‘Analysis’, ‘Static Data File’ or ‘Live Stream’.
+  The ‘Static Data File’ tab is where to go when you have uploaded a file in the ‘Analysis’ tab, here it will show you all the anomalies in the data.
+  The ‘Live Stream’ tab is identical to the ‘Static Data File’ but is for live stream data instead.
   \subsection{Analysis tab}
-  \subsection{Live Stream tab}
-  \subsection{Historical Data tab}
-\section{FAQs}
+  The Analysis tab is the starting point of the app, here you can upload either a static data file or enter an input stream source, along with stopping and starting the analysis.
+  In order to select the other two tabs, analysis will have to have been initiated on this page.
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=120mm]{analysisTab.png}
+  \caption{Analysis Tab}
+  \end{figure}
+  It consists of two controllers, one for static historical data and the other for a live stream data.
+  Each controller has two options; upload and start analysis. There are no file size restrictions when uploading given sufficient hard disk storage.
+  By commencing analysis, it will alert you that analysis is active, you will then be allowed to navigate to the corresponding tab.
+  \subsection{Live Stream tab\textbackslash Historical Data tab}
+  When analysis is started, anomalies will start to be detected and generated in the respective tab, each anomaly that is detected will appear as an alert box on the page.
+  Alerts contain only crucial data such as; Type of Anomaly, Symbol, Date and a drop down arrow that leads to more specific data.
+  Volume spikes and price manipulation alerts will have a drill down button that generates a graph surronding displaying the suspicous data.
 \section{Research}
   After the analysis and design of the project, our software development team had developed a stronger idea
   of the technologies that would be used to design the system. This section further expands on the decisions and
@@ -79,20 +102,23 @@
     select relevant data at will and improve the chance of the system finding potential perpetrators of any malicious anomalies.
     \newline
     Despite this, if the system relied on the database too heavily, a performance bottleneck would occur. Thus, making our system slower and less responsive.
-    Our developer's countermeasure to this was to cache the data within Java's abstract data structures and storing a data for a certain amount
-    of time then storing historical data within the database that would not be useful in further algorithmic calculations.
+    Our developer's countermeasure to this was to cache the data within Java's abstract data structures and storing data for a certain amount
+    of time until the oldest data would be useful in further algorithmic calculations.
     \newline
-    Once the Back-end developers had come to a decision that was then agreed between the whole group, both solutions to our data storage problem had
-    been implemented with the MySQL database acting as a failsafe.
+    Once the Back-end developers had come to a decision. It was then agreed between the whole group to run the system without a database, thus avoiding
+    any bottlenecks and creating a multi-threaded application with minimal lag.
 \section{Design}
   \subsection{User Interface}
-    - color scheme
-    - font size
-    - abstraction
-      - simplicity
-         we wanted to develop something that did not require a manual essentialy,
-         the apps fundamental operation can be grasped by the client with the assumption
-         that they are computer literate.
+         The main focus of the user interface was to provide a view so simplistic and natural that the client would not even consider using the provided manual. After sending the mock UI design
+         to the client and received positive feedback, the front-end team decided to use the mockups as a guidline.\newline
+         The color scheme of the user interface primarily uses a familiar but refreshing blue because it provides a contrast that does not strain the eye and draws the visual attention of the user.
+         The font size used throughout the interface follows the universal usability principles such that the more important the information is the larger the font. Therefore, the larger text is scanned
+         and smaller text is read more carefully. Also, the separation of functions onto individual tabs, prevents the user from being overwhelmed with information.
+         \begin{figure}[H]
+         \centering
+         \includegraphics[width=170mm]{ui1.png}
+         \caption{Evolution of user interface}
+         \end{figure}
   \subsection{Pseudocode}
     This section explores the type of algorithms that we used to analyse the input stream of data for anomalies.
     \subsubsection{Pump \& Dump}
@@ -107,34 +133,29 @@
     \centering
     \includegraphics[width=130mm]{PumpDumpGraph.png}
     \caption{Pump \& Dump Example}
-    \label{1}
     \end{figure}
-    By identifying the traits of a Pump \& Dump, we were able to build the above model in fig:\ref{1}.
+    By identifying the traits of a Pump \& Dump, we were able to build the above model in fig:.
     We found it more intuitive to design an algorithm that would first detect a dumping state, then look back
-    on historical data to detect whether a pumping state had occured before the drop in stock value. Below in fig:\ref{2} is the
+    on historical data to detect whether a pumping state had occured before the drop in stock value. Below in fig: is the
     pseudocode that would later be transformed into Java code.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=130mm]{PDpseudo.png}
+    \includegraphics[width=100mm]{PDpseudo.png}
     \caption{Pump \& Dump Pseudocode}
-    \label{2}
     \end{figure}
     \subsubsection{Volume Spike}
     To detect volume spikes, the algorithm keeps track of the amount of stocks bought within a certain time interval and calculates a volume moving average (VMA) that will be used as a comparison for the consequent interval. Therefore, if the total stock
-    volume in a period greatly surpasses that of the previous VMA by a user-controlled threshold. The program will flag a volume spike, as seen below in fig:\ref{4}. The threshold level would then adjust it's sensitivity to spikes depending on the user's feedback.
+    volume in a period greatly surpasses that of the previous VMA by a user-controlled threshold. The program will flag a volume spike, as seen below in fig:. The threshold level would then adjust it's sensitivity to spikes depending on the user's feedback.
     \begin{figure}[H]
     \centering
-    \includegraphics[width=130mm]{VSGraph.png}
+    \includegraphics[width=80mm]{VSGraph.png}
     \caption{Volume Spike Example}
-    \label{3}
     \end{figure}
     \begin{figure}[H]
     \centering
     \includegraphics[width=150mm]{VSpseudo.png}
     \caption{Volume Spike Pseudocode}
-    \label{4}
     \end{figure}
-    \newpage
     \subsubsection{Fat Finger Errors}
     When detecting fat finger errors we decided to separate the error into two types:
     \begin{itemize}
@@ -142,7 +163,7 @@
       \item Fat Finger \textbf{Volume Error}, which will detect fat finger errors related to the size of a stock transaction
     \end{itemize}
     This is because it is possible for the Price or Size of a transaction to be extremely large compared to the average due to a typing fat finger error.
-    The algorithm we developed to detect fat finger errors, uses orders of magnitude to determine whether the price or volume is extremely larger or smaller than the average (in factors of ten).
+    The algorithm we developed to detect fat finger errors, uses orders of magnitude to determine whether the price or volume is extremely larger or smallerf than the average (in factors of ten).
     \begin{figure}[H]
       \centering
       \begin{minipage}[H]{0.9\textwidth}
@@ -154,26 +175,111 @@
         \caption{Fat Finger Volume Pseudocode}
       \end{minipage}
     \end{figure}
-
-
 \newpage
 \section{Implementation}
   \subsection{Frontend}
   \subsection{Backend}
     \subsubsection{Parsing}
-\section{Iterations}
-  \subsection{Iteration 1}
-  \subsection{Iteration 2}
-  \subsection{Iteration 3}
-  \subsection{Iteration 4}
-  \subsection{Iteration 5}
+\section{Sprint Cycles}
+  This section gives an overview on what each sprint cycle accomplished and how our system evolved using an agile approach.
+  \subsection{Sprint Cycle 1}
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=80mm]{sprint1.png}
+  \caption{Initial UI skeleton}
+  \end{figure}
+  The first sprint cycle consisted of our back-end team designing the various algorithms while the front-end team worked on the UI skeleton simultaneously.
+  We wanted to get the skeleton of the UI implemented as soon as possible, so that there was more available time for refinement.
+  Initially, we had two pages; ‘Home’ and ‘History’. The ‘Home’ page would show all the anomalies and the ‘History’ tab would have past anomalies that have since been removed from the ‘Home’ page.
+  The graph at the top of the page was created with Chart.js charting library and was used to give the team an idea what an example graph would look like.
+  The anomalies would appear within the structures below the graph, where the user could either accept or reject the anomaly.
+  \subsection{Sprint Cycle 2}
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=100mm]{sprint2.png}
+  \caption{Development of alert boxes}
+  \end{figure}
+  In the second sprint cycle. We implemented the drop down arrow on the alert boxes so that design resembled the mockup more. We decided that the type of anomaly, symbol and date were the most important details regarding an anomaly, so these details were left outside of the drop down.
+  It was also decided in the sprint cycle review meeting that Chart.js was insufficient to show the necessary data, instead Plotly.JS was used in its place as it provides much more features and an extensive range of graph types.
+  The ‘Drill Down’ button was implemented for volume spike and pump \& dump, when clicked it would render a graph which would provide a better analysis of the anomaly.
+  \subsection{Sprint Cycle 3}
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=100mm]{sprint3.png}
+  \caption{Introduction of Spikes 2.0}
+  \end{figure}
+  In the third sprint cycle, a major update to the UI occurred. A new homepage and logo were designed.
+  We added three new tabs; ‘Analysis’, ‘Static Data File’ and ‘Live Stream’.
+  We also implemented the pseudocode for volume spike, the implementation required various adjustments
+  as errors were realised throughout testing and eventually overcome.
+  At this point, we were only able to test the algorithm with mock data collected in the Java back-end.
+  \subsection{Sprint Cycle 4}
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=80mm]{sprint4.png}
+  \caption{Volume spike detection fully functional}
+  \end{figure}
+  In the fourth sprint cycle we implemented the pseudocode for fat finger errors, initially it used simple bounds to detect an error,
+  however after some research  we decided to use orders of magnitude, however this wasn’t working how we imagined it to do so.
+  A realisation occurred in this sprint review meeting ; that two types of fat finger could possibly occur (Price/Volume).
+  Our target for the next sprint cycle was to implement a fully-functional algorithm to detect Pump \& Dump, with the system fully connected.
+  \subsection{Sprint Cycle 5}
+  In the final sprint cycle, we implemented the algorithm for Pump \& Dump.
+  This was most challenging for our team and although we had created the pseudocode in an earlier week we realised that this was not the optimal solution.
+  After some discussion as a team we decided upon a solution that could work, however implementation proved to be just as difficult.
+  After tweaking the sensitivity we managed to get the pump and dump detection to a state that all team members deemed suitable.
 \section{Testing}
+  Throughout the development process, new test data was fabricated by each developer during the implementation of each feature.
+  Therefore, we are confident that the majority of faults were uncovered due to the variety of test cases that the overall solution was subjected to.
   \subsection{Unit Testing}
-    \subsubsection{Angular Dependency Injection}
-  \subsection{Integration Testing}
-  \subsection{System Testing}
-  \subsection{User Acceptance Testing}
-    \subsubsection{Email Correspondence}
+  During the implementation of our solution, each feature was tested as it was developed to ensure correct functioning before integration.
+  This strategy allowed the developers to carry out unit testing specifically designed for each minor component, as they were implemented, removing any bugs early on.
+  The result of ongoing testing was a deep understanding of these individual components which helped the development team better understand and fix later issues.
+    \subsubsection{Front-end Testing}
+    In the interest of providing a responsive and interactive user interface (UI), the front-end HTML and CSS development team systematically tackled each activity
+    that the user may have had to carry out using the application through the UI. Any errors related to interface feedback and the interaction between the user and the system were fixed at this stage.
+    This provided a medium through which the development team could interact with the system and test further features.
+    \newline
+    Regarding the proper processing of flagged anomalies by the AngularJS front-end, the UI alert generation was tested using fabricated JSON packets of anomaly data.
+    Once these packets were received, the testers observed the generated UI elements for any discrepancies and made any necessary modifications.
+    During this process, an interface template to be used between the front-end and back-end was decided upon by the entire development team to provide consistency across software components.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=130mm]{test1.png}
+    \caption{Testing of alert generation with mock data}
+    \end{figure}
+    \subsubsection{Back-end Testing}
+    All Java implementations of the analysis algorithms were subjected to intensive tests using the historical data provided, the live trade stream and fabricated trade data.
+    The purpose of these tests was to verify that the algorithms were calculating reasonable values and flagging anomalous results correctly.
+    Console reports (image num), printed during implementation of algorithms, were used to reveal the data processing done by the back-end.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=130mm]{backtest.png}
+    \caption{Testing of Java analysis algorithms}
+    \end{figure}
+    In addition, output data to be passed to the front-end was displayed to ensure that all interfaces established between developers were taken into consideration.
+	  Finally, all anomaly data being displayed had to be buffered by the NodeJS server before it was sent to the front-end. The development team observed data flowing into and out of the NodeJS server,
+    and checked data stored by the server against expected formats and values. Removal of errors at this stage provided confidence in the transmission of data from the back-end processing to the front-end client view.
+    \subsection{Integration Testing}
+    Once each feature was completed, tested and debugged, it was integrated into the overall solution. Firstly, the node server was connected the Java back-end analyser using sockets and after this connection was fully tested.
+    Secondly, the Node was connected to the Angular through socket.io, providing mock packets before the entire came together. Upon integration, tests were constructed and executed on the resulting, enhanced application.
+    At this point, issues such as parsing errors were discovered by the front-end developers due to the mulititude of different templates generated by the angular and resolved before they could affect later versions.
+    In this way, the team was able to ensure that any errors which appeared after the integration of a new component were strictly related to the component.
+    This lead to easier debugging during each development iteration.
+    \subsection{System Testing}
+    Working versions of the application were tested using Black-Box Testing: fabricated data which contained patterns of real anomalies was fed into the software and resulting errors were checked for consistency with expectations. Additionally, working system versions were tested against the provided trade data files.
+    The output of these tests was reviewed and checked against relevant parts of the input data to confirm that the anomalies were indeed relevant and the data displayed was correct.
+  	In addition to verifying correct detection of anomalies and transmission of data to the user, robustness and reliability were ensured by passing erroneous trade data to the analysis tool.
+    This data included trades with missing fields or wrong types of data. The back-end development team set checks in place such that, even in such cases the system functioned correctly and the erroneous data did not affect later results.
+    \subsection{User Acceptance Testing}
+    In order to provide an application which was in line with expectations from the client, all features implemented were based on the initial Requirements Analysis, and Design and Implementation reports. According to the feedback received, our listed system requirements represented what is expected from the end product.
+    Furthermore, the User Interface provided is based on the sketches delivered to Deutsche Bank, which received a positive reaction.
+    \subsection{Non-Functional Testing}
+    The application was also tested to satisfy non-functional qualities. The system performance was measured in terms of time taken to carry out processing and to display anomalies.
+    This was done in the final sprint cycle. During an early period of development in which the system used SQL databases to store a large amount of data for eventual retrieval and analysis, we identified that database access tasks took a very long time.
+    As a consequence, all other tasks would have to wait, and the entire system was noticeably slower. To mitigate this issue, all database storage was made redundant and the database was completely removed from the process.
+  	Secondly, usability of the interface was tested by trials with users chosen randomly. The layout proved to be intuitive and easy to use, even for an inexperienced test subject. Moreover, all clickable areas were designed to be large and easy to use, and the colour scheme is suitable for colour blind users.
+
 \section{Project Management}
   \subsection{Overview}
   \subsection{Roles}
