@@ -3,7 +3,7 @@
 
     </div>
     <div class="col-sm-10" style="border:2px solid black; border-radius:25px;">
-        <h1><strong>{{info.error}} Fat Finger Error</strong>, Symbol: {{ info.stock.symbol }}, Date: {{ info.stock.time * 1000 | date:'MMM/dd' }}
+        <h1><strong>{{info.error}} Fat Finger Error</strong>, Symbol: {{ info.stock.symbol }}
             <a class="fa-arrow-down" onclick="if ( $(this).hasClass('fa-arrow-down') ) {$(this).removeClass('fa-arrow-down');$(this).addClass('fa-arrow-down-open');} else {$(this).removeClass('fa-arrow-down-open');$(this).addClass('fa-arrow-down');}" id="dropdown{{ info.AnomalyID }}" href="#" ng-click="drop({id: info.AnomalyID})" style="float:right"><span class="glyphicon glyphicon-menu-down"></span></a> </h1>
         <div class="dropdownwrap{{ info.AnomalyID }}" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
             <h2>Transaction</h2>
@@ -14,7 +14,6 @@
                 <li>Currency: {{ info.stock.currency }}</li>
                 <li>Volume: {{ info.stock.size }}</li>
                 <li><strong>Expected {{ info.error }}:</strong> {{ info.rma }}
-                <li>Time: {{ info.stock.time * 1000 | date:'HH:mm:ss' }}</li>
                 <!--<li>Date: {{ info.stock.time | date: 'MMM/dd' }}</li>-->
             </ul>
             <div class="buttons" style="margin-bottom:20px;">
