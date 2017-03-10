@@ -29,13 +29,11 @@ class PumpAndDump implements ICheck{
 		period = time - (time % periodLength) + periodLength;
 
 		prices = new LinkedList<Double>() ;
-		prices.add(1.0);
+		prices.add(stock.getPrice());
 
 		flag = true;
 		startFlag = true;
-
 	}
-
 
 	public void update(Stock stock){
 
@@ -44,7 +42,6 @@ class PumpAndDump implements ICheck{
 			/*if time within period add to current price list*/
 			if (stock.getTime() < period) {
 				prices.set((prices.size() - 1), (prices.getLast() + stock.getPrice()) );
-				// System.out.println(prices.getLast());
 			} else {
 				// section for coping with empty time periods	(works in theory has yet to be tested with gaps)
 				diff = (int) ((stock.getTime() - period) / periodLength);
@@ -78,11 +75,13 @@ class PumpAndDump implements ICheck{
 	}
 
 	public Anomaly check(Stock stock, Client client) {
+		
+		
 		if(flag || pmas.size() < 60) {
 			return null;
 		}
 		else { // there is a sufficient amount of averages to analyse for a pump and dump
-
+			
 			boolean	dumpingState = false ;
 			// check for dumpingState
 			// look at latest and previous price averages
@@ -90,8 +89,13 @@ class PumpAndDump implements ICheck{
 
 			double difference = pmas.getLast() -  pmas.get(pmas.size()-2) ;
 			double percentage_decrease = (difference/pmas.get(pmas.size()-2)) *100 ;
+
 			if (percentage_decrease < 0 ){ // it is negative
-				if(Math.abs(percentage_decrease) >= 30){// if there is a 30% or more percentage decrease flag a dumping state
+				if(Math.abs(percentage_decrease) >= 10){// if there is a 10% or more percentage decrease flag a dumping state
+					
+					System.out.println("PERCENTAGE DECREASE IS GREATER THAN 10");
+					System.out.println(percentage_decrease);
+					
 					dumpingState = true;
 				}
 			}
@@ -106,22 +110,22 @@ class PumpAndDump implements ICheck{
 						pumping++ ;
 					}
 				}
-				if (pumping >= 30) {
+				if (pumping >= 20) {
+					
 					// if code reaches here, then pumping state is true
 					// build array so it contains last 50 recent prices
 					long tStart = period - (pmas.size() * periodLength) ;
 					int counter =  0 ;
-					for (int x = 0; x< pmas.size() ; ) {
-						if (x>=50) {
-							Yarray[counter] = pmas.get(x) ;
-							counter++;
-						}
+					for (int x = pmas.size() - 50; x < (pmas.size()) ; x++) {
+						Yarray[counter] = pmas.get(x) ;
+						counter++;
 					}
 					// send dat shiz off
 					PDAnomaly anomaly = new PDAnomaly(client.getCounter(), channel, stock.getSymbol(), Yarray, tStart, this.periodLength);
 					flag = true;
-					return anomaly ;
-					//return PumpAndDump Anomaly object
+					
+					
+					return anomaly;
 				}
 
 			}

@@ -1,4 +1,3 @@
-import java.io.DataInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -11,51 +10,24 @@ import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
-import java.text.ParseException;
 
 /*TODO add data checks to flag corrupted stock values*/
 
 
-//need to add proper exception handling
+//TODO add proper exception handling
 public class DataExtractor {
 
-    public static void main(String args[]) throws Exception {
-
-        /*uses args[0] to determine type of program usage*/
-        //
-        if (args.length == 0) {                 //if no arguments are passed print the results and exit
-            instructions();
-            return;
-        } else if (args[0].equals("-h") && (args.length >= 2)) {        //if historical is chosen and given a filename start extraction on historical data
-            System.out.println("This is the historical data option.");
-            LinkedList<Stock> queue = new LinkedList<Stock>();
-            historicalData(args[1], queue);
-            return;
-        } else if (args[0].equals("-l") && (args.length >= 2)) {                              //if live is chosen start extraction on live data TODO allow optional stream address specification
-            System.out.println("This is the live data option.");
-            LinkedList<Stock> queue = new LinkedList<Stock>();
-            liveData(queue, args[1]);
-            return;
-        } else {                                                        //if none of the above occur inform user that the arguments were invalid
-            System.out.println("Invalid options. Give no arguments to see useage instructions.");
-            return;
-        }
-        //
-    }
-
+    //starts threads for extracting data
     public static LinkedList<Stock> extract(String args[]) throws Exception {
         if (args.length == 0) {                 //if no arguments are passed print the results and exit
             instructions();
             return null;
         } else if (args[0].equals("-h") && (args.length >= 2)) {        //if historical is chosen and given a filename start extraction on historical data
             LinkedList<Stock> queue = new LinkedList<Stock>();
-            System.out.println("This is the historical data option.");
             StockBuilderThread historical = new StockBuilderThread("h", queue, args[1]);    //start extraction thread
-            // return historicalData(args[1]);
             return queue;
         } else if (args[0].equals("-l") && (args.length >= 2)) {                              //if live is chosen start extraction on live data TODO allow optional stream address specification
             LinkedList<Stock> queue = new LinkedList<Stock>();
-            System.out.println("This is the live data option.");
             StockBuilderThread live = new StockBuilderThread("l", queue, args[1]);                   //start extraction thread
             return queue;
         } else {                                                        //if none of the above occur inform user that the arguments were invalid
@@ -70,16 +42,18 @@ public class DataExtractor {
         System.out.println("DataExtractor usage Guide:");
         System.out.println("DataExtractor -[option] [arguments]...\n");
         System.out.println("Options:");
-        System.out.println("-h      Takes a single argument, [FileName]");
+        System.out.println("-h      Takes two arguments: [FileName] and channel.");
         System.out.println("        Processes stock data from file(assumes first line is context line, does not process first line)");
-        System.out.println("-l      Currently takes no arguments.");
-        System.out.println("        Connects to the FTSE100 stream at \"cs261.dcs.warwick.ac.uk\" on port 80 and processes the live data stream");
+        System.out.println("-l      Takes two arguments: [address] and channel");
+        System.out.println("        Connects to the stream at address on port 80 and processes the live data stream");
         System.out.println("\nExample usage:");
-        System.out.println("DataExtractor -h file       Will process the stock data in file.");
+        System.out.println("DataExtractor -h file 0      Will process the stock data in file, and will send all anomalies with mode 0.");
     }
 
+    //extracts live data from the live data stream and places it into the queue in the form of stock object
     public static void liveData(LinkedList<Stock> queue, String server) throws Exception{
         String value;
+        Stock stock;
 
         Socket s = new Socket(server, 80);   //establishes a server socket
 
@@ -90,18 +64,21 @@ public class DataExtractor {
         value = dis.readLine();
         while (true) {
             value = dis.readLine();
-
-            synchronized (queue) {          //synchronised ensures thread saftey
-                queue.add(stockBuilder(value));
+            stock = stockBuilder(value);
+            if (stock != null) {                //if the stock was of an invalid form then do not add
+                synchronized (queue) {          //synchronised ensures thread saftey
+                    queue.add(stock);
+                }
             }
         }
         //TODO find a way to close in the case of shutdown
         // s.close();
     }
 
-    //TODO implement threading for historical data to prevent overflow
+    //extracts historical data from a file and places it into the queue in the form of a stock object
     public static void historicalData(String fileName, LinkedList<Stock> queue) throws Exception{
         String str;
+        Stock stock;
         if ((fileName == null) || (fileName.equals(""))) {              //checks for possible empty name insertion
             System.out.println("Error: No file name entered");
         }
@@ -109,37 +86,50 @@ public class DataExtractor {
             BufferedReader in = new BufferedReader(new FileReader(fileName));       //reads lines and adds them to the queue
             in.readLine();
             while ((str = in.readLine()) != null)  {
-                synchronized (queue) {      //synchronised ensures thread saftey
-                    queue.add(stockBuilder(str));
+                stock = stockBuilder(str);
+                if (stock != null) {                //if the stock was of an invalid form then do not add
+                    synchronized (queue) {      //synchronised ensures thread saftey
+                        queue.add(stockBuilder(str));
+                    }
                 }
             }
             in.close();
+            //TODO find a method of exit when file end
+			
+			while (true) {
+				synchronized (queue) {
+					if (queue.size() == 0) {
+						System.exit(0);
+					}
+				}
+				try {
+					    Thread.sleep(200);
+				} catch(InterruptedException ex) {
+					    Thread.currentThread().interrupt();
+				}
+			}
+
         } catch (FileNotFoundException e) {
             System.out.println("Error: Cannot find file: " + fileName);
             return;
         }
-        //System.out.println(queue.getFirst().getTime());
     }
 
     /*splits the string by commas, then builds and returns a Stock object using the stock values*/
     private static Stock stockBuilder(String stock) throws ParseException{
         String[] str = stock.split(",");
-        return new Stock(parseDate(str[0]), str[1], str[2], Double.parseDouble(str[3]), Integer.parseInt(str[4]), str[5], str[6], str[7], Double.parseDouble(str[8]), Double.parseDouble(str[9]));
+        try {
+            return new Stock(parseDate(str[0]), str[1], str[2], Double.parseDouble(str[3]), Integer.parseInt(str[4]), str[5], str[6], str[7], Double.parseDouble(str[8]), Double.parseDouble(str[9]));
+        } catch (Exception e) {
+            System.out.println("parse error for trade(invalid format or corrupted data):\n" + stock);           //informs of incompatible data form
+            return null;
+        }
     }
 
-    private static long parseDate(String date) throws ParseException{             //TODO move initialisation outside of method
+    //parses date from a string format to a long, in the form ms since linux epoch
+    private static long parseDate(String date) throws ParseException{
         DateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss.SSSSSS", Locale.ENGLISH);
         return format.parse(date).getTime();
     }
 
 }
-
-
-
-
-
-//tests:
-//ensure all transactions are being picked up by the system
-
-//problems encountered in implementation:
-//any uneccasary calls in the retevial loop cause misses on the data, as such it is ideal to have the loop perform on a seperate cpu with a shared data queue to any further processing

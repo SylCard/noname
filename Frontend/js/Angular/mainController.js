@@ -21,7 +21,7 @@ app.controller('mainController', ['$scope', function ($scope, $window) {
         //data1 is priceData
         if (!info.plotted) {
             var dates = [];
-            dates[0] = new Date(info.timeBegin);
+            dates[0] = new Date(info.timeBegin * 1000);
 
             for (i = 1; i < info.yaxisPrice.length; i++) {
                 dates[i] = new Date(dates[i - 1].getTime() + info.periodLen);
@@ -82,10 +82,12 @@ app.controller('mainController', ['$scope', function ($scope, $window) {
         //alert("still no function. cant plot for: " + info.AnomalyID);
         if (!info.plotted) {
             var dates = [];
-            dates[0] = new Date(info.timeBegin);
+            dates[0] = new Date(info.timeBegin * 1000);
+            //alert("date 0 is: " + dates[0]);
 
             for (i = 1; i < info.yaxis1.length; i++) {
                 dates[i] = new Date(dates[i - 1].getTime() + info.periodLen);
+                //alert("date " + i + " is: " + dates[i]);
             }
             var times = [];
             for (i = 0; i < info.yaxis1.length; i++) {

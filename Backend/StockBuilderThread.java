@@ -10,27 +10,24 @@ class StockBuilderThread implements Runnable {
 	public StockBuilderThread() {
 	}
 	public StockBuilderThread(String threadName) {
-		runner = new Thread(this, threadName); // (1) Create a new thread.
-		System.out.println(runner.getName());
+		runner = new Thread(this); // (1) Create a new thread.
 		runner.start(); // (2) Start the thread.
 	}
 
 	//live data
 	public StockBuilderThread(String threadName, LinkedList<Stock> queue) {
-		runner = new Thread(this, threadName);
+		runner = new Thread(this);
 		this.queue = queue;
 		this.type = threadName;
-		System.out.println(runner.getName());
 		runner.start(); // (2) Start the thread.
 	}
 
 	//historical data
 	public StockBuilderThread(String threadName, LinkedList<Stock> queue, String file) {
-		runner = new Thread(this, threadName);
+		runner = new Thread(this);
 		this.queue = queue;
 		this.type = threadName;
 		this.file = file;
-		System.out.println(runner.getName());
 		runner.start(); // (2) Start the thread.
 	}
 
