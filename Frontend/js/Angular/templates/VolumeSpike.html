@@ -7,7 +7,7 @@
                 href="#" style="float: right" ng-click="drop({id: info.AnomalyID})"><span class="glyphicon glyphicon-menu-down"></span></a></h1>
         <div class="dropdownwrap{{ info.AnomalyID }}" style="display:none; height:auto; padding:10px; margin: 5px; border-top:2px solid black;">
             <ul>
-                <li>Time: {{ info.timeBegin | date:'HH:MM:ss' }}</li>
+                <li>Time: {{ info.timeBegin * 1000 | date:'HH:MM:ss' }}</li>
             </ul>
             <div class="drilldownwrap{{ info.AnomalyID }}" style="display:none;">
                 <!-- graph div -->
