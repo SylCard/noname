@@ -5,8 +5,8 @@ public class VFatFinger implements ICheck {
     int vma;
     int lastVma;
     int severity;
-    double a = 0.18;   //effect of past average on vma
-    double n = 0.5;      //sensitivity of error detection
+    double a = 0.018;   //effect of past average on vma
+    double n = 0.9;      //sensitivity of error detection
     int channel;    //historical/live data - whichever the check is for
     boolean flag;
 

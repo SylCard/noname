@@ -62,7 +62,7 @@ app.get('/robots.txt', function(req, res) {
  */
 app.post('/staticFileUpload', function(req, res) {
 	// Redirect user to analysis page
-	res.send("<script>window.location.replace('../analysis.html')</script>");
+	res.send("<script>window.location.replace('../analysis')</script>");
 	
 	// Clear historical array
 	anomalies[0] = [];

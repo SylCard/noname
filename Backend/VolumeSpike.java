@@ -17,7 +17,7 @@ class VolumeSpike implements ICheck{
 	int vma;
 	boolean startFlag;
 	long periodLength = 900000;
-	double a = 0.18;			//alpha equal to 2/(1+N) where N is the number of periods in this case 10	TODO choose dynamicaly based on k
+	double a = 0.018;			//alpha equal to 2/(1+N) where N is the number of periods in this case 10	TODO choose dynamicaly based on k
 	int diff;					//used in the detection of time period gaps
 	int channel;
 
@@ -28,7 +28,7 @@ class VolumeSpike implements ICheck{
 		period = time - (time % periodLength) + periodLength;
 
 		volumes = new LinkedList<Integer>();
-		volumes.add(1);
+		volumes.add(stock.getSize());
 
 		flag = true;
 		startFlag = true;
@@ -58,7 +58,7 @@ class VolumeSpike implements ICheck{
 
 				calculateVma();
 
-				volumes.add(1);
+				volumes.add(stock.getSize());
 				period += periodLength;
 				flag = false;
 				if (volumes.size() > k) {				//limits list size to k
@@ -82,7 +82,7 @@ class VolumeSpike implements ICheck{
 			vmas.add(vma);
 		} else {					//else calculate ema
 			vma = (int) Math.ceil((a * volumes.getLast()) + ((1 - a) * vma));			//Exponential Moving Average where a is alpha 
-			limit = (int) Math.ceil(0.7 * vma);
+			limit = (int) Math.ceil(1.0 * vma);
 			vmas.add(vma);
 		}
 
@@ -99,6 +99,7 @@ class VolumeSpike implements ICheck{
 			VSAnomaly anomaly = new VSAnomaly(client.getCounter(), channel, stock.getSymbol(), volumesArray, vmasArray, tStart, periodLength, severity);
 
 			flag = true;
+			vma = (int) ((volumes.get(volumes.size() - 2))*0.9);
 			return anomaly;
 		} else {
 			flag = true;
