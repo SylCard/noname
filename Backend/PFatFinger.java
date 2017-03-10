@@ -4,8 +4,8 @@ public class PFatFinger implements ICheck {
     double pma;
     double lastPma;
     int severity;
-    double a = 0.18;   //effect of past average on vma
-    double n = 0.95;      //sensitivity of error detection
+    double a = 0.018;   //effect of past average on vma
+    double n = 1.00;      //sensitivity of error detection
     int channel;    //historical/live data - whichever the check is for
     boolean flag;
 
