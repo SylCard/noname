@@ -58,7 +58,7 @@ class VolumeSpike implements ICheck{
 
 				calculateVma();
 
-				volumes.add(1);
+				volumes.add(stock.getSize());
 				period += periodLength;
 				flag = false;
 				if (volumes.size() > k) {				//limits list size to k
