@@ -82,7 +82,7 @@ class VolumeSpike implements ICheck{
 			vmas.add(vma);
 		} else {					//else calculate ema
 			vma = (int) Math.ceil((a * volumes.getLast()) + ((1 - a) * vma));			//Exponential Moving Average where a is alpha 
-			limit = (int) Math.ceil(0.7 * vma);
+			limit = (int) Math.ceil(2 * vma);
 			vmas.add(vma);
 		}
 
