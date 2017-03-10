@@ -82,7 +82,7 @@ class VolumeSpike implements ICheck{
 			vmas.add(vma);
 		} else {					//else calculate ema
 			vma = (int) Math.ceil((a * volumes.getLast()) + ((1 - a) * vma));			//Exponential Moving Average where a is alpha 
-			limit = (int) Math.ceil(2 * vma);
+			limit = (int) Math.ceil(1.0 * vma);
 			vmas.add(vma);
 		}
 
@@ -99,6 +99,7 @@ class VolumeSpike implements ICheck{
 			VSAnomaly anomaly = new VSAnomaly(client.getCounter(), channel, stock.getSymbol(), volumesArray, vmasArray, tStart, periodLength, severity);
 
 			flag = true;
+			vma = (int) ((volumes.get(volumes.size() - 2))*0.9);
 			return anomaly;
 		} else {
 			flag = true;
